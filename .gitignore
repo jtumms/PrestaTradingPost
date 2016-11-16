@@ -70,3 +70,5 @@ crashlytics-build.properties
 fabric.properties
 
 *.db
+###Client###
+node_modules
