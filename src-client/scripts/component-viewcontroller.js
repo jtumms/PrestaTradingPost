@@ -20,7 +20,7 @@ const AppViewController = React.createClass({
           break;
 
         case "SingleView":
-          return <SingleView singleData={this.state.singleListing} pidVal={this.props.pidInRoute} />
+          return <SingleView />
           break;
 
           case "ProfileView":
@@ -33,3 +33,4 @@ const AppViewController = React.createClass({
 module.exports = AppViewController
 
 //MultiView payloadData={this.state.currentInventory
+//<SingleView singleData={this.state.singleListing} pidVal={this.props.pidInRoute}

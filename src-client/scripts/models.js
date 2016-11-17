@@ -3,7 +3,7 @@ const Backbone = require('backbone');
 
 
 const ItemsModel = Backbone.Model.extend({
-  urlRoot: "",
+  urlRoot: "/get-item",
 
   initialize: function(){
 
@@ -12,7 +12,7 @@ const ItemsModel = Backbone.Model.extend({
 
 const ItemsModelCollection = Backbone.Collection.extend({
   model: ItemsModel,
-  url: "",
+  url: "/all-items",
 
   initialize: function(){
 
