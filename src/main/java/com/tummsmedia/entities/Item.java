@@ -1,9 +1,10 @@
 package com.tummsmedia.entities;
 
-import com.sun.xml.internal.ws.developer.UsesJAXBContext;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by john.tumminelli on 11/16/16.
@@ -13,10 +14,13 @@ import java.util.ArrayList;
 public class Item {
     @Id
     @GeneratedValue
-    int id;
+    int itemId;
 
     @Column(nullable = false)
     String itemName;
+
+    @Column (nullable = false)
+    String itemDescription;
 
     @Column(nullable = false)
     String category;
@@ -38,27 +42,47 @@ public class Item {
     @Column(nullable = false)
     private Condition condition;
 
-    @Column(nullable = false)
-    private ArrayList<String> images;
+    @ElementCollection
+    @CollectionTable(name = "item_images", joinColumns = @JoinColumn(name = "itemId"))
+    private Set<Image> images = new HashSet<Image>();
+
+    @ManyToOne
+    User user;
 
     public Item() {
     }
 
-    public Item(String itemName, String category, long estValue, long askingPrice, Condition condition, ArrayList<String> images) {
+
+
+    public Item(int itemId, String itemName, String itemDescription, String category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user) {
+        this.itemId = itemId;
         this.itemName = itemName;
+        this.itemDescription = itemDescription;
         this.category = category;
         this.estValue = estValue;
         this.askingPrice = askingPrice;
         this.condition = condition;
         this.images = images;
+        this.user = user;
     }
 
-    public int getId() {
-        return id;
+    public Item(String itemName, String itemDescription, String category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user) {
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.category = category;
+        this.estValue = estValue;
+        this.askingPrice = askingPrice;
+        this.condition = condition;
+        this.images = images;
+        this.user = user;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
     public String getItemName() {
@@ -101,11 +125,27 @@ public class Item {
         this.condition = condition;
     }
 
-    public ArrayList<String> getImages() {
+    public Set<Image> getImages() {
         return images;
     }
 
-    public void setImages(ArrayList<String> images) {
+    public void setImages(Set<Image> images) {
         this.images = images;
+    }
+
+    public String getItemDescription() {
+        return itemDescription;
+    }
+
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
