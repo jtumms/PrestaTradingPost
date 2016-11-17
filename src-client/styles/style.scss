@@ -1,5 +1,7 @@
-@import "../../node_modules/font-awesome/scss/font-awesome.scss";
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";
+
 
 * {
 	box-sizing: border-box;
@@ -8,9 +10,80 @@
 body{
 	font-family: Helvetica, Arial, sans-serif;
 }
+//
+// h1 {
+// 	font-size: 75px;
+// 	text-align: center;
+//
+// }
 
-h1 {
-	font-size: 100px;
+.sign-in-btn {
+	margin-top: 20px;
+	text-align: right;
+}
+
+.multi-container {
+	width: 90%;
+	margin: auto;
+}
+
+.multi-header {
+	position: relative;
+	height: 200px;
+	background: #5E9F41;
+	h1 {
+		font-family: fantasy, sans-serif;
+		font-weight: bold;
+		font-size: 90px;
+		text-align: center;
+		padding-top: 60px;
+	}
+	h2 {
+		position: absolute;
+
+	}
+}
+
+.multi-description {
+	background-color: #E49D4A;
+	h4 {
+		width: 90%;
+		margin-top: 20px;
+		margin: auto;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
+
+.multi-button-container {
+	width: 100%;
+	margin-top: 20px;
+	button {
+		width: 20%;
+		background-color: #8CA387;
+	}
+}
+
+.multi-icons {
+	margin-left: 10px;
+}
+
+.auth-header-container {
+	height: 200px;
+	background: #5E9F41;
+	width: 90%;
+	margin: auto;
+}
+
+.auth-header {
+		font-family: fantasy, sans-serif;
+		font-weight: bold;
+		font-size: 90px;
+		text-align: center;
+		// padding-top: 50px;
+}
+
+.auth-sign-in {
 	text-align: center;
 	color: #00DDD8;
 	text-shadow: 5px 5px 5px rgba(1,1,1,0.7);
@@ -19,4 +92,32 @@ h1 {
 .item-card{
 	background-color: #E19D29;
 	border-top: 50px;
+	margin-top: 20px;
+}
+
+.auth-container-row {
+	text-align: center;
+	width: 40%;
+	margin: auto;
+	background-color: #FFC027;
+}
+
+.auth-user-container,
+.auth-pass-container {
+	margin-top: 20px;
+	h2 {
+		font-size: 70px;
+	}
+	input {
+		width: 80%;
+		height: 50px;
+		font-size: 30px;
+	}
+}
+
+.auth-btn-container {
+	margin-bottom: 30px;
+	input {
+		width: 80%;
+	}
 }

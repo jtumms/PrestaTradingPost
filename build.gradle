@@ -31,6 +31,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-jersey')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-websocket')
-	runtime('com.h2database:h2')
+	compile('com.h2database:h2')
+	compile('org.jodd:jodd-json:3.8')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

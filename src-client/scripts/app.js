@@ -4,7 +4,9 @@ const Backbone = require('backbone');
 const SingleView = require ('./single-view.js')
 const MultiView = require ('./multi-view.js')
 
+// const SingleView = require('single-view.js')
 const AppViewController = require('./component-viewcontroller.js')
+
 const AppRouter = Backbone.Router.extend({
 
     routes: {
@@ -19,12 +21,13 @@ const AppRouter = Backbone.Router.extend({
         },
   //
     showSingleView: function(pid){
-      ReactDOM.render( <AppViewController routedFrom="SingleView" pidInRoute={pid}/>, document.querySelector('#app-container') )
+
+      ReactDOM.render( <AppViewController routedFrom="SingleView" pidInRoute={pid} />, document.querySelector('#app-container') )
     },
   //
-  //   showAuthView: function(){
-  //   ReactDOM.render(<AppViewController routedFrom="AuthView"/>, document.querySelector('#app-container') )
-  // },
+    showAuthView: function(){
+    ReactDOM.render(<AppViewController routedFrom="AuthView"/>, document.querySelector('#app-container') )
+  },
   //
   //   showProfileView: function(){
   //     ReactDOM.render(<AppViewController routedFrom="ProfileView"/>, document.querySelector('#app-container') )
