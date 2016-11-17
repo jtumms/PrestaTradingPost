@@ -9,7 +9,7 @@
      "condition": "GOOD",
      "images": [{"imageFileName": "123456789_12345_1234567.jpg"},
                 {"imageFileName": "123456789_54321_1234567.jpg"}],
-     "User": {"id": 1}
+     "User": {"id": 2}
   },
   {
        "itemName": "Bicycles for rent" ,
@@ -21,7 +21,7 @@
        "images": [{"imageFileName": "123456789_12345_7890.jpg"},
                    {"imageFileName": "123456789_54321_7890.jpg"},
                    {"imageFileName": "123456789_45678_7890.jpg"}],
-       "User": {"id": 1}
+       "User": {"id": 2}
     }
   ]
 
