@@ -1,6 +1,8 @@
 const ReactDOM = require('react-dom');
 const React = require('react')
 const Backbone = require('backbone');
+const SingleView = require ('./single-view.js')
+const MultiView = require ('./multi-view.js')
 
 // const SingleView = require('single-view.js')
 const AppViewController = require('./component-viewcontroller.js')
@@ -19,6 +21,7 @@ const AppRouter = Backbone.Router.extend({
         },
   //
     showSingleView: function(pid){
+
       ReactDOM.render( <AppViewController routedFrom="SingleView" pidInRoute={pid} />, document.querySelector('#app-container') )
     },
   //

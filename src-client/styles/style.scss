@@ -1,3 +1,4 @@
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
 
@@ -15,7 +16,12 @@ body{
 // 	text-align: center;
 //
 // }
+.thumbnail-container-single{
+	h1{
+		height: 200px;
 
+	}
+}
 .sign-in-btn {
 	margin-top: 20px;
 	text-align: right;
@@ -84,6 +90,13 @@ body{
 
 .auth-sign-in {
 	text-align: center;
+	color: #00DDD8;
+	text-shadow: 5px 5px 5px rgba(1,1,1,0.7);
+	background-color: #517398;
+}
+.item-card{
+	background-color: #E19D29;
+	border-top: 50px;
 	margin-top: 20px;
 }
 
