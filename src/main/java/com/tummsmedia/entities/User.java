@@ -1,5 +1,6 @@
 package com.tummsmedia.entities;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -27,6 +28,11 @@ public class User {
     private UserDetail userDetail;
 
     public User() {
+    }
+
+    public User(int id, String username) {
+        this.id = id;
+        this.username = username;
     }
 
     public User(int id) {

@@ -46,11 +46,13 @@ public class Item {
     @CollectionTable(name = "item_images", joinColumns = @JoinColumn(name = "itemId"))
     private Set<Image> images = new HashSet<Image>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     User user;
 
     public Item() {
     }
+
+
 
     public Item(int itemId, String itemName, String itemDescription, String category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user) {
         this.itemId = itemId;

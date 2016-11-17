@@ -1,0 +1,76 @@
+Route: localhost:8080/login - POST
+  Object needed:
+
+  {"username": "johnsmith@gmail.com",
+  "password" : "asdfgh123"}
+
+  Object returned:
+
+  HTTP response - 200 OK
+
+  Error handling: NOT FOUND or FORBIDDEN
+
+  {
+    "id": 0,
+    "username": "fredflintstone@gmail.com",
+    "userDetail": null
+  }
+
+Route: localhost:8080/create-user - POST
+Obj needed:
+
+  {"username": "johnsmith@gmail.com",
+  "password" : "john123",
+  "userDetail": {"firstName": "Fred",
+  	"lastName": "Flintstone",
+  	"street": "100 First Street",
+  	"address2": "",
+  	"city": "Charleston",
+  	"state": "SC",
+  	"zipcode": 29466
+  }
+
+  }
+Http resp: 200 OK
+Errors: FORBIDDEN
+
+obj returned:
+{
+  "id": 5,
+  "username": "johnsmith@gmail.com",
+  "userDetail": {
+    "id": 5,
+    "firstName": "John",
+    "lastName": "Smith",
+    "street": "100 First Street",
+    "address2": "",
+    "city": "Mount Pleasant",
+    "state": "SC",
+    "zipcode": 29466,
+    "accountNum": 0,
+    "rating": 0
+  }
+}
+
+
+****** Item Routes *********
+
+Route:
+
+localhost:8080/all-items
+
+returns JSON package of all item objects
+
+Route: localhost:8080/items?category=Tools
+or localhost:8080/items?category=Sporting%20Equipment       (%20 to escape space)
+
+returns JSON list by category
+
+Route:
+
+localhost:8080/get-item/?itemId=1
+
+returns single item by itemId
+
+
+*** ADD ITEM ROUTE - in Progress ***

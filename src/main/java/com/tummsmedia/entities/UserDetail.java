@@ -35,6 +35,16 @@ public class UserDetail {
     public UserDetail() {
     }
 
+    public UserDetail(String firstName, String lastName, String street, String address2, String city, String state, int zipcode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.address2 = address2;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+    }
+
     public UserDetail(String firstName, String lastName, String street, String address2, String city, String state, int zipcode, int accountNum, int rating) {
         this.firstName = firstName;
         this.lastName = lastName;

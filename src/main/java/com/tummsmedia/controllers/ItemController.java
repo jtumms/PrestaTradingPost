@@ -11,10 +11,7 @@ import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -93,7 +90,25 @@ public class ItemController {
             return new ResponseEntity<Iterable<Item>>(HttpStatus.FORBIDDEN);
         }
         return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(category), HttpStatus.OK);
-
+    }
+    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
+    public ResponseEntity<Item> addNewItem(@RequestBody Item item, HttpSession session){
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        items.save(item);
+        return new ResponseEntity<Item>(item, HttpStatus.OK);
+    }
+    @RequestMapping(value = "/get-item", method = RequestMethod.GET)
+    public ResponseEntity<Item> getSingleItem(@RequestParam("itemId")int itemId, HttpSession session){
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<Item>(items.findFirstByItemId(itemId), HttpStatus.OK);
     }
 
 }
