@@ -8,7 +8,7 @@ const SingleView = React.createClass({
 
   render: function(){
     return(
-    
+    <h1>help</h1>
     )
   }
 
