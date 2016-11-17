@@ -14,9 +14,9 @@ const SingleView = React.createClass({
 
 
     return(
-<<<<<<< HEAD
+
     <h1>help</h1>
-=======
+
       <div className="single-container">
        <div className="row">
          <div className="col-xs-12 col-sm-12 col-md-12">
@@ -38,7 +38,7 @@ const SingleView = React.createClass({
        </div>
      </div>
 
->>>>>>> 11bb1fa4850a2a490d8c202885ea34dd2d480e51
+
     )
 
 
