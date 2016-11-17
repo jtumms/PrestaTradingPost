@@ -1,5 +1,6 @@
 package com.tummsmedia.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tummsmedia.entities.Item;
 import com.tummsmedia.entities.ItemWrapper;
 import com.tummsmedia.entities.User;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +23,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by john.tumminelli on 11/16/16.
@@ -71,7 +75,7 @@ public class ItemController {
         users.save(user);
     }
 
-    @RequestMapping(path = "/items", method = RequestMethod.GET)
+    @RequestMapping(path = "/all-items", method = RequestMethod.GET)
     public ResponseEntity<Iterable<Item>> getItems(HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
@@ -81,4 +85,15 @@ public class ItemController {
         return new ResponseEntity<Iterable<Item>>(items.findAll(), HttpStatus.OK);
 
     }
+    @RequestMapping(value = "/items", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Item>> showItemByCategory(@RequestParam("category")String category, HttpSession session){
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<Iterable<Item>>(HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(category), HttpStatus.OK);
+
+    }
+
 }

@@ -58,4 +58,5 @@ public class UserController {
         users.save(user);
         return new ResponseEntity<User> (user, HttpStatus.OK);
     }
+
 }
