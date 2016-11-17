@@ -46,10 +46,22 @@ public class Item {
     @CollectionTable(name = "item_images", joinColumns = @JoinColumn(name = "itemId"))
     private Set<Image> images = new HashSet<Image>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     User user;
 
     public Item() {
+    }
+
+    public Item(int itemId, String itemName, String itemDescription, String category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user) {
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.category = category;
+        this.estValue = estValue;
+        this.askingPrice = askingPrice;
+        this.condition = condition;
+        this.images = images;
+        this.user = user;
     }
 
     public Item(String itemName, String itemDescription, String category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user) {
@@ -125,5 +137,13 @@ public class Item {
 
     public void setItemDescription(String itemDescription) {
         this.itemDescription = itemDescription;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
