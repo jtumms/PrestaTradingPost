@@ -1,0 +1,28 @@
+{
+  "items": [
+  {
+     "itemName": "Milwaukee Sawsall" ,
+     "itemDescription": "Sawsall available for rent ",
+     "category": "Tools",
+     "estValue": 175.00,
+     "askingPrice": 15.00,
+     "condition": "GOOD",
+     "images": [{"imageFileName": "123456789_12345_1234567.jpg"},
+                {"imageFileName": "123456789_54321_1234567.jpg"}],
+     "User": {"id": 1}
+  },
+  {
+       "itemName": "Bicycles for rent" ,
+       "itemDescription": "Assorted bicycles for rent. We have an incredible assortment ready for your vacation rental. Daily or weekly ",
+       "category": "Sports Equipment",
+       "estValue": 450.00,
+       "askingPrice": 45.00,
+       "condition": "EXCELLENT",
+       "images": [{"imageFileName": "123456789_12345_7890.jpg"},
+                   {"imageFileName": "123456789_54321_7890.jpg"},
+                   {"imageFileName": "123456789_45678_7890.jpg"}],
+       "User": {"id": 1}
+    }
+  ]
+
+  }
