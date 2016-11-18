@@ -11,8 +11,14 @@ const SingleView = React.createClass({
 
     return(
       <div className="single-item-container text-center">
-                 {/* <a href="#multi-view"></a> */}
-                 <h2>LOGO</h2>  <h1>Presta Trading Post</h1>
+          <div className="single-home-icon-container">
+            <a href=" "><i className="fa fa-home fa-4x single-home-icon" aria-hidden="true"></i></a>
+          </div>
+          <div className="single-header-container">
+                 <h2>LOGO</h2>
+                 <h1 className="single-header">Presta Trading Post</h1>
+          </div>
+
         <div className="thumbnail thumbnail-container text-center">
                <img src="http://malakaiboards.com/wp-content/uploads/2016/04/Malakai-106-The-Trip.jpg"></img>
               <div className="caption">
