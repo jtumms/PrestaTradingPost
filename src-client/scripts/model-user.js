@@ -1,7 +1,7 @@
 const Backbone = require('backbone')
 
 const UserModel = Backbone.Model.extend({
-   url: "/user",
+   url: "/login",
 
    initialize: function(){
 

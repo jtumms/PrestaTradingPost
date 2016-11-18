@@ -1,6 +1,6 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-
+const Backbone = require('backbone')
 
 
 
@@ -14,6 +14,7 @@ const SingleView = React.createClass({
 
 
     return(
+
       <div className="single-container">
        <div className="row">
          <div className="col-xs-12 col-sm-12 col-md-12">
@@ -35,25 +36,12 @@ const SingleView = React.createClass({
        </div>
      </div>
 
+
     )
 
 
-  },
+  }
 
 });
+
 module.exports = SingleView
-{/* <div>
-  <h1>Yo</h1>
-</div> */}
-// const {ItemsModel, ItemsModelCollection} = require("./models.js")
-//
-//
-// const SingleView = React.createClass({
-//
-//   render: function(){
-//     return(
-//
-//     )
-//   }
-//
-// })
