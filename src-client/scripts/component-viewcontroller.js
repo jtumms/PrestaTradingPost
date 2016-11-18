@@ -1,8 +1,8 @@
 const React = require('react')
 // const STORE = require('./store.js')
-// const ACTIONS = require('./actions.js')
+const ACTIONS = require('./actions.js')
 
-
+const OopsView = require('./oops-view.js')
 const AuthView = require('./auth-view.js')
 const MultiView = require('./multi-view.js')
 const SingleView = require('./single-view.js')
@@ -23,9 +23,13 @@ const AppViewController = React.createClass({
           return <SingleView />
           break;
 
-          case "ProfileView":
-            return <ProfileView/>
-            break;
+        case "ProfileView":
+          return <ProfileView/>
+          break;
+
+        case "OopsView":
+          return <OopsView/>
+          break;
       }
   }
 })

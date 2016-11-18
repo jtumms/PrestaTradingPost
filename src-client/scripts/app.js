@@ -5,10 +5,11 @@ const SingleView = require ('./single-view.js')
 const MultiView = require ('./multi-view.js')
 const ProfileView = require('./profile-view.js')
 const AppViewController = require('./component-viewcontroller.js')
-
+const OopsView = require('./oops-view.js')
 const AppRouter = Backbone.Router.extend({
 
     routes: {
+      "oops" : "showOopsView",
       "profileview" : "showProfileView",
       "authview" : "showAuthView",
       "singleview" : "showSingleView",
@@ -31,6 +32,10 @@ const AppRouter = Backbone.Router.extend({
     showProfileView: function(){
       ReactDOM.render(<AppViewController routedFrom="ProfileView"/>, document.querySelector('#app-container') )
     },
+
+    showOopsView: function(){
+    ReactDOM.render(<AppViewController routedFrom="OopsView"/>, document.querySelector('#app-container') )
+  },
 
     initialize: function() {
     Backbone.history.start()

@@ -23,7 +23,7 @@ body{
 	}
 }
 .sign-in-btn {
-	margin-top: 20px;
+	margin-top: 10px;
 	text-align: right;
 }
 
@@ -42,6 +42,7 @@ body{
 		font-size: 90px;
 		text-align: center;
 		padding-top: 60px;
+		margin-top: 10px;
 			// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
 	}
 	h2 {
@@ -56,8 +57,9 @@ body{
 		width: 90%;
 		margin-top: 20px;
 		margin: auto;
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		line-height: 1.5em;
 	}
 }
 
@@ -162,12 +164,15 @@ body{
 	position: relative;
 	height: 200px;
 	background: #5E9F41;
+	margin: auto;
+	margin-top: 0px;
 	h1 {
 		font-family: fantasy, sans-serif;
 		font-weight: bold;
 		font-size: 90px;
 		text-align: center;
 		padding-top: 60px;
+		margin-top: 0px;
 			// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
 	}
 	h2 {
