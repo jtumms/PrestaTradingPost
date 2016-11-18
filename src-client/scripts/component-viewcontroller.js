@@ -20,7 +20,6 @@ const AppViewController = React.createClass({
           break;
 
         case "SingleView":
-
           return <SingleView />
           break;
 

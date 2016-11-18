@@ -15,8 +15,6 @@ const SingleView = React.createClass({
 
     return(
 
-    <h1>help</h1>
-
       <div className="single-container">
        <div className="row">
          <div className="col-xs-12 col-sm-12 col-md-12">
