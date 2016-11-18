@@ -1,5 +1,9 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const Backbone = require('backbone')
+
+
+
 const SingleView = React.createClass({
 
   render:function(){
@@ -22,13 +26,10 @@ const SingleView = React.createClass({
     )
   },
 
+
+
+
+
 });
+
 module.exports = SingleView
-                   {/* <img src={ }/> */}
-                   {/* </div> */}
-                   {/* <form className="navbar-form inv-form-container" role="search"> */}
-                   {/* <div className="form-group"></div> */}
-                   {/* </form> */}
-                  //  <div className="glyphicon glyphicon-home">
-                  //    <a href="#multi-view"></a>
-                  //  </div>

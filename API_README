@@ -68,7 +68,7 @@ returns JSON list by category
 
 Route:
 
-localhost:8080/get-item/?itemId=1
+localhost:8080/get-item?itemId=1
 
 returns single item by itemId
 

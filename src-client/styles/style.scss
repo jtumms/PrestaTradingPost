@@ -23,7 +23,7 @@ body{
 	}
 }
 .sign-in-btn {
-	margin-top: 20px;
+	margin-top: 10px;
 	text-align: right;
 }
 
@@ -42,6 +42,8 @@ body{
 		font-size: 90px;
 		text-align: center;
 		padding-top: 60px;
+		margin-top: 10px;
+			// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
 	}
 	h2 {
 		position: absolute;
@@ -55,8 +57,9 @@ body{
 		width: 90%;
 		margin-top: 20px;
 		margin: auto;
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		line-height: 1.5em;
 	}
 }
 
@@ -78,6 +81,9 @@ body{
 	background: #5E9F41;
 	width: 90%;
 	margin: auto;
+	h2 {
+		margin-top: 0px;
+	}
 }
 
 .auth-header {
@@ -96,31 +102,88 @@ body{
 }
 
 
+	// color: #00DDD8;
+	// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
+	// background-color: #517398;
+
 
 .auth-container-row {
 	text-align: center;
-	width: 40%;
+	width: 90%;
 	margin: auto;
 	background-color: #FFC027;
+
 }
 
 .auth-user-container,
 .auth-pass-container {
 	margin-top: 20px;
 	h2 {
-		font-size: 70px;
+		// font-size: 30px;
+
 	}
 	input {
 		width: 80%;
-		height: 50px;
-		font-size: 30px;
+		height: 30px;
+		// font-size: 30px;
 	}
 }
 
 .auth-btn-container {
 	margin-bottom: 30px;
+	padding-top: 10px;
 	input {
 		width: 80%;
+		background-color: #6cf425;
+	}
+}
+
+.auth-home-icon-container {
+	text-align: right;
+}
+
+.auth-home-icon {
+	margin-right: 60px;
+}
+
+.item-card{
+	background-color: #E19D29;
+	border-top: 50px;
+	margin-top: 20px;
+}
+
+.profile-home-icon-container {
+	text-align: right;
+}
+
+.profile-home-icon {
+	margin-right: 60px;
+}
+
+// .profile-container {
+// 	width: 90%;
+// 	margin: auto;
+// }
+
+.profile-header {
+	width: 90%;
+	position: relative;
+	height: 200px;
+	background: #5E9F41;
+	margin: auto;
+	margin-top: 0px;
+	h1 {
+		font-family: fantasy, sans-serif;
+		font-weight: bold;
+		font-size: 90px;
+		text-align: center;
+		padding-top: 60px;
+		margin-top: 0px;
+			// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
+	}
+	h2 {
+		position: absolute;
+
 	}
 }
 

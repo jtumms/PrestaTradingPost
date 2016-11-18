@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom')
 
 const {ItemsModel, ItemsModelCollection} = require("./models.js")
 
+
 // const ACTIONS = require('./actions.js')
 // const STORE = require('./store.js')
 
@@ -33,14 +34,14 @@ const MultiView = React.createClass({
     return (
       <div className="multi-container">
         <div className="sign-in-btn">
-          <a href="#authview"><button type="button" className="btn btn-default btn-lg">Sign-in / Sign-up</button></a>
+          <a href="#authview"><button type="button" className="btn btn-default btn-md">Sign-in / Sign-up</button></a>
         </div>
         <div className="multi-header">
           <h2>LOGO</h2>
           <h1>Presta Trading Post</h1>
         </div>
         <div className="multi-description">
-          <h4>Presta Trading Post is the ultimate meet-up spot for people who have and people who don't. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h4>
+          <h4>Presta Trading Post is the ultimate meet-up spot for the people who have and the people who don't. Have you ever wanted to try out a stand-up paddle board but didn't want to have to fork out the big money just to try it out for a weekend? How about, have you ever needed a special tool to fix something in an afternoon but didn't want to have to buy so that it can sit in your garage 99% of the time? Or maybe you want to have a jam session tonight but you don't have an amplifier.  Well here at Presta Trading Post we have people who have these kinds of things and more that are just sitting in their garages for 99% of the year and for a nominal price, which in most cases can be totally negotiable, you can use these items and not have to buy them.  All you have to do is register with Presta Trading Post today, and then you can begin to see the benefits. Or maybe you even have items sitting around in your garage that someone else might need to use.  Everybody wins. So, register today. </h4>
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
           <button type="button" className="btn btn-default">General</button>
