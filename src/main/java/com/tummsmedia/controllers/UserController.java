@@ -1,6 +1,7 @@
 package com.tummsmedia.controllers;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.tummsmedia.entities.Item;
 import com.tummsmedia.entities.User;
 import com.tummsmedia.entities.UserDetail;
 import com.tummsmedia.services.UserDetailRepo;
@@ -9,10 +10,7 @@ import com.tummsmedia.utilities.PasswordStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.jws.soap.SOAPBinding;
@@ -58,5 +56,13 @@ public class UserController {
         users.save(user);
         return new ResponseEntity<User> (user, HttpStatus.OK);
     }
-
+    @RequestMapping(value = "/get-user/{id}", method = RequestMethod.GET)
+    public ResponseEntity<User> getSingleUser(@PathVariable("id")int id, HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<User>(users.findFirstById(id), HttpStatus.OK);
+    }
 }
