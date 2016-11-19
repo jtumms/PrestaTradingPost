@@ -24,12 +24,8 @@ const SingleView = React.createClass({
         </div>
       </div>
     )
-  },
+  }
 
-
-
-
-
-});
+})
 
 module.exports = SingleView
