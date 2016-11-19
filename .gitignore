@@ -70,9 +70,6 @@ crashlytics-build.properties
 fabric.properties
 
 *.db
-<<<<<<< HEAD
-=======
 
->>>>>>> ad71392ee46ddf739209b2af0e380d1c48a18a75
 ###Client###
 node_modules
