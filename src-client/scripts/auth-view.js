@@ -3,7 +3,7 @@ const React = require('react')
 const ACTIONS = require('./actions.js')
 const ProfileView = require("./profile-view.js")
 
-console.log('a', ACTIONS);
+console.log('action??', ACTIONS);
 
 const AuthView = React.createClass({
   _handleNewUserAuth: function(evt){
