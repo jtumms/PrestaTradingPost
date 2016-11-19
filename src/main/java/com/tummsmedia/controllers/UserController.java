@@ -65,4 +65,9 @@ public class UserController {
         }
         return new ResponseEntity<User>(users.findFirstById(id), HttpStatus.OK);
     }
+    @RequestMapping(path = "/logout", method = RequestMethod.POST)
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate();
+        return new ResponseEntity<String>("redirect:/", HttpStatus.OK);
+    }
 }
