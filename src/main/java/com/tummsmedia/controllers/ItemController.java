@@ -78,7 +78,7 @@ public class ItemController {
         return new ResponseEntity<Iterable<Item>>(items.findAll(), HttpStatus.OK);
 
     }
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = "/random-items", method = RequestMethod.GET)
     public ResponseEntity<ArrayList<Item>> getRandomItems(HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
