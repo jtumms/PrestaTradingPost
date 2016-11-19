@@ -2,29 +2,42 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 
 const {ItemsModel, ItemsModelCollection} = require("./models.js")
-
+const ACTIONS = require('./actions.js')
+const STORE = require('./store.js')
 
 // const ACTIONS = require('./actions.js')
 // const STORE = require('./store.js')
-
+// console.log(data.attribute.itemimages[1])
 const MultiView = React.createClass({
+
+  componentWillMount: function(){
+    ACTIONS.fetchItemsModelCollection()
+    console.log("fetch",ACTIONS.fetchItemsModelCollection())
+  },
+
+
+  _itemSelector: function() {
+
+
+  },
 
   render: function(){
 
   // }
 // })
-
+    //
     // var itemListings = this.props.payloadData.map(function(data, i){
+    //   console.log('data', data)
     //   return(
     //
     //         <div className="col-xs-4  col-md-4" key={data.cid}>
     //             <div className="thumbnail thumbnail-container">
     //               <a href={"./#singleview/"+data.id} className="anchor-to-single">
-    //                 <img src={"images/" + data.attributes.image} alt="" data-id={data.cid} />
+    //                 <img src={"images/" + data.attributes.itemImages} alt="" data-id={data.cid} />
     //               </a>
-    //               <h4>{data.attributes.bootName}</h4>
-    //               <p>Price: {data.attributes.price}</p>
-    //               <p>Quantity: {data.attributes.quantity}</p>
+    //               <h4>{data.attributes.itemdescription}</h4>
+    //               <p>Price: {data.attributes.askingprice}</p>
+    //               <p>Quantity: {data.attributes.itemname}</p>
     //             </div>
     //         </div>
     //
@@ -56,8 +69,6 @@ const MultiView = React.createClass({
 
 
         </div>
-
-
         <i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i>
         <i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i>
         <i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i>

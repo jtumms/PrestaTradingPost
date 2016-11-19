@@ -7,9 +7,14 @@ const SignOutView = React.createClass({
 
     return(
       <div className="signout-container">
-        <h1>Thank You</h1>
-        <h1>For visiting</h1>
-        <h2>Please come again</h2>
+        <div className="multi-header">
+          <h2>LOGO</h2>
+          <h1>Presta Trading Post</h1>
+        </div>
+        <h1 className="thanks">Thank You</h1>
+        <h1 className="thanks">For visiting</h1>
+        <h2 className="come-again">Please come again</h2>
+        <iframe src="//giphy.com/embed/uzPdj5NDahoI0" width="480" height="360" frameBorder="0" className="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/uzPdj5NDahoI0">via GIPHY</a></p>
       </div>
     )
   }
