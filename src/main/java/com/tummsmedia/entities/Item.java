@@ -14,7 +14,7 @@ import java.util.Set;
 public class Item {
     @Id
     @GeneratedValue
-    int itemId;
+    public int itemId;
 
     @Column(nullable = false)
     String itemName;

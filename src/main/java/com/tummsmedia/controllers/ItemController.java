@@ -18,7 +18,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by john.tumminelli on 11/16/16.
@@ -75,6 +78,25 @@ public class ItemController {
         return new ResponseEntity<Iterable<Item>>(items.findAll(), HttpStatus.OK);
 
     }
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<Item>> getRandomItems(HttpSession session) throws Exception {
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity(HttpStatus.FORBIDDEN);
+        }
+        ArrayList<Item> randomItemsList = new ArrayList<Item>();
+        int max = (int) items.count();
+        int min = 1;
+        for (int i = 1 ; i < 13; i++){
+            Random rand = new Random();
+            int randomItemId = rand.nextInt((max - min) + 1) + min;
+            Item randomItem = items.findFirstByItemId(randomItemId);
+            randomItemsList.add(randomItem);
+        }
+        return new ResponseEntity<ArrayList<Item>>(randomItemsList, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/items", method = RequestMethod.GET)
     public ResponseEntity<Iterable<Item>> showItemByCategory(@RequestParam("category")String category, HttpSession session){
         String username = (String) session.getAttribute("username");

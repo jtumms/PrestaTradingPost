@@ -2,6 +2,7 @@ package com.tummsmedia.services;
 
 import com.tummsmedia.entities.Item;
 import com.tummsmedia.entities.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
