@@ -52,8 +52,6 @@ public class Item {
     public Item() {
     }
 
-
-
     public Item(int itemId, String itemName, String itemDescription, String category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user) {
         this.itemId = itemId;
         this.itemName = itemName;

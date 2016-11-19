@@ -7,6 +7,7 @@ const AuthView = require('./auth-view.js')
 const MultiView = require('./multi-view.js')
 const SingleView = require('./single-view.js')
 const ProfileView = require('./profile-view.js')
+const SignOutView = require('./signout-view.js')
 
 const AppViewController = React.createClass({
   render: function(){
@@ -29,6 +30,10 @@ const AppViewController = React.createClass({
 
         case "OopsView":
           return <OopsView/>
+          break;
+
+        case "SignOutView":
+          return <SignOutView/>
           break;
       }
   }
