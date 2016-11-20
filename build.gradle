@@ -33,5 +33,6 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-websocket')
 	compile('com.h2database:h2')
 	compile('org.jodd:jodd-json:3.8')
+	compile 'com.google.maps:google-maps-services:0.1.16'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
