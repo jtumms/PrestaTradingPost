@@ -2,6 +2,7 @@ package com.tummsmedia.controllers;
 
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
+import com.google.maps.PendingResult;
 import com.google.maps.model.GeocodingResult;
 import com.tummsmedia.entities.*;
 import com.tummsmedia.services.ItemRepo;
@@ -27,12 +28,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import static org.aspectj.bridge.MessageUtil.fail;
+
 /**
  * Created by john.tumminelli on 11/16/16.
  */
 @RestController
 public class ItemController {
-    private static final String MAPS_API_KEY = "AIzaSyCfVwsmmrQ1ptS9ohzm779XRS8RgaiSTtg";
 
     @Autowired
     ItemRepo items;
@@ -74,11 +76,30 @@ public class ItemController {
         ItemWrapper itemWrapper = parser.parse(contents, ItemWrapper.class);
         items.save(itemWrapper.items);
     }
-    public static String getGeolocatioMapLink(String itemAddress) throws Exception {
+    public static HashMap<String, String> getGeolocateMap(String address) throws Exception {
+        final List<GeocodingResult[]> resps = new ArrayList<GeocodingResult[]>();
+        final String MAPS_API_KEY = "AIzaSyCfVwsmmrQ1ptS9ohzm779XRS8RgaiSTtg";
+        HashMap<String, String> latLngMap = new HashMap<String, String>();
+
+        PendingResult.Callback<GeocodingResult[]> callback =
+                new PendingResult.Callback<GeocodingResult[]>() {
+                    @Override
+                    public void onResult(GeocodingResult[] result) {
+                        resps.add(result);
+                    }
+
+                    @Override
+                    public void onFailure(Throwable e) {
+                        fail("Got error when expected success.");
+                    }
+                };
         GeoApiContext context = new GeoApiContext().setApiKey(MAPS_API_KEY);
-        GeocodingResult[] results =  GeocodingApi.geocode(context,
-                itemAddress).await();
-        return results[0].formattedAddress.toString();
+        GeocodingResult[] results = GeocodingApi.newRequest(context).address(address).await();
+        Double latitude = results[0].geometry.location.lat;
+        Double longitude = results[0].geometry.location.lng;
+        latLngMap.put("latitude", Double.toString(latitude));
+        latLngMap.put("longitude", Double.toString(longitude));
+        return latLngMap;
     }
 
     @RequestMapping(path = "/all-items", method = RequestMethod.GET)
@@ -95,11 +116,20 @@ public class ItemController {
         ArrayList<Item> randomItemsList = new ArrayList<Item>();
         int max = (int) items.count();
         int min = 1;
+        int previousRandom = 0;
+        int randomItemId;
+        Random rand = new Random();
         for (int i = 1 ; i < 13; i++){
-            Random rand = new Random();
-            int randomItemId = rand.nextInt((max - min) + 1) + min;
-            Item randomItem = items.findFirstByItemId(randomItemId);
-            randomItemsList.add(randomItem);
+            randomItemId = rand.nextInt((max - min) + 1) + min;
+            if (randomItemId != previousRandom){
+                Item randomItem = items.findFirstByItemId(randomItemId);
+                randomItemsList.add(randomItem);
+                previousRandom = randomItemId;
+            }
+            else {
+                i = i - 1;
+                break;
+            }
         }
         return new ResponseEntity<ArrayList<Item>>(randomItemsList, HttpStatus.OK);
     }
@@ -146,9 +176,9 @@ public class ItemController {
         emailDataMap.put("transactionId", Integer.toString(transaction.getTransactionId()));
         return emailDataMap;
     }
+
     @RequestMapping(value = "/get-map", method = RequestMethod.GET)
     public HashMap<String, String> sendMapLink(@RequestParam("itemId")int itemId, HttpSession session) throws Exception {
-        String username = (String) session.getAttribute("username");
 
         Item item = items.findFirstByItemId(itemId);
         String street = item.getUser().getUserDetail().getStreet();
@@ -156,9 +186,7 @@ public class ItemController {
         String state = item.getUser().getUserDetail().getState();
         String zip = Integer.toString(item.getUser().getUserDetail().getZipcode());
         String address = String.format("%s %s, %s %s", street, city, state, zip);
-        String mapInfo = getGeolocatioMapLink(address);
-        HashMap<String, String> geoMap = new HashMap<>();
-        geoMap.put("googleMap", mapInfo);
-        return geoMap;
+        HashMap<String, String> geoMapInfo = getGeolocateMap(address);
+        return geoMapInfo;
     }
 }
