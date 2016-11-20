@@ -67,7 +67,7 @@ or localhost:8080/items?category=Sporting%20Equipment       (%20 to escape space
 returns JSON list by category
 
 Route:
-
+=
 localhost:8080/get-item?itemId=1
 
 returns single item by itemId
