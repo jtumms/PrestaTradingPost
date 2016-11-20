@@ -22,7 +22,7 @@ const ItemsModelCollection = Backbone.Collection.extend({
 
 });
 
-console.log('this is', ItemsModelCollection)
+console.log('this is', ItemsModelCollection.data)
 module.exports = {
   ItemsModel,
   ItemsModelCollection,

@@ -25,7 +25,7 @@ const MultiView = React.createClass({
 
   // }
 // })
-    //
+    console.log('this', this)
     // var itemListings = this.props.payloadData.map(function(data, i){
     //   console.log('data', data)
     //   return(
