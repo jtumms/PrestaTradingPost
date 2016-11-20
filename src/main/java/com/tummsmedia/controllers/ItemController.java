@@ -1,5 +1,8 @@
 package com.tummsmedia.controllers;
 
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.model.GeocodingResult;
 import com.tummsmedia.entities.*;
 import com.tummsmedia.services.ItemRepo;
 import com.tummsmedia.services.TransactionRepo;
@@ -29,6 +32,8 @@ import java.util.Random;
  */
 @RestController
 public class ItemController {
+    private static final String MAPS_API_KEY = "AIzaSyCfVwsmmrQ1ptS9ohzm779XRS8RgaiSTtg";
+
     @Autowired
     ItemRepo items;
 
@@ -69,14 +74,17 @@ public class ItemController {
         ItemWrapper itemWrapper = parser.parse(contents, ItemWrapper.class);
         items.save(itemWrapper.items);
     }
+    public static String getGeolocatioMapLink(String itemAddress) throws Exception {
+        GeoApiContext context = new GeoApiContext().setApiKey(MAPS_API_KEY);
+        GeocodingResult[] results =  GeocodingApi.geocode(context,
+                itemAddress).await();
+        return results[0].formattedAddress.toString();
+    }
 
     @RequestMapping(path = "/all-items", method = RequestMethod.GET)
     public ResponseEntity<Iterable<Item>> getItems(HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
-        if (user == null) {
-            return new ResponseEntity<Iterable<Item>>(HttpStatus.FORBIDDEN);
-        }
         return new ResponseEntity<Iterable<Item>>(items.findAll(), HttpStatus.OK);
 
     }
@@ -84,9 +92,6 @@ public class ItemController {
     public ResponseEntity<ArrayList<Item>> getRandomItems(HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
-        if (user == null) {
-            return new ResponseEntity(HttpStatus.FORBIDDEN);
-        }
         ArrayList<Item> randomItemsList = new ArrayList<Item>();
         int max = (int) items.count();
         int min = 1;
@@ -103,9 +108,6 @@ public class ItemController {
     public ResponseEntity<Iterable<Item>> showItemByCategory(@RequestParam("category")String category, HttpSession session){
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
-        if (user == null) {
-            return new ResponseEntity<Iterable<Item>>(HttpStatus.FORBIDDEN);
-        }
         return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(category), HttpStatus.OK);
     }
     @RequestMapping(path = "/add-item", method = RequestMethod.POST)
@@ -122,9 +124,7 @@ public class ItemController {
     public ResponseEntity<Item> getSingleItem(@RequestParam("itemId")int itemId, HttpSession session){
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
+
         return new ResponseEntity<Item>(items.findFirstByItemId(itemId), HttpStatus.OK);
     }
     @RequestMapping(value = "/rent-item", method = RequestMethod.POST)
@@ -145,5 +145,20 @@ public class ItemController {
         emailDataMap.put("itemPrice", Long.toString(itemBorrowed.getAskingPrice()));
         emailDataMap.put("transactionId", Integer.toString(transaction.getTransactionId()));
         return emailDataMap;
+    }
+    @RequestMapping(value = "/get-map", method = RequestMethod.GET)
+    public HashMap<String, String> sendMapLink(@RequestParam("itemId")int itemId, HttpSession session) throws Exception {
+        String username = (String) session.getAttribute("username");
+
+        Item item = items.findFirstByItemId(itemId);
+        String street = item.getUser().getUserDetail().getStreet();
+        String city = item.getUser().getUserDetail().getState();
+        String state = item.getUser().getUserDetail().getState();
+        String zip = Integer.toString(item.getUser().getUserDetail().getZipcode());
+        String address = String.format("%s %s, %s %s", street, city, state, zip);
+        String mapInfo = getGeolocatioMapLink(address);
+        HashMap<String, String> geoMap = new HashMap<>();
+        geoMap.put("googleMap", mapInfo);
+        return geoMap;
     }
 }
