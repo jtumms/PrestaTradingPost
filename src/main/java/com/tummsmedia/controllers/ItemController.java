@@ -4,6 +4,7 @@ import com.tummsmedia.entities.*;
 import com.tummsmedia.services.ItemRepo;
 import com.tummsmedia.services.TransactionRepo;
 import com.tummsmedia.services.UserRepo;
+import com.tummsmedia.utilities.PasswordStorage;
 import jodd.json.JsonParser;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,9 +55,10 @@ public class ItemController {
         h2.stop();
     }
 
-    public void loadItemData() throws IOException {
+    public void loadItemData() throws IOException, PasswordStorage.CannotPerformOperationException {
+        String hashedPassword = PasswordStorage.createHash("testuser123");
         UserDetail ud = new UserDetail("test","user","17A Princess Street", "", "Charleston", "SC", 29401);
-        User user = new User("testuser@gmail.com","test123", ud);
+        User user = new User("testuser@gmail.com", hashedPassword, ud);
         users.save(user);
         File f = new File("ptp_item_data_json");
         FileReader fr = new FileReader(f);
