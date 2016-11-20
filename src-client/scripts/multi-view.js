@@ -5,9 +5,7 @@ const {ItemsModel, ItemsModelCollection} = require("./models.js")
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 
-// const ACTIONS = require('./actions.js')
-// const STORE = require('./store.js')
-// console.log(data.attribute.itemimages[1])
+
 const MultiView = React.createClass({
 
   componentWillMount: function(){
@@ -80,3 +78,7 @@ const MultiView = React.createClass({
 
 module.exports = MultiView
 //{itemListings}
+// this.el.innerHTML = `<div class="col-xs-4 thumbnail item-card" id="${modl.get('listing_id')}">
+//                              <img src="${modl.get('Images')[0].url_170x135}">
+//                              <p>${modl.get('title').slice(0, 40)}${modl.get('title').length > 40 ? '...' : ''}</p>
+//                            </div>`

@@ -12,6 +12,7 @@ const STORE = {
 
    setStore: function(storeProp, payload){
       console.log('set store payload', payload)
+      // console.log(payload);
       if(typeof this._data[storeProp] === 'undefined'){
          console.error(`Sorry, ${storeProp} is not a value on the store, you need to declare it first`)
          return
@@ -19,7 +20,7 @@ const STORE = {
 
       this._data[storeProp] = payload
       Backbone.Events.trigger('storeChange')
-      console.log('payload', payload)
+      // console.log('payload', payload.)
    },
 
    getStoreData: function(){
