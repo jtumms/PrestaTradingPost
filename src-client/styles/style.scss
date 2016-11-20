@@ -38,7 +38,7 @@ body{
 .multi-header {
 	position: relative;
 
-	height: 200px;
+	// height: 200px;
 	background: #5E9F41;
 	// background-image: url('/images/full-garage-.jpg');
 	// background-size: cover;
@@ -55,6 +55,7 @@ body{
 		text-align: center;
 		padding-top: 60px;
 		margin-top: 10px;
+		padding-bottom: 30px;
 			// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
 	}
 	h2 {
@@ -97,7 +98,7 @@ body{
 }
 
 .auth-header-container {
-	height: 200px;
+	// height: 200px;
 	background: #5E9F41;
 	width: 90%;
 	margin: auto;
@@ -120,6 +121,8 @@ body{
 		text-align: center;
 		// padding-top: 60px;
 		margin-top: 10px;
+		padding-top: 15px;
+		padding-bottom: 20px;
 }
 
 .auth-sign-in {
