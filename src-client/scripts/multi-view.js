@@ -25,24 +25,25 @@ const MultiView = React.createClass({
 
   // }
 // })
-    console.log('this', this)
-    // var itemListings = this.props.payloadData.map(function(data, i){
-    //   console.log('data', data)
-    //   return(
-    //
-    //         <div className="col-xs-4  col-md-4" key={data.cid}>
-    //             <div className="thumbnail thumbnail-container">
-    //               <a href={"./#singleview/"+data.id} className="anchor-to-single">
-    //                 <img src={"images/" + data.attributes.itemImages} alt="" data-id={data.cid} />
-    //               </a>
-    //               <h4>{data.attributes.itemdescription}</h4>
-    //               <p>Price: {data.attributes.askingprice}</p>
-    //               <p>Quantity: {data.attributes.itemname}</p>
-    //             </div>
-    //         </div>
-    //
-    //   )
-    // })
+    console.log('why wont this log', STORE._data.currentInventory)
+    var itemListings = STORE._data.currentInventory.map(function(data, i){
+      console.log('data', data)
+      return(
+
+            <div className="col-xs-4  col-md-4" key={data.cid}>
+                <div className="thumbnail thumbnail-container">
+                  <a href={"./#singleview/"+data.id} className="anchor-to-single">
+                    <img src={"images/" + data.attributes.images} alt="" data-id={data.cid} />
+                  </a>
+                  <h4 className="item-desc">{data.attributes.itemDescription}</h4>
+
+                  <p>Item: {data.attributes.itemName}</p>
+                  <p>Price: {data.attributes.askingPrice}</p>
+                </div>
+            </div>
+
+      )
+    })
 
     return (
       <div className="multi-container">
@@ -66,8 +67,7 @@ const MultiView = React.createClass({
           <button type="button" className="btn btn-default"><a href="#profileview">Profile</a></button>
         </div>
         <div className="row multi-pic-body">
-
-
+          {itemListings}
         </div>
         <i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i>
         <i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i>
@@ -79,4 +79,4 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
-//{itemListings}
+//{itemListings}  this.props.payloadData

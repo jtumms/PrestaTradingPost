@@ -15,7 +15,7 @@ const ACTIONS = {
 
      userMod.save().then(function(serverRes){
       // console.log('serverres', serverRes)
-      location.hash = ""
+      location.hash = "/profileview"
     }).fail(function(err){
       // console.log('wrong pw bro')
       location.hash = "/oops"

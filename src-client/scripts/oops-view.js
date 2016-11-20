@@ -11,9 +11,16 @@ const OopsView = React.createClass({
         <div className="auth-home-icon-container">
           <a href=" "><i className="fa fa-home fa-4x auth-home-icon" aria-hidden="true"></i></a>
         </div>
-        <h1>OOPS!!!</h1>
-        <h3>Sorry Bro.....</h3>
-        <h3>Wrong credentials...Try Again.</h3>
+        <div className="oops-header">
+          <h2>LOGO</h2>
+          <h1>Presta Trading Post</h1>
+        </div>
+        <div className="oops-message">
+          <h1>OOPS!!!</h1>
+          <div className="oops-confused-pic"></div>
+          <h2>Sorry Bro.....</h2>
+          <h2>Wrong credentials...Try Again.</h2>
+        </div>
       </div>
     )
   }
