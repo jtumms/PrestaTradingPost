@@ -85,6 +85,14 @@ body{
 	}
 }
 
+// .multi-img {
+// 	width: 85%;
+// }
+
+.thumbnail a>img {
+	max-width: 85%;
+}
+
 .multi-button-container {
 	width: 100%;
 	margin-top: 20px;
@@ -95,8 +103,46 @@ body{
 }
 
 .multi-icons {
-	margin-left: 10px;
+	margin-left: 20px;
+	margin-bottom: 40px;
 }
+
+
+.multi-item-desc {
+	overflow: auto;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+// .row-eq-height {
+//   display: -webkit-box;
+//   display: -webkit-flex;
+//   display: -ms-flexbox;
+//   display:         flex;
+// }
+//
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
 
 .auth-header-container {
 	// height: 200px;
@@ -316,8 +362,9 @@ body{
 	margin: auto;
 }
 
-.item-desc {
-	overflow: auto;
-	white-space: nowrap;
-	text-overflow: ellipsis;
+.oops-auth-btn {
+	// font-size: 2em;
+	height: 50px;
+	width: 100px;
+	margin-bottom: 40px;
 }

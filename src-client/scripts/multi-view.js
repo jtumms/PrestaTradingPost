@@ -23,8 +23,7 @@ const MultiView = React.createClass({
 
   render: function(){
 
-  // }
-// })
+
     console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
       console.log('data', data)
@@ -33,9 +32,9 @@ const MultiView = React.createClass({
             <div className="col-xs-4  col-md-4" key={data.cid}>
                 <div className="thumbnail thumbnail-container">
                   <a href={"./#singleview/"+data.id} className="anchor-to-single">
-                    <img src={"images/" + data.attributes.images} alt="" data-id={data.cid} />
+                    <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.cid} />
                   </a>
-                  <h4 className="item-desc">{data.attributes.itemDescription}</h4>
+                  <h4 className="multi-item-desc">{data.attributes.itemDescription}</h4>
 
                   <p>Item: {data.attributes.itemName}</p>
                   <p>Price: {data.attributes.askingPrice}</p>
@@ -66,12 +65,12 @@ const MultiView = React.createClass({
           <button type="button" className="btn btn-default">Electronics</button>
           <button type="button" className="btn btn-default"><a href="#profileview">Profile</a></button>
         </div>
-        <div className="row multi-pic-body">
+        <div className="row row-eq-height is-flex multi-pic-body">
           {itemListings}
         </div>
-        <i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i>
-        <i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i>
-        <i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i>
+        <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
       </div>
     )
 
@@ -79,4 +78,4 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
-//{itemListings}  this.props.payloadData
+//{itemListings}  this.props.payloadData  /" + data.attributes.images
