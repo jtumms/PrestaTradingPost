@@ -50,9 +50,3 @@ const AppRouter = Backbone.Router.extend({
 })
 
 new AppRouter()
-
-
-
-
-
-// document.querySelector('#app-container').innerHTML = `<h1>Yah okay</h1>`
