@@ -15,7 +15,7 @@ const ACTIONS = {
 
      userMod.save().then(function(serverRes){
       // console.log('serverres', serverRes)
-      location.hash = ""
+      location.hash = "/profileview"
     }).fail(function(err){
       // console.log('wrong pw bro')
       location.hash = "/oops"
@@ -25,9 +25,12 @@ const ACTIONS = {
 
 
   fetchItemsModelCollection: function(queryObj){
-    console.log('queryObj', queryObj)
+    // console.log('queryObj', queryObj)
+    console.log('am i even here????')
+    console.log('another test')
      const itemsColl = new ItemsModelCollection()
      itemsColl.fetch().then(function(){
+        console.log("hey look right here this is what we need>>>>>>",itemsColl)
         STORE.setStore('currentInventory', itemsColl.models )
 
      })
