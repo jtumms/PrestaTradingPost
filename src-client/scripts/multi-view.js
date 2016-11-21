@@ -27,20 +27,22 @@ const MultiView = React.createClass({
     console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
       console.log('data', data)
-      return(
+      if(i <= 11){
+        return(
 
-            <div className="col-xs-4  col-md-4" key={data.cid}>
-                <div className="thumbnail thumbnail-container">
-                  <a href={"./#singleview/"+ data.cid} className="anchor-to-single">
-                    <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.cid} />
-                  </a>
-                  <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
-                  <p className="multi-item-info">Item: {data.attributes.itemName}</p>
-                  <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
-                </div>
-            </div>
+              <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
+                  <div className="thumbnail thumbnail-container">
+                    <a href={"./#singleview/"+ data.attributes.itemId} className="anchor-to-single">
+                      <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
+                    </a>
+                    <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
+                    <p className="multi-item-info">Item: {data.attributes.itemName}</p>
+                    <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
+                  </div>
+              </div>
 
-      )
+        )
+      }
     })
 
     return (
