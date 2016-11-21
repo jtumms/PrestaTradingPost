@@ -3,7 +3,7 @@
   {
      "itemName": "Milwaukee Sawsall" ,
      "itemDescription": "Sawsall available for rent ",
-     "category": "Tools",
+     "category": "TOOLS",
      "estValue": 175.00,
      "askingPrice": 15.00,
      "condition": "GOOD",
@@ -14,7 +14,7 @@
   {
        "itemName": "Bicycles for rent" ,
        "itemDescription": "Assorted bicycles for rent. We have an incredible assortment ready for your vacation rental. Daily or weekly ",
-       "category": "Sports Equipment",
+       "category": "SPORTINGGOODS",
        "estValue": 450.00,
        "askingPrice": 45.00,
        "condition": "EXCELLENT",
@@ -26,7 +26,7 @@
     {
          "itemName": "Bouncy House" ,
          "itemDescription": "Backyard Bounce House available for rent/borrow ",
-         "category": "Outdoor",
+         "category": "OUTDOOR",
          "estValue": 575.00,
          "askingPrice": 75.00,
          "condition": "VERYGOOD",
@@ -37,7 +37,7 @@
     {
              "itemName": "PA System" ,
              "itemDescription": "Pro PA with mixer and loudpspeakers availble for daily rental",
-             "category": "Electronics",
+             "category": "ELECTRONICS",
              "estValue": 1575.00,
              "askingPrice": 125.00,
              "condition": "EXCELLENT",
@@ -49,7 +49,7 @@
     {
          "itemName": "Caterpillar Bobcat" ,
          "itemDescription": "Bobcat with mulitple attachements available for rent",
-         "category": "Tools",
+         "category": "TOOLS",
          "estValue": 15000.00,
          "askingPrice": 325.00,
          "condition": "VERYGOOD",
@@ -59,7 +59,7 @@
     {
              "itemName": "Gear Puller" ,
              "itemDescription": "Gear Puller tool available for that once ina lifetime project. Will barter or sell",
-             "category": "Tools",
+             "category": "TOOLS",
              "estValue": 50.00,
              "askingPrice": 15.00,
              "condition": "VERYGOOD",
@@ -69,7 +69,7 @@
     {
              "itemName": "Surfboard" ,
              "itemDescription": "6 foot surfboard for rent.",
-             "category": "Sports Equipment",
+             "category": "SPORTINGGOODS",
              "estValue": 15000.00,
              "askingPrice": 325.00,
              "condition": "GOOD",
@@ -79,7 +79,7 @@
     {
              "itemName": "Fender Guitar Amp for rent" ,
              "itemDescription": "Fender pro Reverb 1965 reissue",
-             "category": "Electronics",
+             "category": "ELECTRONICS",
              "estValue": 2500.00,
              "askingPrice": 125.00,
              "condition": "EXCELLENT",
@@ -90,7 +90,7 @@
     {
          "itemName": "Milwaukee Circular Saw" ,
          "itemDescription": "Sawsall available for rent ",
-         "category": "Tools",
+         "category": "TOOLS",
          "estValue": 175.00,
          "askingPrice": 15.00,
          "condition": "GOOD",
@@ -101,7 +101,7 @@
       {
            "itemName": "Bicycle Rental" ,
            "itemDescription": "Assorted bicycles for rent. We have an incredible assortment ready for your vacation rental. Daily or weekly ",
-           "category": "Sports Equipment",
+           "category": "SPORTINGGOODS",
            "estValue": 450.00,
            "askingPrice": 45.00,
            "condition": "EXCELLENT",
@@ -113,7 +113,7 @@
         {
              "itemName": "Bouncy Mansion Castle" ,
              "itemDescription": "Backyard Bounce House available for rent/borrow ",
-             "category": "Outdoor",
+             "category": "OUTDOOR",
              "estValue": 575.00,
              "askingPrice": 75.00,
              "condition": "VERYGOOD",
@@ -124,7 +124,7 @@
         {
                  "itemName": "PA System 3" ,
                  "itemDescription": "Pro PA with mixer and loudpspeakers availble for daily rental",
-                 "category": "Electronics",
+                 "category": "ELECTRONICS",
                  "estValue": 1575.00,
                  "askingPrice": 125.00,
                  "condition": "EXCELLENT",
@@ -136,7 +136,7 @@
         {
              "itemName": "Caterpillar Backhoe" ,
              "itemDescription": "Bobcat with mulitple attachements available for rent",
-             "category": "Tools",
+             "category": "TOOLS",
              "estValue": 15000.00,
              "askingPrice": 325.00,
              "condition": "VERYGOOD",
@@ -146,7 +146,7 @@
         {
                  "itemName": "Gear Puller 2" ,
                  "itemDescription": "Gear Puller tool available for that once ina lifetime project. Will barter or sell",
-                 "category": "Tools",
+                 "category": "TOOLS",
                  "estValue": 50.00,
                  "askingPrice": 15.00,
                  "condition": "VERYGOOD",
@@ -156,7 +156,7 @@
         {
                  "itemName": "Surfboards for Barter" ,
                  "itemDescription": "6 foot surfboard for rent.",
-                 "category": "Sports Equipment",
+                 "category": "SPORTINGGOODS",
                  "estValue": 15000.00,
                  "askingPrice": 325.00,
                  "condition": "GOOD",
@@ -166,7 +166,7 @@
         {
                  "itemName": "Fender Bass Amp for rent" ,
                  "itemDescription": "Fender pro Reverb 1965 reissue",
-                 "category": "Electronics",
+                 "category": "ELECTRONICS",
                  "estValue": 2500.00,
                  "askingPrice": 125.00,
                  "condition": "EXCELLENT",
@@ -177,7 +177,7 @@
         {
                  "itemName": "Milwaukee Circular Saw" ,
                  "itemDescription": "Sawsall available for rent ",
-                 "category": "Tools",
+                 "category": "TOOLS",
                  "estValue": 175.00,
                  "askingPrice": 15.00,
                  "condition": "GOOD",
@@ -188,7 +188,7 @@
               {
                    "itemName": "Bicycle Rental" ,
                    "itemDescription": "Assorted bicycles for rent. We have an incredible assortment ready for your vacation rental. Daily or weekly ",
-                   "category": "Sports Equipment",
+                   "category": "SPORTINGGOODS",
                    "estValue": 450.00,
                    "askingPrice": 45.00,
                    "condition": "EXCELLENT",
@@ -200,7 +200,7 @@
                 {
                      "itemName": "Bouncy Mansion Castle" ,
                      "itemDescription": "Backyard Bounce House available for rent/borrow ",
-                     "category": "Outdoor",
+                     "category": "OUTDOOR",
                      "estValue": 575.00,
                      "askingPrice": 75.00,
                      "condition": "VERYGOOD",
@@ -211,7 +211,7 @@
                 {
                          "itemName": "PA System 3" ,
                          "itemDescription": "Pro PA with mixer and loudpspeakers availble for daily rental",
-                         "category": "Electronics",
+                         "category": "ELECTRONICS",
                          "estValue": 1575.00,
                          "askingPrice": 125.00,
                          "condition": "EXCELLENT",
@@ -223,7 +223,7 @@
                 {
                      "itemName": "Bobcat Deluxe" ,
                      "itemDescription": "Bobcat with mulitple attachements available for rent",
-                     "category": "Tools",
+                     "category": "TOOLS",
                      "estValue": 15000.00,
                      "askingPrice": 325.00,
                      "condition": "VERYGOOD",
@@ -233,7 +233,7 @@
                 {
                          "itemName": "Gear Puller 6" ,
                          "itemDescription": "Gear Puller tool available for that once ina lifetime project. Will barter or sell",
-                         "category": "Tools",
+                         "category": "TOOLS",
                          "estValue": 50.00,
                          "askingPrice": 15.00,
                          "condition": "VERYGOOD",
@@ -243,7 +243,7 @@
                 {
                          "itemName": "Surfboards for Barter" ,
                          "itemDescription": "6 foot surfboard for rent.",
-                         "category": "Sports Equipment",
+                         "category": "SPORTINGGOODS",
                          "estValue": 15000.00,
                          "askingPrice": 325.00,
                          "condition": "GOOD",
@@ -253,7 +253,7 @@
                 {
                          "itemName": "Fender Bass Amp for rent" ,
                          "itemDescription": "Fender pro Reverb 1965 reissue",
-                         "category": "Electronics",
+                         "category": "ELECTRONICS",
                          "estValue": 2500.00,
                          "askingPrice": 125.00,
                          "condition": "EXCELLENT",
