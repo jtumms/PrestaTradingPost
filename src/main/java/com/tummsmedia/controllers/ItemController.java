@@ -15,11 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -76,10 +78,9 @@ public class ItemController {
         ItemWrapper itemWrapper = parser.parse(contents, ItemWrapper.class);
         items.save(itemWrapper.items);
     }
-    public static HashMap<String, String> getGeolocateMapDetail(String address) throws Exception {
+    public static void getGeolocateMapDetail(String address, Item selectedItem) throws Exception {
         final List<GeocodingResult[]> resps = new ArrayList<GeocodingResult[]>();
         final String MAPS_API_KEY = "AIzaSyCfVwsmmrQ1ptS9ohzm779XRS8RgaiSTtg";
-        HashMap<String, String> latLngMap = new HashMap<String, String>();
 
         PendingResult.Callback<GeocodingResult[]> callback =
                 new PendingResult.Callback<GeocodingResult[]>() {
@@ -97,11 +98,8 @@ public class ItemController {
         GeocodingResult[] results = GeocodingApi.newRequest(context).address(address).await();
         Double latitude = results[0].geometry.location.lat;
         Double longitude = results[0].geometry.location.lng;
-
-//        String map location
-        latLngMap.put("latitude", Double.toString(latitude));
-        latLngMap.put("longitude", Double.toString(longitude));
-        return latLngMap;
+        String gmapUrlByLatLng = String.format("https://www.google.com/maps/@%s,%s,16z", latitude, longitude);
+        selectedItem.setMapUrl(gmapUrlByLatLng);
     }
 
     @RequestMapping(path = "/all-items", method = RequestMethod.GET)
@@ -140,7 +138,8 @@ public class ItemController {
     public ResponseEntity<Iterable<Item>> showItemByCategory(@RequestParam("category")String category, HttpSession session){
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
-        return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(category), HttpStatus.OK);
+        Item.Category cat = Enum.valueOf(Item.Category.class, category);
+        return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
     }
     @RequestMapping(path = "/add-item", method = RequestMethod.POST)
     public ResponseEntity<Item> addNewItem(@RequestBody Item item, HttpSession session){
@@ -153,12 +152,22 @@ public class ItemController {
         return new ResponseEntity<Item>(item, HttpStatus.OK);
     }
     @RequestMapping(value = "/get-item", method = RequestMethod.GET)
-    public ResponseEntity<Item> getSingleItem(@RequestParam("itemId")int itemId, HttpSession session){
+    public ResponseEntity<Item> getSingleItem(String gmapUrlByLatLng, @RequestParam("itemId")int itemId, HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
+        Item selectedItem = items.findFirstByItemId(itemId);
 
-        return new ResponseEntity<Item>(items.findFirstByItemId(itemId), HttpStatus.OK);
+        String street = selectedItem.getUser().getUserDetail().getStreet();
+        String city = selectedItem.getUser().getUserDetail().getState();
+        String state = selectedItem.getUser().getUserDetail().getState();
+        String zip = Integer.toString(selectedItem.getUser().getUserDetail().getZipcode());
+        String address = String.format("%s %s, %s %s", street, city, state, zip);
+        getGeolocateMapDetail(address, selectedItem);
+
+//        selectedItem.setMapUrl(gmapUrlByLatLng);
+        return new ResponseEntity<Item>(selectedItem, HttpStatus.OK);
     }
+
     @RequestMapping(value = "/rent-item", method = RequestMethod.POST)
     public HashMap<String, String> rentItem(@RequestParam("itemId")int itemId,  HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
@@ -179,18 +188,5 @@ public class ItemController {
         return emailDataMap;
     }
 
-    @RequestMapping(value = "/get-map", method = RequestMethod.GET)
-    public HashMap<String, String> sendMapLink(@RequestParam("itemId")int itemId, HttpSession session) throws Exception {
 
-        Item item = items.findFirstByItemId(itemId);
-        String street = item.getUser().getUserDetail().getStreet();
-        String city = item.getUser().getUserDetail().getState();
-        String state = item.getUser().getUserDetail().getState();
-        String zip = Integer.toString(item.getUser().getUserDetail().getZipcode());
-        String address = String.format("%s %s, %s %s", street, city, state, zip);
-        HashMap<String, String> geoMapInfo = getGeolocateMapDetail(address);
-
-
-        return geoMapInfo;
-    }
 }

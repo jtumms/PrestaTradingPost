@@ -1,6 +1,8 @@
 package com.tummsmedia.entities;
 
 
+import org.springframework.data.jpa.repository.query.StringQueryParameterBinder;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,8 +24,13 @@ public class Item {
     @Column (nullable = false)
     String itemDescription;
 
-    @Column(nullable = false)
-    String category;
+    public enum Category {
+        SPORTINGGOODS,
+        GENERAL,
+        ELECTRONICS,
+        TOOLS,
+        OUTDOOR
+    }
 
     @Column(nullable = false)
     long estValue;
@@ -38,6 +45,8 @@ public class Item {
         FAIR,
         POOR
     }
+    @Column(nullable = false)
+    private Category category;
 
     @Column(nullable = false)
     private Condition condition;
@@ -49,10 +58,14 @@ public class Item {
     @ManyToOne
     User user;
 
+    @Transient
+    String mapUrl;
+
+
     public Item() {
     }
 
-    public Item(int itemId, String itemName, String itemDescription, String category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user) {
+    public Item(int itemId, String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user, String mapUrl) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -62,9 +75,10 @@ public class Item {
         this.condition = condition;
         this.images = images;
         this.user = user;
+        this.mapUrl = mapUrl;
     }
 
-    public Item(String itemName, String itemDescription, String category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user) {
+    public Item(String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user, String mapUrl) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.category = category;
@@ -73,6 +87,7 @@ public class Item {
         this.condition = condition;
         this.images = images;
         this.user = user;
+        this.mapUrl = mapUrl;
     }
 
     public int getItemId() {
@@ -91,11 +106,11 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -145,5 +160,13 @@ public class Item {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getMapUrl() {
+        return mapUrl;
+    }
+
+    public void setMapUrl(String mapUrl) {
+        this.mapUrl = mapUrl;
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.data.repository.CrudRepository;
  * Created by john.tumminelli on 11/16/16.
  */
 public interface ItemRepo extends CrudRepository<Item, Integer> {
-    Iterable<Item> findAllByCategory(String category);
+    Iterable<Item> findAllByCategory(Item.Category category);
     Item findFirstByItemId(int itemId);
 
 }
