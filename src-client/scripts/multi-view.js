@@ -25,13 +25,13 @@ const MultiView = React.createClass({
 // })
     console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
-      console.log('data', data)
+      console.log("images/" + data.attributes.images[0].imageFileName, i[0])
       return(
 
             <div className="col-xs-4  col-md-4" key={data.cid}>
                 <div className="thumbnail thumbnail-container">
                   <a href={"./#singleview/"+data.id} className="anchor-to-single">
-                    <img src={"images/" + data.attributes.images} alt="" data-id={data.cid} />
+                    <img src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.cid} />
                   </a>
                   <h4 className="item-desc">{data.attributes.itemDescription}</h4>
 
