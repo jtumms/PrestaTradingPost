@@ -12,6 +12,7 @@ const SignOutView = require('./signout-view.js')
 const AppRouter = Backbone.Router.extend({
 
     routes: {
+      "category/:catName" : "showCatName",
       "signout" : "showSignOutView",
       "oops" : "showOopsView",
       "profileview" : "showProfileView",
@@ -42,6 +43,10 @@ const AppRouter = Backbone.Router.extend({
 
     showSignOutView: function(){
     ReactDOM.render(<AppViewController routedFrom="SignOutView"/>, document.querySelector('#app-container') )
+    },
+
+    showCatName: function(catName){
+    ReactDOM.render(<AppViewController routedFrom="MultiView" catName={catName}/>, document.querySelector('#app-container') )
     },
 
       initialize: function() {

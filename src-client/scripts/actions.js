@@ -23,13 +23,18 @@ const ACTIONS = {
     })
   },
 
-  // fetchCategoryCollection: function(){
-  //   const categoryColl = new CategoryCollection()
-  //   categoryColl.fetch().then(function(){
-  //     STORE.setStore('categoryListing', categoryColl.models)
-  //   })
-  // },
 
+  routeTo: function(path){
+    window.location.hash = path
+  },
+
+  fetchCategoryCollection: function(catVal){
+
+    const categoryColl = new CategoryCollection(catVal)
+    categoryColl.fetch().then(function(){
+      STORE.setStore('categoryListing', categoryColl.models)
+    })
+  },
 
   fetchItemsModelCollection: function(queryObj){
     // console.log('queryObj', queryObj)
