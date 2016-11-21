@@ -1,7 +1,7 @@
 const Backbone = require('backbone')
 const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
-const {ItemsModel, ItemsModelCollection} = require('./models.js')
+const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
 
 
 const ACTIONS = {
@@ -22,6 +22,13 @@ const ACTIONS = {
 
     })
   },
+
+  // fetchCategoryCollection: function(){
+  //   const categoryColl = new CategoryCollection()
+  //   categoryColl.fetch().then(function(){
+  //     STORE.setStore('categoryListing', categoryColl.models)
+  //   })
+  // },
 
 
   fetchItemsModelCollection: function(queryObj){

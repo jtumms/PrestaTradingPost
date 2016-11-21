@@ -14,7 +14,7 @@ const ItemsModel = Backbone.Model.extend({
 
 const ItemsModelCollection = Backbone.Collection.extend({
   model: ItemsModel,
-  url: "/random-items",
+  url: "/all-items",
 
   initialize: function(){
 
@@ -22,10 +22,20 @@ const ItemsModelCollection = Backbone.Collection.extend({
 
 });
 
+// const CategoryCollection = Backbone.Collection.extend({
+//   model: ItemsModel,
+//   url: "/items?category=",
+//
+//   initialize: function(){
+//
+//   }
+// });
+
 console.log('this is', ItemsModelCollection.data)
 module.exports = {
   ItemsModel,
   ItemsModelCollection,
+  // CategoryCollection
 }
 
 //urlRoot: "/get-item",

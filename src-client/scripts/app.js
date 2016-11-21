@@ -32,21 +32,21 @@ const AppRouter = Backbone.Router.extend({
     ReactDOM.render(<AppViewController routedFrom="AuthView"/>, document.querySelector('#app-container') )
     },
 
-  showProfileView: function(){
-  ReactDOM.render(<AppViewController routedFrom="ProfileView"/>, document.querySelector('#app-container') )
-  },
+    showProfileView: function(){
+    ReactDOM.render(<AppViewController routedFrom="ProfileView"/>, document.querySelector('#app-container') )
+    },
 
-  showOopsView: function(){
-  ReactDOM.render(<AppViewController routedFrom="OopsView"/>, document.querySelector('#app-container') )
-  },
+    showOopsView: function(){
+    ReactDOM.render(<AppViewController routedFrom="OopsView"/>, document.querySelector('#app-container') )
+    },
 
-  showSignOutView: function(){
-  ReactDOM.render(<AppViewController routedFrom="SignOutView"/>, document.querySelector('#app-container') )
-  },
+    showSignOutView: function(){
+    ReactDOM.render(<AppViewController routedFrom="SignOutView"/>, document.querySelector('#app-container') )
+    },
 
-    initialize: function() {
-    Backbone.history.start()
-  }
+      initialize: function() {
+      Backbone.history.start()
+    }
 })
 
 new AppRouter()
