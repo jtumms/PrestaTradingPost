@@ -45,12 +45,13 @@ const AppRouter = Backbone.Router.extend({
     ReactDOM.render(<AppViewController routedFrom="SignOutView"/>, document.querySelector('#app-container') )
     },
 
-    showCatName:function(catName){
+    showCatName: function(catName){
     ReactDOM.render(<AppViewController routedFrom="MultiView" catName={catName}/>, document.querySelector('#app-container') )
     },
-    initialize: function() {
-    Backbone.history.start()
-  }
+
+      initialize: function() {
+      Backbone.history.start()
+    }
 })
 
 new AppRouter()

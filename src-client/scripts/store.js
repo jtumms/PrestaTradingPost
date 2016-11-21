@@ -3,6 +3,7 @@ const ACTIONS = require('./actions.js')
 
 const STORE = {
    _data:  {
+       categoryListing: [],
        currentViewSetting : '',
        currentInventory : [],
        singleListing: {} //Backbone Model instance
