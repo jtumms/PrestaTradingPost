@@ -83,7 +83,7 @@
              "estValue": 2500.00,
              "askingPrice": 125.00,
              "condition": "EXCELLENT",
-             "images": [{"imageFileName": "s-I225.jpg"},
+             "images": [{"imageFileName": "65DeluxeRFSRMC-xlarge.jpg"},
                         {"imageFileName": "FenderProReverbAmp.jpg"}],
              "user": {"id": 1, "username":"testuser@gmail.com"}
     },
@@ -170,7 +170,7 @@
                  "estValue": 2500.00,
                  "askingPrice": 125.00,
                  "condition": "EXCELLENT",
-                 "images": [{"imageFileName": "s-I225.jpg"},
+                 "images": [{"imageFileName": "65DeluxeRFSRMC-xlarge.jpg"},
                             {"imageFileName": "FenderProReverbAmp.jpg"}],
                  "user": {"id": 1, "username":"testuser@gmail.com"}
         },
@@ -257,7 +257,7 @@
                          "estValue": 2500.00,
                          "askingPrice": 125.00,
                          "condition": "EXCELLENT",
-                         "images": [{"imageFileName": "s-I225.jpg"},
+                         "images": [{"imageFileName": "65DeluxeRFSRMC-xlarge.jpg"},
                                     {"imageFileName": "FenderProReverbAmp.jpg"}],
                          "user": {"id": 1, "username":"testuser@gmail.com"}
                 }
