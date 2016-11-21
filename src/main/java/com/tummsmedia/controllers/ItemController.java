@@ -76,7 +76,7 @@ public class ItemController {
         ItemWrapper itemWrapper = parser.parse(contents, ItemWrapper.class);
         items.save(itemWrapper.items);
     }
-    public static HashMap<String, String> getGeolocateMap(String address) throws Exception {
+    public static HashMap<String, String> getGeolocateMapDetail(String address) throws Exception {
         final List<GeocodingResult[]> resps = new ArrayList<GeocodingResult[]>();
         final String MAPS_API_KEY = "AIzaSyCfVwsmmrQ1ptS9ohzm779XRS8RgaiSTtg";
         HashMap<String, String> latLngMap = new HashMap<String, String>();
@@ -97,6 +97,8 @@ public class ItemController {
         GeocodingResult[] results = GeocodingApi.newRequest(context).address(address).await();
         Double latitude = results[0].geometry.location.lat;
         Double longitude = results[0].geometry.location.lng;
+
+//        String map location
         latLngMap.put("latitude", Double.toString(latitude));
         latLngMap.put("longitude", Double.toString(longitude));
         return latLngMap;
@@ -186,7 +188,9 @@ public class ItemController {
         String state = item.getUser().getUserDetail().getState();
         String zip = Integer.toString(item.getUser().getUserDetail().getZipcode());
         String address = String.format("%s %s, %s %s", street, city, state, zip);
-        HashMap<String, String> geoMapInfo = getGeolocateMap(address);
+        HashMap<String, String> geoMapInfo = getGeolocateMapDetail(address);
+
+
         return geoMapInfo;
     }
 }
