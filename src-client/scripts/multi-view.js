@@ -21,8 +21,7 @@ const MultiView = React.createClass({
 
   render: function(){
 
-  // }
-// })
+
     console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
       console.log("images/" + data.attributes.images[0].imageFileName, i[0])
@@ -32,10 +31,9 @@ const MultiView = React.createClass({
                   <a href={"./#singleview/"+data.id} className="anchor-to-single">
                     <img src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.cid} />
                   </a>
-                  <h4 className="item-desc">{data.attributes.itemDescription}</h4>
-
-                  <p>Item: {data.attributes.itemName}</p>
-                  <p>Price: {data.attributes.askingPrice}</p>
+                  <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
+                  <p className="multi-item-info">Item: {data.attributes.itemName}</p>
+                  <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
                 </div>
             </div>
 
@@ -61,14 +59,20 @@ const MultiView = React.createClass({
           <button type="button" className="btn btn-default">Sporting Goods</button>
           <button type="button" className="btn btn-default">Tools</button>
           <button type="button" className="btn btn-default">Electronics</button>
-          <button type="button" className="btn btn-default"><a href="#profileview">Profile</a></button>
+          <button type="button" className="btn btn-default"><a href="#authview">Profile</a></button>
         </div>
-        <div className="row multi-pic-body">
+        <div className="row row-eq-height is-flex multi-pic-body">
           {itemListings}
         </div>
-        <i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i>
-        <i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i>
-        <i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i>
+        <div className="multi-next-page">
+          <h3>| 1 | 2 | 3 |</h3>
+        </div>
+        <div>
+          <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
+          <h1 className="copyright multi-icons">&#xa9;  2016 Team SilverBack</h1>
+        </div>
       </div>
     )
 
@@ -76,3 +80,7 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
+<<<<<<< HEAD
+=======
+//{itemListings}  this.props.payloadData  /" + data.attributes.images  <i class="fa fa-copyright" aria-hidden="true"></i>
+>>>>>>> 1a78727eaab74a8314c93a066ebbed662bf8d78e

@@ -17,6 +17,11 @@ const ProfileView = React.createClass({
         </div>
         <div className="row profile-item-row">
           <div className="profile-add-pic-btn col-sm-4">
+            <h2>Add an item to rent</h2>
+            <input className="profile-item-inputs" type="text" name="item" placeholder="Item to rent"/>
+            <input className="profile-item-inputs" type="text" name="description" placeholder="Item description"/>
+            <input className="profile-item-inputs" type="text" name="price" placeholder="Item rent price"/>
+            <button className="btn btn-primary btn-lg profile-add-btn">Add Item</button>
             <button className="btn btn-primary btn-lg profile-add-btn">Add Pic</button>
           </div>
           <div className="profile-item-pic col-sm-4"></div>
@@ -24,15 +29,15 @@ const ProfileView = React.createClass({
             <form>
               <h2>Profile</h2>
               <h4 className="user-label"><label>Username</label></h4>
-              <input className="auth-inputs profile-email-holder" type="text" name="username" placeholder="UserName"/>
+              <input className="profile-inputs profile-email-holder" type="text" name="username" placeholder="UserName"/>
               <h4 className="user-label"><label>Name</label></h4>
-              <input className="auth-inputs" type="text" name="firstName" placeholder="First Name"/>
-              <input className="auth-inputs" type="text" name="lastName" placeholder="Last Name"/>
+              <input className="profile-inputs" type="text" name="firstName" placeholder="First Name"/>
+              <input className="profile-inputs" type="text" name="lastName" placeholder="Last Name"/>
               <h4 className="user-label"><label>Address</label></h4>
-              <input className="auth-inputs" type="text" name="street" placeholder="Address"/>
-              <input className="auth-inputs" type="text" name="city" placeholder="City"/>
-              <input className="auth-inputs" type="text" name="state" placeholder="State"/>
-              <input className="auth-inputs" type="text" name="zipcode" placeholder="Zipcode"/>
+              <input className="profile-inputs" type="text" name="street" placeholder="Address"/>
+              <input className="profile-inputs" type="text" name="city" placeholder="City"/>
+              <input className="profile-inputs" type="text" name="state" placeholder="State"/>
+              <input className="profile-inputs" type="text" name="zipcode" placeholder="Zipcode"/>
             </form>
           </div>
         </div>
