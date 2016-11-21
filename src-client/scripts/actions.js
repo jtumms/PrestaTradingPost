@@ -32,7 +32,7 @@ const ACTIONS = {
 
     const categoryColl = new CategoryCollection(catVal)
     categoryColl.fetch().then(function(){
-      STORE.setStore('categoryListing', categoryColl.models)
+      STORE.setStore('currentInventory', categoryColl.models)
     })
   },
 
