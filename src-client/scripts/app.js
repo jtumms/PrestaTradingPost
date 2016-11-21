@@ -12,6 +12,7 @@ const SignOutView = require('./signout-view.js')
 const AppRouter = Backbone.Router.extend({
 
     routes: {
+      "category/:catName" : "showCatName",
       "signout" : "showSignOutView",
       "oops" : "showOopsView",
       "profileview" : "showProfileView",
@@ -32,18 +33,21 @@ const AppRouter = Backbone.Router.extend({
     ReactDOM.render(<AppViewController routedFrom="AuthView"/>, document.querySelector('#app-container') )
     },
 
-  showProfileView: function(){
-  ReactDOM.render(<AppViewController routedFrom="ProfileView"/>, document.querySelector('#app-container') )
-  },
+    showProfileView: function(){
+    ReactDOM.render(<AppViewController routedFrom="ProfileView"/>, document.querySelector('#app-container') )
+    },
 
-  showOopsView: function(){
-  ReactDOM.render(<AppViewController routedFrom="OopsView"/>, document.querySelector('#app-container') )
-  },
+    showOopsView: function(){
+    ReactDOM.render(<AppViewController routedFrom="OopsView"/>, document.querySelector('#app-container') )
+    },
 
-  showSignOutView: function(){
-  ReactDOM.render(<AppViewController routedFrom="SignOutView"/>, document.querySelector('#app-container') )
-  },
+    showSignOutView: function(){
+    ReactDOM.render(<AppViewController routedFrom="SignOutView"/>, document.querySelector('#app-container') )
+    },
 
+    showCatName:function(catName){
+    ReactDOM.render(<AppViewController routedFrom="MultiView" catName={catName}/>, document.querySelector('#app-container') )
+    },
     initialize: function() {
     Backbone.history.start()
   }

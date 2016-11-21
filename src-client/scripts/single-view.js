@@ -1,13 +1,26 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const Backbone = require('backbone')
+// const AppViewController = require('./component-viewcontroller.js')
+const {ItemsModel, ItemsModelCollection} = require("./models.js")
+const MultiView = require('./multi-view.js')
+const ACTIONS = require('./actions.js')
+const STORE = require('./store.js')
 
-
+console.log(STORE._data)
 
 const SingleView = React.createClass({
 
+  componentDidMount: function(){
+    ACTIONS.fetchItemsModel()
+    console.log(ACTIONS.fetchItemsModel())
+
+  },
+
+
   render:function(){
     let self = this
+
 
     return(
       <div className="single-item-container text-center">
@@ -35,3 +48,11 @@ const SingleView = React.createClass({
 })
 
 module.exports = SingleView
+
+// const SingleView = React.createClass({
+//    componentDidMount: function(){
+//      console.log('fetching....', this.props.pidVal)
+//      ACTIONS.itemsModel(this.props.pidVal)
+//
+//    },
+// })

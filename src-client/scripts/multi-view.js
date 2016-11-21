@@ -9,26 +9,26 @@ const STORE = require('./store.js')
 const MultiView = React.createClass({
 
   componentWillMount: function(){
+    if(!this.props.catName){
     ACTIONS.fetchItemsModelCollection()
-    console.log("fetch",ACTIONS.fetchItemsModelCollection())
+  }else{
+    ACTIONS.fetchCategoryCollection(this.props.catName)
+  }
   },
+  _routeToCategory: function(){},
 
-
-  _itemSelector: function() {
-
-
-  },
+  _routeToItem: function() {},
 
   render: function(){
 
 
-    console.log('why wont this log', STORE._data.currentInventory)
+    // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
-      console.log("images/" + data.attributes.images[0].imageFileName, i[0])
+      // console.log("images/" + data.attributes.images[0].imageFileName, i[0])
       return(
             <div className="col-xs-4  col-md-4" key={data.cid}>
                 <div className="thumbnail thumbnail-container">
-                  <a href={"./#singleview/"+data.id} className="anchor-to-single">
+                  <a href={"./#singleview/"+ data.cid} className="anchor-to-single">
                     <img src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.cid} />
                   </a>
                   <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
@@ -80,7 +80,4 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
-<<<<<<< HEAD
-=======
 //{itemListings}  this.props.payloadData  /" + data.attributes.images  <i class="fa fa-copyright" aria-hidden="true"></i>
->>>>>>> 1a78727eaab74a8314c93a066ebbed662bf8d78e

@@ -44,7 +44,7 @@ const AppViewController = React.createClass({
           break;
 
         case "MultiView":
-          return <MultiView/>
+          return <MultiView catName={this.props.catName}>
           break;
 
         case "SingleView":

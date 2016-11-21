@@ -1,1 +1,1 @@
-console.error("SyntaxError: /Users/chadhaselden/TIY/assignments/PrestaTradingPost/src-client/scripts/multi-view.js: Unexpected token (83:3) while parsing file: /Users/chadhaselden/TIY/assignments/PrestaTradingPost/src-client/scripts/multi-view.js");
+console.error("SyntaxError: /Users/chadhaselden/TIY/assignments/PrestaTradingPost/src-client/scripts/actions.js: Unexpected token, expected , (29:4) while parsing file: /Users/chadhaselden/TIY/assignments/PrestaTradingPost/src-client/scripts/actions.js");

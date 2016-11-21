@@ -1,8 +1,6 @@
 const Backbone = require('backbone')
 const ACTIONS = require('./actions.js')
 
-
-
 const STORE = {
    _data:  {
        currentViewSetting : '',
@@ -11,8 +9,7 @@ const STORE = {
     },
 
    setStore: function(storeProp, payload){
-      console.log('set store payload', payload)
-      // console.log(payload);
+      // console.log('set store payload', payload)
       if(typeof this._data[storeProp] === 'undefined'){
          console.error(`Sorry, ${storeProp} is not a value on the store, you need to declare it first`)
          return
