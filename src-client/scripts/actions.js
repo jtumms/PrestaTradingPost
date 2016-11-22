@@ -7,14 +7,18 @@ const GetUserModel =require('./get-user-model.js')
 
 const ACTIONS = {
 
-  getCurrentUserInfo: function(userInfoObj){
-    console.log('userinfo',userInfoObj)
+  getCurrentUserInfo: function(){
     let getUserModelInstance = new GetUserModel()
-    getUserModelInstance.fetch().then(function(){
-      console.log('server res for user info', getUserModelInstance)
-      STORE.setStore('userListing', getUserModelInstance.models)
-      console.log('something here',getUserModelInstance.models)
-    })
+    getUserModelInstance.fetch()
+      .then(function(){
+        console.log('server res for user info', getUserModelInstance)
+        STORE.setStore('userListing', getUserModelInstance)
+        console.log('something here',getUserModelInstance)
+      })
+      .fail(function(errRes){
+        console.log('?????', errRes)
+        ACTIONS.routeTo('authview')
+      })
   },
 
 
@@ -25,7 +29,7 @@ const ACTIONS = {
     newUserMod.save().then(function(serverRes){
       location.hash = "/profileview"
     }).fail(function(err){
-      location.hash = "/oops"
+      location.hash = "/authview"
     })
   },
 

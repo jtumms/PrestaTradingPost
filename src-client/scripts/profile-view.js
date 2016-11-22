@@ -7,9 +7,11 @@ const ProfileView = React.createClass({
 
   componentWillMount: function(obj){
     let getUserModelInstance = new GetUserModel()
-
+    // console.log("profile auth", getUserModelInstance)
+    console.log('?????', STORE._data.userListing.attributes)
     // let currentUserId = STORE.getStoreData()
     ACTIONS.getCurrentUserInfo()
+    // console.log('actions current info', ACTIONS.getCurrentUserInfo())
     },
 
     // getUserDetails: function(userInfoObj) {
@@ -23,7 +25,7 @@ const ProfileView = React.createClass({
 
   render: function(){
     console.log('what up')
-    console.log(STORE._data.getUserInfo)
+    // console.log(STORE._data.getUserInfo)
 
     return(
       <div className="profile-container">
