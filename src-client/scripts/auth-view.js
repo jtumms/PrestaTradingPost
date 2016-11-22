@@ -19,21 +19,21 @@ const AuthView = React.createClass({
       zipcode: evt.target.zipcode.value,
       password: evt.target.password.value
     }
-    console.log(newUserData)
+    console.log('new user data', newUserData)
     ACTIONS.authenticateNewUser(newUserData)
   },
 
 
   _handleUserAuth: function(evt){
     evt.preventDefault()
-    console.log('evt', evt)
+    // console.log('evt', evt)
     let newUserData = {
       username: evt.target.username.value,
       password: evt.target.password.value
 
     }
-      console.log('new user data', newUserData)
-      console.log('actions', ACTIONS)
+      console.log('user data', newUserData)
+      // console.log('actions', ACTIONS)
     ACTIONS.authenticateUser(newUserData)
   },
 
