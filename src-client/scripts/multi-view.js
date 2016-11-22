@@ -35,7 +35,6 @@ const MultiView = React.createClass({
     // STORE._data.currentInventory.filter('collection')
   ACTIONS.routeTo(`category/${evt.target.dataset.cathash}`)
   },
-  _routeToCategory: function(){},
 
   _routeToItem: function() {},
 
