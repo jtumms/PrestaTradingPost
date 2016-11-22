@@ -64,6 +64,9 @@ public class UserController {
         if (user == null) {
             return new ResponseEntity<Object>("Not logged in", HttpStatus.FORBIDDEN);
         }
+        if (user.getId() != id){
+            return new ResponseEntity<Object>("User tried to access profile other than his/her own profile", HttpStatus.FORBIDDEN);
+        }
         return new ResponseEntity<Object>(users.findFirstById(id), HttpStatus.OK);
     }
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
