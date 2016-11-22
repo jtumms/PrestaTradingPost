@@ -34,36 +34,37 @@ public class UserController {
 
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public ResponseEntity<User> postLogin(HttpSession session, @RequestBody User user) throws com.tummsmedia.utilities.PasswordStorage.InvalidHashException, com.tummsmedia.utilities.PasswordStorage.CannotPerformOperationException {
+    public ResponseEntity<Object> postLogin(HttpSession session, @RequestBody User user) throws com.tummsmedia.utilities.PasswordStorage.InvalidHashException, com.tummsmedia.utilities.PasswordStorage.CannotPerformOperationException {
         User userFromDb = users.findFirstByUsername(user.getUsername());
         if (userFromDb == null) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Object>("User does not exist", HttpStatus.FORBIDDEN);
         } else if (!com.tummsmedia.utilities.PasswordStorage.verifyPassword(user.getPassword(), userFromDb.getPassword())) {
-            return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Object>("Incorrect Password", HttpStatus.FORBIDDEN);
         }
 
         session.setAttribute("username", user.getUsername());
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        return new ResponseEntity<Object>(user, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/create-user", method = RequestMethod.POST)
-    public ResponseEntity<User> createUser(@RequestBody User user) throws PasswordStorage.CannotPerformOperationException {
+    public ResponseEntity<Object> createUser(@RequestBody User user, HttpSession session) throws PasswordStorage.CannotPerformOperationException {
         String username = user.getUsername();
         if (!isValidEmail(username)){
-            return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Object>("Not a valid email address", HttpStatus.FORBIDDEN);
         }
         user.setPassword(PasswordStorage.createHash(user.getPassword()));
         users.save(user);
-        return new ResponseEntity<User> (user, HttpStatus.OK);
+        session.setAttribute("username", user.getUsername());
+        return new ResponseEntity<Object> (user, HttpStatus.OK);
     }
     @RequestMapping(value = "/get-user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> getSingleUser(@PathVariable("id")int id, HttpSession session) {
+    public ResponseEntity<Object> getSingleUser(@PathVariable("id")int id, HttpSession session) {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
         if (user == null) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Object>("Not logged in", HttpStatus.FORBIDDEN);
         }
-        return new ResponseEntity<User>(users.findFirstById(id), HttpStatus.OK);
+        return new ResponseEntity<Object>(users.findFirstById(id), HttpStatus.OK);
     }
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
     public ResponseEntity<String> logout(HttpSession session) {
