@@ -13,21 +13,12 @@ const AuthView = React.createClass({
       username: evt.target.username.value,
       password: evt.target.password.value,
       userDetail: {
-<<<<<<< HEAD
         firstName: evt.target.firstName.value,
         lastName: evt.target.lastName.value,
         street: evt.target.street.value,
         city: evt.target.city.value,
         state: evt.target.state.value,
         zipcode: evt.target.zipcode.value
-=======
-          firstName: evt.target.firstName.value,
-          lastName: evt.target.lastName.value,
-          street: evt.target.street.value,
-          city: evt.target.city.value,
-          state: evt.target.state.value,
-          zipcode: evt.target.zipcode.value
->>>>>>> 338e8825cfdea693681cd9c2d71668e58a65b919
       }
     }
     console.log('new user data', newUserData)

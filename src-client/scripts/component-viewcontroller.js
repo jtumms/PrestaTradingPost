@@ -52,7 +52,7 @@ const AppViewController = React.createClass({
           break;
 
         case "ProfileView":
-          return <ProfileView/>
+          return <ProfileView currentUser={this.state.currentUser}/>
           break;
 
         case "OopsView":

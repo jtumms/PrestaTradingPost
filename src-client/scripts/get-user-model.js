@@ -2,10 +2,10 @@ const Backbone = require('backbone')
 
 const GetUserModel = Backbone.Model.extend({
    url: "/get-user",
-   idAttribute: "id",
+  //  idAttribute: "id",
 
    initialize: function(){
-
+     console.log("/?????")
    }
 })
 

@@ -2,14 +2,29 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const GetUserModel = require('./get-user-model.js')
 const ACTIONS = require('./actions.js')
-
+const STORE = require('./store.js')
 const ProfileView = React.createClass({
 
-  // let getUserModelInstance = new GetUserModel()
-  // console.log(getUserModelInstance)
-  // // ACTIONS.fetchgetUserInfo()
+  componentWillMount: function(obj){
+    let getUserModelInstance = new GetUserModel()
+
+    // let currentUserId = STORE.getStoreData()
+    ACTIONS.getCurrentUserInfo()
+    },
+
+    // getUserDetails: function(userInfoObj) {
+    // let getUserModelInstance = new GetUserModel()
+    // // console.log(getUserModelInstance)
+    // // ACTIONS.fetchgetUserInfo()
+    // }
+  // },
+
+
 
   render: function(){
+    console.log('what up')
+    console.log(STORE._data.getUserInfo)
+
     return(
       <div className="profile-container">
         <div className="profile-home-icon-container">
