@@ -15,7 +15,11 @@ Route: localhost:8080/login - POST
     "username": "fredflintstone@gmail.com",
     "userDetail": null
   }
-****
+**** LOGOUT ****
+
+http://locahost/logout - POST
+
+No JSON object from front end is needed.
 
 http://localhost/get-user/{id} - GET
 
@@ -27,7 +31,6 @@ Obj needed:
   "userDetail": {"firstName": "Fred",
   	"lastName": "Flintstone",
   	"street": "100 First Street",
-  	"address2": "",
   	"city": "Charleston",
   	"state": "SC",
   	"zipcode": 29466
