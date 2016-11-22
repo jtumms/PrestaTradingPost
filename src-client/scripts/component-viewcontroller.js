@@ -13,7 +13,7 @@ const {ItemsModel} = require('./models.js')
 const AppViewController = React.createClass({
   getInitialState: function(){
       let updateState = STORE.getStoreData()
-      console.log( "the retrieved data:" ,updateState.currentInventory)
+      // console.log( "the retrieved data:" ,updateState.currentInventory)
       STORE.setStore('currentInventory', updateState.currentInventory)
       STORE.setStore('singleListing', new ItemsModel())
 
