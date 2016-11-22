@@ -3,17 +3,33 @@ const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
-
+const GetUserModel =require('./get-user-model.js')
 
 const ACTIONS = {
 
+  getCurrentUserInfo: function(){
+    let getUserModelInstance = new GetUserModel()
+    getUserModelInstance.fetch()
+      .then(function(){
+        console.log('server res for user info', getUserModelInstance)
+        STORE.setStore('userListing', getUserModelInstance)
+        console.log('something here',getUserModelInstance)
+      })
+      .fail(function(errRes){
+        console.log('?????', errRes)
+        ACTIONS.routeTo('authview')
+      })
+  },
+
+
   authenticateNewUser: function(newUserDataObj){
+    console.log("actions", newUserDataObj)
     let newUserMod = new NewUserModel()
     newUserMod.set(newUserDataObj)
     newUserMod.save().then(function(serverRes){
       location.hash = "/profileview"
     }).fail(function(err){
-      location.hah = "/oops"
+      location.hash = "/authview"
     })
   },
 
@@ -22,9 +38,10 @@ const ACTIONS = {
     //  console.log('user data obj', userDataObj)
      let userMod = new UserModel()
      userMod.set(userDataObj)
-    //  console.log('user mod', userMod)
+      //  console.log('user mod', userMod)
      userMod.save().then(function(serverRes){
       // console.log('serverres', serverRes)
+
       location.hash = "/profileview"
     }).fail(function(err){
       // console.log('wrong pw bro')

@@ -5,7 +5,8 @@ const ACTIONS = require('./actions.js')
 
 const STORE = {
    _data:  {
-       categoryListing: [],
+       userListing: {},
+       currentUser: {},
        currentViewSetting : '',
        currentInventory : [],
        singleListing: {}

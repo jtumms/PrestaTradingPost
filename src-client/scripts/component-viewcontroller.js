@@ -22,6 +22,7 @@ const AppViewController = React.createClass({
 
   componentWillMount: function(){
     let component = this
+    ACTIONS.getCurrentUserInfo()
 
     // let updateState = STORE.getStoreData()
     // // console.log( "the retrieved data:" ,updateState.currentInventory)
@@ -52,7 +53,7 @@ const AppViewController = React.createClass({
           break;
 
         case "ProfileView":
-          return <ProfileView/>
+          return <ProfileView currentUser={this.state.currentUser}/>
           break;
 
         case "OopsView":
