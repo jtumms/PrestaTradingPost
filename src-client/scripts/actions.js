@@ -41,6 +41,10 @@ const ACTIONS = {
   routeTo: function(path){
     window.location.hash = path
   },
+  
+  routeHome: function(){
+    window.location.hash = '/'
+  },
 
 
 
