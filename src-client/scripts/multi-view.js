@@ -6,10 +6,11 @@ const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 
 
+
 const MultiView = React.createClass({
 
   componentWillMount: function(){
-    console.log('this props', this.props.catName)
+    // console.log('this props', this.props.catName)
     if(!this.props.catName) {
       ACTIONS.fetchItemsModelCollection()
     } else{
@@ -19,7 +20,7 @@ const MultiView = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps){
-    console.log('this props', newProps.catName)
+    // console.log('this props', newProps.catName)
     if(newProps.catName === this.props.catName){
       return;
     }
@@ -75,7 +76,7 @@ const MultiView = React.createClass({
           <h4>Presta Trading Post is the ultimate meet-up spot for the people who have and the people who don't. Have you ever wanted to try out a stand-up paddle board but didn't want to have to fork out the big money just to try it out for a weekend? How about, have you ever needed a special tool to fix something in an afternoon but didn't want to have to buy so that it can sit in your garage 99% of the time? Or maybe you want to have a jam session tonight but you don't have an amplifier.  Well here at Presta Trading Post we have people who have these kinds of things and more that are just sitting in their garages for 99% of the year and for a nominal price, which in most cases can be totally negotiable, you can use these items and not have to buy them.  All you have to do is register with Presta Trading Post today, and then you can begin to see the benefits. Or maybe you even have items sitting around in your garage that someone else might need to use.  Everybody wins. So, register today. </h4>
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-          <button type="button" className="btn btn-default" data-cathash="general" onClick={this._routeToCategory}>General</button>
+          <button type="button" className="btn btn-default" data-cathash="all-items" onClick={this._routeToCategory}>General</button>
           <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}>Sporting Goods</button>
           <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}>Tools</button>
           <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}>Electronics</button>
@@ -103,4 +104,5 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
-//{itemListings}  this.props.payloadData  /" + data.attributes.images  <i class="fa fa-copyright" aria-hidden="true"></i>
+
+// onClick={this._routeToCategory}

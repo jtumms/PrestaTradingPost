@@ -5,6 +5,8 @@ const ReactDOM = require('react-dom')
 
 const ProfileView = React.createClass({
 
+  // let profileListing = 
+
   render: function(){
     return(
       <div className="profile-container">
@@ -26,19 +28,8 @@ const ProfileView = React.createClass({
           </div>
           <div className="profile-item-pic col-sm-4"></div>
           <div className="profile-info col-sm-4">
-            <form>
-              <h2>Profile</h2>
-              <h4 className="user-label"><label>Username</label></h4>
-              <input className="profile-inputs profile-email-holder" type="text" name="username" placeholder="UserName"/>
-              <h4 className="user-label"><label>Name</label></h4>
-              <input className="profile-inputs" type="text" name="firstName" placeholder="First Name"/>
-              <input className="profile-inputs" type="text" name="lastName" placeholder="Last Name"/>
-              <h4 className="user-label"><label>Address</label></h4>
-              <input className="profile-inputs" type="text" name="street" placeholder="Address"/>
-              <input className="profile-inputs" type="text" name="city" placeholder="City"/>
-              <input className="profile-inputs" type="text" name="state" placeholder="State"/>
-              <input className="profile-inputs" type="text" name="zipcode" placeholder="Zipcode"/>
-            </form>
+            <h1>User Profile</h1>
+
           </div>
         </div>
       </div>
@@ -47,3 +38,17 @@ const ProfileView = React.createClass({
 })
 
 module.exports = ProfileView
+
+// <form>
+//   <h2>Profile</h2>
+//   <h4 className="user-label"><label>Username</label></h4>
+//   <input className="profile-inputs profile-email-holder" type="text" name="username" placeholder="UserName"/>
+//   <h4 className="user-label"><label>Name</label></h4>
+//   <input className="profile-inputs" type="text" name="firstName" placeholder="First Name"/>
+//   <input className="profile-inputs" type="text" name="lastName" placeholder="Last Name"/>
+//   <h4 className="user-label"><label>Address</label></h4>
+//   <input className="profile-inputs" type="text" name="street" placeholder="Address"/>
+//   <input className="profile-inputs" type="text" name="city" placeholder="City"/>
+//   <input className="profile-inputs" type="text" name="state" placeholder="State"/>
+//   <input className="profile-inputs" type="text" name="zipcode" placeholder="Zipcode"/>
+// </form>

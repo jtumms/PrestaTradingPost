@@ -24,10 +24,7 @@ import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static org.aspectj.bridge.MessageUtil.fail;
 
@@ -133,34 +130,45 @@ public class ItemController {
         return new ResponseEntity<ArrayList<Item>>(randomItemsList, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/items", method = RequestMethod.GET)
-    public ResponseEntity<Iterable<Item>> showItemByCategory(@RequestParam("category")String category, HttpSession session){
-        String username = (String) session.getAttribute("username");
-        User user = users.findFirstByUsername(username);
-        Item.Category cat = Enum.valueOf(Item.Category.class, category);
-        return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
-    }
-    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
-    public ResponseEntity<Item> addNewItem(@RequestBody Item item, HttpSession session, MultipartFile file) throws Exception {
-        String username = (String) session.getAttribute("username");
-        User user = users.findFirstByUsername(username);
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
-        items.save(item);
+//    @RequestMapping(value = "/items", method = RequestMethod.GET)
+//    public ResponseEntity<Iterable<Item>> showItemByCategory(@RequestParam("category")String category, HttpSession session){
+//        String username = (String) session.getAttribute("username");
+//        User user = users.findFirstByUsername(username);
+//        Item.Category cat = Enum.valueOf(Item.Category.class, category);
+//        return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
+//    }
+//    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
+//    public ResponseEntity<Object> addNewItem(@RequestBody Item item, HttpSession session, MultipartFile file) throws Exception {
+//        String username = (String) session.getAttribute("username");
+//        User user = users.findFirstByUsername(username);
+//        if (user == null) {
+//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+//        }
+//
+//
+//
+//
+//
+//
+//        HashSet<Image> itemImageSet = new HashSet<>();
+//        File dir = new File("public/files");
+//        dir.mkdirs();
+//        File f = File.createTempFile(Integer.toString(items.item.getItemId()), file.getOriginalFilename(), dir);
+//        String mimeType = new MimetypesFileTypeMap().getContentType(f);
+//        FileOutputStream fos = new FileOutputStream(f);
+//        fos.write(file.getBytes());
+//        if(!mimeType.startsWith("image/")) {
+//            return new ResponseEntity<Object>("File is not a compatible image type", HttpStatus.FORBIDDEN);
+//        }
+////        return new ResponseEntity<Object>("You have successfully loaded an image", HttpStatus.OK);
+//
+//        items.save(item);
+//        return new ResponseEntity<Object>("You have successfully added and item", HttpStatus.OK);
+//    }
 
-        File dir = new File("public/files");
-        dir.mkdirs();
-        File f = File.createTempFile(Integer.toString(item.getItemId()), file.getOriginalFilename(), dir);
-        String mimeType = new MimetypesFileTypeMap().getContentType(f);
-        FileOutputStream fos = new FileOutputStream(f);
-        fos.write(file.getBytes());
-        if(!mimeType.startsWith("image/")) {
-            throw new Exception("File is not a compatible image type.");
-        }
 
-        return new ResponseEntity<Item>(item, HttpStatus.OK);
-    }
+
+
     @RequestMapping(value = "/get-item", method = RequestMethod.GET)
     public ResponseEntity<Item> getSingleItem(String gmapUrlByLatLng, @RequestParam("itemId")int itemId, HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
@@ -174,7 +182,6 @@ public class ItemController {
         String address = String.format("%s %s, %s %s", street, city, state, zip);
         getGeolocateMapDetail(address, selectedItem);
 
-//        selectedItem.setMapUrl(gmapUrlByLatLng);
         return new ResponseEntity<Item>(selectedItem, HttpStatus.OK);
     }
 

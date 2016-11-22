@@ -3,7 +3,7 @@ const React = require('react')
 const ACTIONS = require('./actions.js')
 const ProfileView = require("./profile-view.js")
 
-console.log('action??', ACTIONS);
+// console.log('action??', ACTIONS);
 
 const AuthView = React.createClass({
   _handleNewUserAuth: function(evt){
@@ -11,29 +11,31 @@ const AuthView = React.createClass({
 
     let newUserData = {
       username: evt.target.username.value,
-      firstName: evt.target.firstName.value,
-      lastName: evt.target.lastName.value,
-      street: evt.target.street.value,
-      city: evt.target.city.value,
-      state: evt.target.state.value,
-      zipcode: evt.target.zipcode.value,
-      password: evt.target.password.value
+      password: evt.target.password.value,
+      userDetail: {
+          firstName: evt.target.firstName.value,
+          lastName: evt.target.lastName.value,
+          street: evt.target.street.value,
+          city: evt.target.city.value,
+          state: evt.target.state.value,
+          zipcode: evt.target.zipcode.value
+      }
     }
-    console.log(newUserData)
-    ACTIONS.authenticateUser(newUserData)
+    console.log('new user data', newUserData)
+    ACTIONS.authenticateNewUser(newUserData)
   },
 
 
   _handleUserAuth: function(evt){
     evt.preventDefault()
-    console.log('evt', evt)
+    // console.log('evt', evt)
     let newUserData = {
       username: evt.target.username.value,
       password: evt.target.password.value
 
     }
-      console.log('new user data', newUserData)
-      console.log('actions', ACTIONS)
+      console.log('user data', newUserData)
+      // console.log('actions', ACTIONS)
     ACTIONS.authenticateUser(newUserData)
   },
 

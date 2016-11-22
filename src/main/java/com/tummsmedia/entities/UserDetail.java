@@ -18,7 +18,7 @@ public class UserDetail {
     private String lastName;
     @Column(nullable = false)
     private String street;
-    @Column(nullable = false)
+    @Column
     private String address2;
     @Column(nullable = false)
     private String city;
@@ -33,6 +33,15 @@ public class UserDetail {
 
 
     public UserDetail() {
+    }
+
+    public UserDetail(String firstName, String lastName, String street, String city, String state, int zipcode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
     }
 
     public UserDetail(String firstName, String lastName, String street, String address2, String city, String state, int zipcode) {
