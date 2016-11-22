@@ -43,7 +43,6 @@ const MultiView = React.createClass({
 
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
-      // console.log('data', data)
       if(i <= 11){
         return(
 
