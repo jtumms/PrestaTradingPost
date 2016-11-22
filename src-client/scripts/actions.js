@@ -1,10 +1,22 @@
 const Backbone = require('backbone')
 const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
+const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
 
 
 const ACTIONS = {
+
+  authenticateNewUser: function(newUserDataObj){
+    let newUserMod = new NewUserModel()
+    newUserMod.set(newUserDataObj)
+    newUserMod.save().then(function(serverRes){
+      location.hash = "/profileview"
+    }).fail(function(err){
+      location.hah = "/oops"
+    })    
+  },
+
 
   authenticateUser: function(userDataObj){
     //  console.log('user data obj', userDataObj)

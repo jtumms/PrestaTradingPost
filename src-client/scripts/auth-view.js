@@ -3,7 +3,7 @@ const React = require('react')
 const ACTIONS = require('./actions.js')
 const ProfileView = require("./profile-view.js")
 
-console.log('action??', ACTIONS);
+// console.log('action??', ACTIONS);
 
 const AuthView = React.createClass({
   _handleNewUserAuth: function(evt){
@@ -20,7 +20,7 @@ const AuthView = React.createClass({
       password: evt.target.password.value
     }
     console.log(newUserData)
-    ACTIONS.authenticateUser(newUserData)
+    ACTIONS.authenticateNewUser(newUserData)
   },
 
 
