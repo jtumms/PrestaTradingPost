@@ -25,7 +25,7 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "uDetail_FK")
-    private UserDetail userDetail;
+    public UserDetail userDetail;
 
     public User() {
     }

@@ -15,6 +15,9 @@ Route: localhost:8080/login - POST
     "username": "fredflintstone@gmail.com",
     "userDetail": null
   }
+****
+
+http://localhost/get-user/{id} - GET
 
 Route: localhost:8080/create-user - POST
 Obj needed:
@@ -74,3 +77,23 @@ returns single item by itemId
 
 
 *** ADD ITEM ROUTE - in Progress ***
+
+http://localhost/add-item - POST
+
+JSON needed from front end
+{
+  "username": "johnsmith@gmail.com",
+  "userDetail": {
+    "firstName": "John",
+    "lastName": "Smith",
+    "street": "100 First Street",
+    "address2": "",
+    "city": "Mount Pleasant",
+    "state": "SC",
+    "zipcode": 29466
+  }
+}
+
+
+
+
