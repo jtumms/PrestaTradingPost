@@ -130,41 +130,34 @@ public class ItemController {
         return new ResponseEntity<ArrayList<Item>>(randomItemsList, HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/items", method = RequestMethod.GET)
-//    public ResponseEntity<Iterable<Item>> showItemByCategory(@RequestParam("category")String category, HttpSession session){
-//        String username = (String) session.getAttribute("username");
-//        User user = users.findFirstByUsername(username);
-//        Item.Category cat = Enum.valueOf(Item.Category.class, category);
-//        return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
-//    }
-//    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
-//    public ResponseEntity<Object> addNewItem(@RequestBody Item item, HttpSession session, MultipartFile file) throws Exception {
-//        String username = (String) session.getAttribute("username");
-//        User user = users.findFirstByUsername(username);
-//        if (user == null) {
-//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        }
-//
-//
-//
-//
-//
-//
-//        HashSet<Image> itemImageSet = new HashSet<>();
-//        File dir = new File("public/files");
-//        dir.mkdirs();
-//        File f = File.createTempFile(Integer.toString(items.item.getItemId()), file.getOriginalFilename(), dir);
-//        String mimeType = new MimetypesFileTypeMap().getContentType(f);
-//        FileOutputStream fos = new FileOutputStream(f);
-//        fos.write(file.getBytes());
-//        if(!mimeType.startsWith("image/")) {
-//            return new ResponseEntity<Object>("File is not a compatible image type", HttpStatus.FORBIDDEN);
-//        }
-////        return new ResponseEntity<Object>("You have successfully loaded an image", HttpStatus.OK);
-//
-//        items.save(item);
-//        return new ResponseEntity<Object>("You have successfully added and item", HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/items", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Item>> showItemByCategory(@RequestParam("category")String category, HttpSession session){
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        Item.Category cat = Enum.valueOf(Item.Category.class, category);
+        return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
+    }
+    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
+    public ResponseEntity<Object> addNewItem(@RequestBody Item item, HttpSession session, MultipartFile file) throws Exception {
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        HashSet<Image> itemImageSet = new HashSet<>();
+        File dir = new File("public/images");
+        dir.mkdirs();
+        File f = File.createTempFile("file", file.getOriginalFilename(), dir);
+        String mimeType = new MimetypesFileTypeMap().getContentType(f);
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(file.getBytes());
+        if(!mimeType.startsWith("image/")) {
+            return new ResponseEntity<Object>("File is not a compatible image type", HttpStatus.FORBIDDEN);
+        }
+
+        items.save(item);
+        return new ResponseEntity<Object>("You have successfully added and item", HttpStatus.OK);
+    }
 
 
 
@@ -204,6 +197,4 @@ public class ItemController {
         emailDataMap.put("transactionId", Integer.toString(transaction.getTransactionId()));
         return emailDataMap;
     }
-
-
 }
