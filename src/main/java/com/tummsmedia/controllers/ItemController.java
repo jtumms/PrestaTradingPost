@@ -14,16 +14,15 @@ import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MimeType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -142,13 +141,24 @@ public class ItemController {
         return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
     }
     @RequestMapping(path = "/add-item", method = RequestMethod.POST)
-    public ResponseEntity<Item> addNewItem(@RequestBody Item item, HttpSession session){
+    public ResponseEntity<Item> addNewItem(@RequestBody Item item, HttpSession session, MultipartFile file) throws Exception {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         items.save(item);
+
+        File dir = new File("public/files");
+        dir.mkdirs();
+        File f = File.createTempFile(Integer.toString(item.getItemId()), file.getOriginalFilename(), dir);
+        String mimeType = new MimetypesFileTypeMap().getContentType(f);
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(file.getBytes());
+        if(!mimeType.startsWith("image/")) {
+            throw new Exception("File is not a compatible image type.");
+        }
+
         return new ResponseEntity<Item>(item, HttpStatus.OK);
     }
     @RequestMapping(value = "/get-item", method = RequestMethod.GET)
