@@ -24,12 +24,12 @@ const ACTIONS = {
   },
     routeTo: function(path){
       window.location.hash = routeTo
-    }
+    },
 
-    routeTo: function(path){
-      window.location.hash = routeTo
-
-    }
+    // routeTo: function(path){
+    //   window.location.hash = routeTo
+    //
+    // }
 
   routeTo: function(path){
     window.location.hash = path
