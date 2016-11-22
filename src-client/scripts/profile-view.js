@@ -1,11 +1,13 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-
-
+const GetUserModel = require('./get-user-model.js')
+const ACTIONS = require('./actions.js')
 
 const ProfileView = React.createClass({
 
-  // let profileListing = 
+  // let getUserModelInstance = new GetUserModel()
+  // console.log(getUserModelInstance)
+  // // ACTIONS.fetchgetUserInfo()
 
   render: function(){
     return(

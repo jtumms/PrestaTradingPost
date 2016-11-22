@@ -3,11 +3,16 @@ const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
-
+const GetUserModel =require('./get-user-model.js')
 
 const ACTIONS = {
 
+  getUserInfo: function(userInfoObj){
+    console.log('userinfo',userInfoObj)
+  },
+
   authenticateNewUser: function(newUserDataObj){
+    console.log("actions", newUserDataObj)
     let newUserMod = new NewUserModel()
     newUserMod.set(newUserDataObj)
     newUserMod.save().then(function(serverRes){
