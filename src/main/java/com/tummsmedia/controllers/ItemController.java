@@ -137,27 +137,36 @@ public class ItemController {
         Item.Category cat = Enum.valueOf(Item.Category.class, category);
         return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
     }
-    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
-    public ResponseEntity<Object> addNewItem(@RequestBody Item item, HttpSession session, MultipartFile file) throws Exception {
-        String username = (String) session.getAttribute("username");
-        User user = users.findFirstByUsername(username);
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
-        HashSet<Image> itemImageSet = new HashSet<>();
-        File dir = new File("public/images");
-        dir.mkdirs();
-        File f = File.createTempFile("file", file.getOriginalFilename(), dir);
-        String mimeType = new MimetypesFileTypeMap().getContentType(f);
-        FileOutputStream fos = new FileOutputStream(f);
-        fos.write(file.getBytes());
-        if(!mimeType.startsWith("image/")) {
-            return new ResponseEntity<Object>("File is not a compatible image type", HttpStatus.FORBIDDEN);
-        }
-
-        items.save(item);
-        return new ResponseEntity<Object>("You have successfully added and item", HttpStatus.OK);
-    }
+//    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
+//    public ResponseEntity<Object> addNewItem(
+//            HttpSession session, MultipartFile file,
+//            String itemName,
+//            String itemDescription,
+//            Item.Category category,
+//            long estValue,
+//            long askingPrice,
+//            Item.Condition condition,
+//
+//            ) throws Exception {
+//        String username = (String) session.getAttribute("username");
+//        User user = users.findFirstByUsername(username);
+//        if (user == null) {
+//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+//        }
+//        HashSet<Image> itemImageSet = new HashSet<>();
+//        File dir = new File("public/images");
+//        dir.mkdirs();
+//        File f = File.createTempFile("file", file.getOriginalFilename(), dir);
+//        String mimeType = new MimetypesFileTypeMap().getContentType(f);
+//        FileOutputStream fos = new FileOutputStream(f);
+//        fos.write(file.getBytes());
+//        if(!mimeType.startsWith("image/")) {
+//            return new ResponseEntity<Object>("File is not a compatible image type", HttpStatus.FORBIDDEN);
+//        }
+//
+//        items.save(item);
+//        return new ResponseEntity<Object>("You have successfully added and item", HttpStatus.OK);
+//    }
 
 
 
