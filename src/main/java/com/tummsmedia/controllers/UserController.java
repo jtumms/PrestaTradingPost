@@ -43,7 +43,7 @@ public class UserController {
         }
 
         session.setAttribute("username", user.getUsername());
-        return new ResponseEntity<Object>(user, HttpStatus.OK);
+        return new ResponseEntity<Object>(userFromDb, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/create-user", method = RequestMethod.POST)
@@ -69,10 +69,12 @@ public class UserController {
         }
         return new ResponseEntity<Object>(users.findFirstById(id), HttpStatus.OK);
     }
-    @RequestMapping(path = "/logout", method = RequestMethod.POST)
-    public ResponseEntity<String> logout(HttpSession session) {
+    @RequestMapping(path = "/logout", method = RequestMethod.GET)
+    public ResponseEntity<Object> logout(HttpSession session) {
+        String name = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(name);
         session.invalidate();
-        return new ResponseEntity<String>(HttpStatus.OK);
+        return new ResponseEntity<Object> (user, HttpStatus.OK);
     }
     @RequestMapping(path = "/check-auth", method = RequestMethod.GET)
     public ResponseEntity<Object> checkAuth(HttpSession session) {
@@ -81,9 +83,7 @@ public class UserController {
             String name = (String) session.getAttribute("username");
             User user = users.findFirstByUsername(name);
             return new ResponseEntity<Object> (user, HttpStatus.OK);
-
         }
-
         return new ResponseEntity<Object>("No active user!!",HttpStatus.FORBIDDEN);
     }
 }
