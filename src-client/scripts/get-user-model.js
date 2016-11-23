@@ -5,6 +5,7 @@ const GetUserModel = Backbone.Model.extend({
   //  idAttribute: "id",
 
    initialize: function(){
+
    }
 })
 

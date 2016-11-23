@@ -2,7 +2,7 @@ const Backbone = require('backbone')
 const React = require('react')
 const ACTIONS = require('./actions.js')
 const ProfileView = require("./profile-view.js")
-
+const STORE = require('./store.js')
 // console.log('action??', ACTIONS);
 
 const AuthView = React.createClass({
@@ -36,8 +36,10 @@ const AuthView = React.createClass({
 
     }
       console.log('user data', newUserData)
-      // console.log('actions', ACTIONS)
+      console.log('new user data', newUserData)
+
     ACTIONS.authenticateUser(newUserData)
+    // STORE.setStore(newUserData)
   },
 
   render: function() {
