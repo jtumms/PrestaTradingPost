@@ -74,4 +74,16 @@ public class UserController {
         session.invalidate();
         return new ResponseEntity<String>(HttpStatus.OK);
     }
+    @RequestMapping(path = "/check-auth", method = RequestMethod.GET)
+    public ResponseEntity<Object> checkAuth(HttpSession session) {
+        String sessId = session.getId();
+        if (session.getAttribute("username") != null){
+            String name = (String) session.getAttribute("username");
+            User user = users.findFirstByUsername(name);
+            return new ResponseEntity<Object> (user, HttpStatus.OK);
+
+        }
+
+        return new ResponseEntity<Object>("No active user!!",HttpStatus.FORBIDDEN);
+    }
 }
