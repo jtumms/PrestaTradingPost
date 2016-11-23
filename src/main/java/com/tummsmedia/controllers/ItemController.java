@@ -14,7 +14,6 @@ import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MimeType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -97,6 +96,41 @@ public class ItemController {
         String gmapUrlByLatLng = String.format("https://www.google.com/maps/@%s,%s,16z", latitude, longitude);
         selectedItem.setMapUrl(gmapUrlByLatLng);
     }
+//    public static void getLatLngWithItem(String address, Item selectedItem) throws Exception {
+//        final List<GeocodingResult[]> resps = new ArrayList<GeocodingResult[]>();
+//        final String MAPS_API_KEY = "AIzaSyCfVwsmmrQ1ptS9ohzm779XRS8RgaiSTtg";
+//
+//        PendingResult.Callback<GeocodingResult[]> callback =
+//                new PendingResult.Callback<GeocodingResult[]>() {
+//                    @Override
+//                    public void onResult(GeocodingResult[] result) {
+//                        resps.add(result);
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Throwable e) {
+//                        fail("Got error when expected success.");
+//                    }
+//                };
+//        GeoApiContext context = new GeoApiContext().setApiKey(MAPS_API_KEY);
+//        GeocodingResult[] results = GeocodingApi.newRequest(context).address(address).await();
+//        Double latitude = results[0].geometry.location.lat;
+//        Double longitude = results[0].geometry.location.lng;
+//        HashMap<String, Double> latLngMap = new HashMap<>();
+//        latLngMap.put("latitude", latitude);
+//        latLngMap.put("longitude", longitude);
+//        String gmapUrlByLatLng = String.format("https://www.google.com/maps/@%s,%s,16z", latitude, longitude);
+//        selectedItem.setMapUrl(gmapUrlByLatLng);
+//        CombinedItemGeo dataCombined = new CombinedItemGeo(selectedItem, latLngMap) {
+//            public void combine() {
+//                HashMap<String, Object> combinedMap = new HashMap<>();
+//                combinedMap.put("item", selectedItem);
+//                combinedMap.put("latLng", latLngMap);
+//            }
+//
+//        };
+//
+//    }
 
     @RequestMapping(path = "/all-items", method = RequestMethod.GET)
     public ResponseEntity<Iterable<Item>> getItems(HttpSession session) throws Exception {
@@ -137,38 +171,37 @@ public class ItemController {
         Item.Category cat = Enum.valueOf(Item.Category.class, category);
         return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
     }
-//    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
-//    public ResponseEntity<Object> addNewItem(
-//            HttpSession session, MultipartFile file,
-//            String itemName,
-//            String itemDescription,
-//            Item.Category category,
-//            long estValue,
-//            long askingPrice,
-//            Item.Condition condition,
-//
-//            ) throws Exception {
-//        String username = (String) session.getAttribute("username");
-//        User user = users.findFirstByUsername(username);
-//        if (user == null) {
-//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        }
-//        HashSet<Image> itemImageSet = new HashSet<>();
-//        File dir = new File("public/images");
-//        dir.mkdirs();
-//        File f = File.createTempFile("file", file.getOriginalFilename(), dir);
-//        String mimeType = new MimetypesFileTypeMap().getContentType(f);
-//        FileOutputStream fos = new FileOutputStream(f);
-//        fos.write(file.getBytes());
-//        if(!mimeType.startsWith("image/")) {
-//            return new ResponseEntity<Object>("File is not a compatible image type", HttpStatus.FORBIDDEN);
-//        }
-//
-//        items.save(item);
-//        return new ResponseEntity<Object>("You have successfully added and item", HttpStatus.OK);
-//    }
+    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
+    public ResponseEntity<Object> addNewItem(
+            HttpSession session, MultipartFile file,
+            String itemName,
+            String itemDescription,
+            Item.Category category,
+            String estValue,
+            String askingPrice,
+            Item.Condition condition) throws Exception {
 
-
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        HashSet<Image> itemImageSet = new HashSet<>();
+        File dir = new File("public/images");
+        dir.mkdirs();
+        File f = File.createTempFile("file", file.getOriginalFilename(), dir);
+        String mimeType = new MimetypesFileTypeMap().getContentType(f);
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(file.getBytes());
+        if(!mimeType.startsWith("image/")) {
+            return new ResponseEntity<Object>("File is not a compatible image type", HttpStatus.FORBIDDEN);
+        }
+        Image image = new Image(f.getName());
+        itemImageSet.add(image);
+        Item item = new Item(itemName, itemDescription, (Item.Category) category, Long.parseLong(estValue), Long.parseLong(askingPrice), (Item.Condition) condition, itemImageSet, user, "");
+        items.save(item);
+        return new ResponseEntity<Object>("You have successfully added and item", HttpStatus.OK);
+    }
 
 
     @RequestMapping(value = "/get-item", method = RequestMethod.GET)
@@ -186,6 +219,20 @@ public class ItemController {
 
         return new ResponseEntity<Item>(selectedItem, HttpStatus.OK);
     }
+//    @RequestMapping(value = "/get-item-lat-lng", method = RequestMethod.GET)
+//    public ResponseEntity<Object> getItemWithLatLng(String gmapUrlByLatLng, @RequestParam("itemId")int itemId, HttpSession session, CombinedItemGeo dataCombined) throws Exception {
+//        String username = (String) session.getAttribute("username");
+//        User user = users.findFirstByUsername(username);
+//        Item selectedItem = items.findFirstByItemId(itemId);
+//
+//        String street = selectedItem.getUser().getUserDetail().getStreet();
+//        String city = selectedItem.getUser().getUserDetail().getState();
+//        String state = selectedItem.getUser().getUserDetail().getState();
+//        String zip = Integer.toString(selectedItem.getUser().getUserDetail().getZipcode());
+//        String address = String.format("%s %s, %s %s", street, city, state, zip);
+//        getLatLngWithItem(address, selectedItem);
+//        return new ResponseEntity<>(dataCombined, HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/rent-item", method = RequestMethod.POST)
     public HashMap<String, String> rentItem(@RequestParam("itemId")int itemId,  HttpSession session) throws Exception {
@@ -206,4 +253,5 @@ public class ItemController {
         emailDataMap.put("transactionId", Integer.toString(transaction.getTransactionId()));
         return emailDataMap;
     }
+
 }
