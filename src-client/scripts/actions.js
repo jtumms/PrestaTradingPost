@@ -3,6 +3,7 @@ const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
+// const SingleItemModel = require('./single-item-model.js')
 
 
 const ACTIONS = {
@@ -33,15 +34,10 @@ const ACTIONS = {
     })
   },
 
-    // routeTo: function(path){
-    //   window.location.hash = routeTo
-    //
-    // }
-
   routeTo: function(path){
     window.location.hash = path
   },
-  
+
   routeHome: function(){
     window.location.hash = '/'
   },
@@ -66,14 +62,18 @@ const ACTIONS = {
      })
   },
 
-  fetchItemsModel: function(pid){
+  fetchSingleItemModel: function(attributes){
+    console.log('id arg', attributes);
      const singleMod = new ItemsModel()
-     singleMod.set({id:pid})
+
+     singleMod.url = `/get-item?itemId=` + itemId
+     console.log(singleMod.url);
      singleMod.fetch().then(function(){
-        // console.log('returned single mod' ,singleMod)
+
+        console.log('returned single mod' , singleMod)
         STORE.setStore('singleListing', singleMod)
      })
- },
+  },
 
 }
 

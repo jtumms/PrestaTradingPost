@@ -7,19 +7,22 @@ const MultiView = require('./multi-view.js')
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 
-console.log(STORE._data)
+// console.log('store data!!!', STORE._data)
+// console.log('store data!!!', STORE._data.attributes.itemId)
 
 const SingleView = React.createClass({
 
-  componentDidMount: function(){
-    ACTIONS.fetchItemsModel()
-    console.log(ACTIONS.fetchItemsModel())
+  componentWillMount: function(){
+    // let id = this.props.itemId
+    // ACTIONS.fetchSingleItemModel(id)
+    console.log('store data',STORE._data)
 
   },
 
 
   render:function(){
     let self = this
+
 
 
     return(
@@ -33,12 +36,11 @@ const SingleView = React.createClass({
           </div>
 
         <div className="thumbnail thumbnail-container text-center">
-               <img src="http://malakaiboards.com/wp-content/uploads/2016/04/Malakai-106-The-Trip.jpg"></img>
+               <img src={this.imageFileName}></img>
               <div className="caption">
-                 <h3>Renter: UserName</h3>
-                 <h3>Two LocalMotion Stand-Up Paddlboards</h3>
-                 <h3>Asking Price: $20/day for one, $35/both...non-negotiable.</h3>
-                 <h3>Misc. Info (*optional)</h3>
+                 <h4>Description: {this.itemDescription}</h4>
+                 <h4>Item: {this.itemName}</h4>
+                 <h4>Price: {this.askingPrice}</h4>
               </div>
         </div>
       </div>

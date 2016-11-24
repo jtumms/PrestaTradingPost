@@ -22,7 +22,7 @@ const AppViewController = React.createClass({
 
   componentWillMount: function(){
     let component = this
-    
+
 
     // let updateState = STORE.getStoreData()
     // // console.log( "the retrieved data:" ,updateState.currentInventory)
@@ -49,7 +49,7 @@ const AppViewController = React.createClass({
           break;
 
         case "SingleView":
-          return <SingleView />
+          return <SingleView itemId={this.props.itemId} />
           break;
 
         case "ProfileView":
