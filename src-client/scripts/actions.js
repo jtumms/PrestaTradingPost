@@ -3,29 +3,56 @@ const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
-// const SingleItemModel = require('./single-item-model.js')
-
+const GetUserModel =require('./get-user-model.js')
 
 const ACTIONS = {
 
+  logOutUser: function(){
+    let logOutUserInstance = new UserModel('/logout')
+    logOutUserInstance.fetch()
+      .then(function(){
+        STORE.setStore('currentUser', new UserModel() )
+      })
+  },
+
+  getCurrentUserInfo: function(){
+    let getUserModelInstance = new UserModel('/check-auth')
+    getUserModelInstance.fetch()
+      .then(function(){
+        console.log('server res for user info', getUserModelInstance)
+        STORE.setStore('currentUser', getUserModelInstance)
+        console.log('something here',getUserModelInstance)
+      })
+      .fail(function(errRes){
+        console.log('?????', errRes)
+        ACTIONS.routeTo('authview')
+      })
+  },
+
+
   authenticateNewUser: function(newUserDataObj){
-    let newUserMod = new NewUserModel()
+    console.log("actions", newUserDataObj)
+    let newUserMod = new UserModel('/create-user')
     newUserMod.set(newUserDataObj)
     newUserMod.save().then(function(serverRes){
+      STORE.setStore('currentUser', newUserMod)
       location.hash = "/profileview"
     }).fail(function(err){
-      location.hah = "/oops"
+      location.hash = "/authview"
     })
   },
 
 
   authenticateUser: function(userDataObj){
+
     //  console.log('user data obj', userDataObj)
-     let userMod = new UserModel()
+     let userMod = new UserModel('/login')
      userMod.set(userDataObj)
-    //  console.log('user mod', userMod)
+       console.log('user mod', userMod)
      userMod.save().then(function(serverRes){
       // console.log('serverres', serverRes)
+      console.log(userMod)
+      STORE.setStore('currentUser', userMod)
       location.hash = "/profileview"
     }).fail(function(err){
       // console.log('wrong pw bro')
@@ -41,7 +68,6 @@ const ACTIONS = {
   routeHome: function(){
     window.location.hash = '/'
   },
-
 
 
   fetchCategoryCollection: function(catVal){

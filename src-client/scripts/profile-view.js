@@ -1,13 +1,39 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-
-
-
+const GetUserModel = require('./get-user-model.js')
+const ACTIONS = require('./actions.js')
+const STORE = require('./store.js')
 const ProfileView = React.createClass({
 
-  // let profileListing = 
+  componentDidlMount: function(obj){
+    let getUserModelInstance = new GetUserModel()
+    // console.log("profile auth", getUserModelInstance)
+    console.log('why didnt that work??')
+    console.log('?????///!!!!!!', STORE._data.userListing.attributes.userDetail)
+    // let currentUserId = STORE.getStoreData()
+    ACTIONS.getCurrentUserInfo()
+    // console.log('actions current info', ACTIONS.getCurrentUserInfo())
+    },
+
+    // getUserDetails: function(userInfoObj) {
+    // let getUserModelInstance = new GetUserModel()
+    // // console.log(getUserModelInstance)
+    // // ACTIONS.fetchgetUserInfo()
+    // }
+  // },
+
+
 
   render: function(){
+    let myUsr = this.props.currentUser.attributes
+    console.log('what up')
+    // console.log('?????/?????', myUsr)
+
+    if (!this.props.currentUser.get('username')) {
+      console.log("????")
+      return <p> loading... </p>
+    }
+    // console.log("!!!!!!!!!", theNewNew.userListing.attributes.username)
     return(
       <div className="profile-container">
         <div className="profile-home-icon-container">
@@ -23,13 +49,32 @@ const ProfileView = React.createClass({
             <input className="profile-item-inputs" type="text" name="item" placeholder="Item to rent"/>
             <input className="profile-item-inputs" type="text" name="description" placeholder="Item description"/>
             <input className="profile-item-inputs" type="text" name="price" placeholder="Item rent price"/>
+
+            <div className="input-group profile-category-input">
+              <input type="text" className="form-control" placeholder="Category" aria-label="..."/>
+              <div className="input-group-btn">
+                <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="caret"></span></button>
+                <ul className="dropdown-menu dropdown-menu-right">
+                  <li>Sporting Goods</li>
+                  <li>Tools</li>
+                  <li>Electronics</li>
+                  <li>Outdoors</li>
+                </ul>
+              </div>
+            </div>
+
+
             <button className="btn btn-primary btn-lg profile-add-btn">Add Item</button>
             <button className="btn btn-primary btn-lg profile-add-btn">Add Pic</button>
           </div>
           <div className="profile-item-pic col-sm-4"></div>
-          <div className="profile-info col-sm-4">
-            <h1>User Profile</h1>
 
+          <div className="profile-info col-sm-4">
+            <h1><u>User Profile</u></h1>
+            <h3>{myUsr.userDetail.firstName} {myUsr.userDetail.lastName}</h3>
+            <h3>{myUsr.userDetail.street}</h3>
+            <h3>{myUsr.userDetail.city}, {myUsr.userDetail.state}  {myUsr.userDetail.zipcode}</h3>
+            <h3>{myUsr.username}</h3>
           </div>
         </div>
       </div>

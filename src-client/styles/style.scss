@@ -51,11 +51,12 @@ body{
 		font-weight: bolder;
 		font-size: 100px;
 		color: #000;
-		text-shadow: 4px 4px 4px #4ac4b2;
+		// text-shadow: 4px 4px 4px #4ac4b2;
 		text-align: center;
 		padding-top: 60px;
 		margin-top: 10px;
 		padding-bottom: 30px;
+		margin-bottom: 0px;
 			// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
 	}
 	h2 {
@@ -74,13 +75,16 @@ body{
 
 .multi-description {
 	background-color: #E49D4A;
-	h4 {
+
+	h1 {
+		text-align: center;
 		width: 90%;
 		margin-top: 20px;
 		margin: auto;
-		padding-top: 20px;
-		padding-bottom: 20px;
+		// padding-top: 20px;
+		// padding-bottom: 20px;
 		line-height: 1.5em;
+		padding: 20px;
 	}
 }
 
@@ -187,7 +191,7 @@ body{
 		font-weight: bolder;
 		font-size: 100px;
 		color: #000;
-		text-shadow: 4px 4px 4px #4ac4b2;
+		// text-shadow: 4px 4px 4px #4ac4b2;
 		text-align: center;
 		// padding-top: 60px;
 		margin-top: 10px;
@@ -198,7 +202,7 @@ body{
 .auth-sign-in {
 	text-align: center;
 	color: #00DDD8;
-	text-shadow: 5px 5px 5px rgba(1,1,1,0.7);
+	// text-shadow: 5px 5px 5px rgba(1,1,1,0.7);
 	// background-color: #517398;
 }
 
@@ -272,18 +276,18 @@ body{
 	margin: auto;
 	margin-top: 0px;
 	h1 {
-		font-family: fantasy, sans-serif;
-		font-weight: bold;
-		font-size: 90px;
-		text-align: center;
-		padding-top: 60px;
-		margin-top: 0px;
-			text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
+		// font-family: fantasy, sans-serif;
+		// font-weight: bold;
+		// font-size: 90px;
+		// text-align: center;
+		// padding-top: 60px;
+		// margin-top: 0px;
+			// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
 			font-family: fantasy, sans-serif;
 			font-weight: bolder;
 			font-size: 100px;
 			color: #000;
-			text-shadow: 4px 4px 4px #4ac4b2;
+			// text-shadow: 4px 4px 4px #4ac4b2;
 			text-align: center;
 			padding-top: 60px;
 			margin-top: 10px;
@@ -298,6 +302,10 @@ body{
 .profile-item-inputs {
 	width: 80%;
 	margin-top: 15px;
+}
+
+.profile-info h3{
+	line-height: .8em;
 }
 
 .single-home-icon-container{
@@ -317,7 +325,7 @@ body{
 			text-align: center;
 			padding-top: 60px;
 			margin-top: 0px;
-				text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
+				// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
 		}
 		background-color: #5E9F41;
 		position: relative;
@@ -330,7 +338,7 @@ body{
 	}
 	.caption{
 		color: white;
-		text-shadow: .5px .5px .5px rgba(1,1,1,0.7);
+		// text-shadow: .5px .5px .5px rgba(1,1,1,0.7);
 		background-color: #E19D29;
 	}
 
@@ -359,6 +367,12 @@ body{
 
 .profile-email-holder {
 	width: 80%;
+}
+
+.profile-category-input {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 10px;
 }
 
 .signout-container {

@@ -13,7 +13,7 @@ const AppRouter = Backbone.Router.extend({
 
     routes: {
       "category/:catName" : "showCatName",
-      "signout" : "showSignOutView",
+      "logout" : "showSignOutView",
       "oops" : "showOopsView",
       "profileview" : "showProfileView",
       "authview" : "showAuthView",

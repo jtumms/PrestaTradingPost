@@ -5,6 +5,12 @@ const STORE = {
    _data:  {
        userListing: [],
        categoryListing: [],
+
+const UserModel = require('./model-user.js')
+
+const STORE = {
+   _data:  {
+       currentUser: new UserModel(),
        currentViewSetting : '',
        currentInventory : [],
        singleListing: {}

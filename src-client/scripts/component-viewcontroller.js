@@ -12,16 +12,18 @@ const {ItemsModel} = require('./models.js')
 
 const AppViewController = React.createClass({
   getInitialState: function(){
-      let updateState = STORE.getStoreData()
       // console.log( "the retrieved data:" ,updateState.currentInventory)
-      STORE.setStore('currentInventory', updateState.currentInventory)
+      // STORE.setStore('currentInventory', updateState.currentInventory)
       STORE.setStore('singleListing', new ItemsModel())
+      STORE.setStore('currentUser', new ItemsModel())
+
 
       return STORE.getStoreData()
    },
 
   componentWillMount: function(){
     let component = this
+    ACTIONS.getCurrentUserInfo()
 
 
     // let updateState = STORE.getStoreData()
@@ -53,7 +55,7 @@ const AppViewController = React.createClass({
           break;
 
         case "ProfileView":
-          return <ProfileView/>
+          return <ProfileView currentUser={this.state.currentUser}/>
           break;
 
         case "OopsView":

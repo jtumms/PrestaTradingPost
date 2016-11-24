@@ -46,7 +46,9 @@ const MultiView = React.createClass({
 
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
+      // console.log(data.attributes.itemId)
       if(i <= 11){
+
         return(
 
               <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
@@ -68,7 +70,7 @@ const MultiView = React.createClass({
         <div className="sign-in-btn">
           <a href="#authview"><button type="button" className="btn btn-default btn-md alignleft">About-Us</button></a>
           <a href="#authview"><button type="button" className="btn btn-default btn-md">Sign-in / Sign-up</button></a>
-          <a href="#signout"><button type="button" className="btn btn-default btn-md sign-out">Sign Out</button></a>
+          <a href="logout"><button type="button" className="btn btn-default btn-md sign-out">Sign Out</button></a>
         </div>
         <div className="multi-header text-center">
           <h2>LOGO</h2>
@@ -78,6 +80,7 @@ const MultiView = React.createClass({
         <div className="garage-pic"></div>
         <div className="multi-description text-center">
           <h2> The ultimate meet-up spot for those who have, and those who don't...</h2>
+
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
           <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}>General</button>
