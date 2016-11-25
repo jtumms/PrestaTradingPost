@@ -9,6 +9,7 @@ const ProfileView = require('./profile-view.js')
 const SignOutView = require('./signout-view.js')
 const STORE = require('./store.js')
 const {ItemsModel} = require('./models.js')
+const AboutUsView = require('./about-us.js')
 
 const AppViewController = React.createClass({
   getInitialState: function(){
@@ -24,6 +25,8 @@ const AppViewController = React.createClass({
   componentWillMount: function(){
     let component = this
     // ACTIONS.getCurrentUserInfo()  <===need to check this out======
+
+
 
     // let updateState = STORE.getStoreData()
     // // console.log( "the retrieved data:" ,updateState.currentInventory)
@@ -50,7 +53,7 @@ const AppViewController = React.createClass({
           break;
 
         case "SingleView":
-          return <SingleView />
+          return <SingleView itemId={this.props.itemId} />
           break;
 
         case "ProfileView":
@@ -63,6 +66,10 @@ const AppViewController = React.createClass({
 
         case "SignOutView":
           return <SignOutView/>
+          break;
+
+        case "AboutUsView":
+          return <AboutUsView/>
           break;
       }
   }

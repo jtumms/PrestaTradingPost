@@ -61,7 +61,6 @@ const ACTIONS = {
     })
   },
 
-
   routeTo: function(path){
     window.location.hash = path
   },
@@ -80,9 +79,7 @@ const ACTIONS = {
   },
 
   fetchItemsModelCollection: function(queryObj){
-    // console.log('queryObj', queryObj)
-    // console.log('am i even here????')
-    // console.log('another test')
+
      const itemsColl = new ItemsModelCollection()
      itemsColl.fetch().then(function(){
         console.log("hey look right here this is what we need>>>>>>",itemsColl)
@@ -91,14 +88,18 @@ const ACTIONS = {
      })
   },
 
-  fetchItemsModel: function(pid){
+  fetchSingleItemModel: function(attributes){
+    console.log('id arg', attributes);
      const singleMod = new ItemsModel()
-     singleMod.set({id:pid})
+
+     singleMod.url = `/get-item?itemId=` + itemId
+     console.log(singleMod.url);
      singleMod.fetch().then(function(){
-        // console.log('returned single mod' ,singleMod)
+
+        console.log('returned single mod' , singleMod)
         STORE.setStore('singleListing', singleMod)
      })
- },
+  },
 
   // addItemModel: function(){
   //   const addItemInstance = new AddItemModel()

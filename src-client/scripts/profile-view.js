@@ -3,6 +3,9 @@ const ReactDOM = require('react-dom')
 const GetUserModel = require('./get-user-model.js')
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
+const AddItemModel = require('./add-item-model.js')
+
+
 const ProfileView = React.createClass({
 
   componentDidlMount: function(obj){
@@ -25,10 +28,18 @@ const ProfileView = React.createClass({
   //
   // }
 
-  // _submitNewItemInfo: function(evt) {
-  //   let itemsModelCollectionInstance = new ItemsModelCollection
-  //   console.log(evt)
-  // },
+  _submitNewItemInfo: function(evt) {
+    let addItemModelInstance = new AddItemModel
+    console.log(evt)
+    console.log(evt.target)
+    let newItemData = {
+      itemName: evt.target.item.value,
+      itemDescription: evt.target.description.value,
+      askingPrice: evt.target.price.value,
+
+    }
+    console.log(newItemData)
+  },
 
 
   render: function(){
@@ -54,9 +65,9 @@ const ProfileView = React.createClass({
           <div className="profile-add-pic-btn col-sm-4">
             <form>
               <h2>Add an item to rent</h2>
-              <input className="profile-item-inputs" type="text" name="item" placeholder="Item to rent"/>
-              <input className="profile-item-inputs" type="text" name="description" placeholder="Item description"/>
-              <input className="profile-item-inputs" type="text" name="price" placeholder="Item rent price"/>
+              <input className="profile-item-inputs" type="text" name="item" key="item" placeholder="Item to rent"/>
+              <input className="profile-item-inputs" type="text" name="description" key="description" placeholder="Item description"/>
+              <input className="profile-item-inputs" type="text" name="price" key="price" placeholder="Item rent price"/>
 
               <div className="input-group profile-category-input">
                 <input type="text" className="form-control" placeholder="Category" aria-label="..."/>
@@ -72,7 +83,7 @@ const ProfileView = React.createClass({
               </div>
             </form>
 
-            <button className="btn btn-primary btn-lg profile-add-btn" onSubmit="">Add Item</button>
+            <button className="btn btn-primary btn-lg profile-add-btn" onClick={this._submitNewItemInfo}>Add Item</button>
             <button className="btn btn-primary btn-lg profile-add-btn">Add Pic</button>
           </div>
           <div className="profile-item-pic col-sm-4"></div>
