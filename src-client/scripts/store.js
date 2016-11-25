@@ -1,12 +1,10 @@
 const Backbone = require('backbone')
 const ACTIONS = require('./actions.js')
-
-
+const UserModel = require('./model-user.js')
 
 const STORE = {
    _data:  {
-       userListing: {},
-       currentUser: {},
+       currentUser: new UserModel(),
        currentViewSetting : '',
        currentInventory : [],
        singleListing: {}

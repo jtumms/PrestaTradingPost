@@ -7,12 +7,20 @@ const GetUserModel =require('./get-user-model.js')
 
 const ACTIONS = {
 
+  logOutUser: function(){
+    let logOutUserInstance = new UserModel('/logout')
+    logOutUserInstance.fetch()
+      .then(function(){
+        STORE.setStore('currentUser', new UserModel() )
+      })
+  },
+
   getCurrentUserInfo: function(){
-    let getUserModelInstance = new GetUserModel()
+    let getUserModelInstance = new UserModel('/check-auth')
     getUserModelInstance.fetch()
       .then(function(){
         console.log('server res for user info', getUserModelInstance)
-        STORE.setStore('userListing', getUserModelInstance)
+        STORE.setStore('currentUser', getUserModelInstance)
         console.log('something here',getUserModelInstance)
       })
       .fail(function(errRes){
@@ -24,9 +32,10 @@ const ACTIONS = {
 
   authenticateNewUser: function(newUserDataObj){
     console.log("actions", newUserDataObj)
-    let newUserMod = new NewUserModel()
+    let newUserMod = new UserModel('/create-user')
     newUserMod.set(newUserDataObj)
     newUserMod.save().then(function(serverRes){
+      STORE.setStore('currentUser', newUserMod)
       location.hash = "/profileview"
     }).fail(function(err){
       location.hash = "/authview"
@@ -35,13 +44,15 @@ const ACTIONS = {
 
 
   authenticateUser: function(userDataObj){
+
     //  console.log('user data obj', userDataObj)
-     let userMod = new UserModel()
+     let userMod = new UserModel('/login')
      userMod.set(userDataObj)
-      //  console.log('user mod', userMod)
+       console.log('user mod', userMod)
      userMod.save().then(function(serverRes){
       // console.log('serverres', serverRes)
-
+      console.log(userMod)
+      STORE.setStore('currentUser', userMod)
       location.hash = "/profileview"
     }).fail(function(err){
       // console.log('wrong pw bro')
@@ -55,6 +66,9 @@ const ACTIONS = {
     window.location.hash = path
   },
 
+  routeHome: function(){
+    window.location.hash = '/'
+  },
 
 
   fetchCategoryCollection: function(catVal){
