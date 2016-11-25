@@ -2,11 +2,18 @@ const Backbone = require('backbone')
 const ACTIONS = require('./actions.js')
 const UserModel = require('./model-user.js')
 
+// const STORE = {
+//    _data:  {
+
+
+
 const STORE = {
    _data:  {
-       currentUser: new UserModel(),
        currentViewSetting : '',
        currentInventory : [],
+       userListing: [],
+       categoryListing: [],
+       currentUser: new UserModel(),
        singleListing: {}
     },
 
@@ -19,7 +26,6 @@ const STORE = {
 
       this._data[storeProp] = payload
       Backbone.Events.trigger('storeChange')
-      // console.log('payload', payload)
    },
 
    getStoreData: function(){

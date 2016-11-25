@@ -1,9 +1,11 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-
+const SingleView = require('./single-view')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require("./models.js")
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
+
+
 
 const MultiView = React.createClass({
 
@@ -34,14 +36,13 @@ const MultiView = React.createClass({
   ACTIONS.routeTo(`category/${evt.target.dataset.cathash}`)
   },
 
-
-  _itemSelector: function() {
-
+  _routeToItem: function(evt) {
+    ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
 
   },
 
   render: function(){
-
+    let self = this
 
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
@@ -52,7 +53,7 @@ const MultiView = React.createClass({
 
               <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
                   <div className="thumbnail thumbnail-container">
-                    <a href={"./#singleview/"+ data.attributes.itemId} className="anchor-to-single">
+                    <a onClick={self._routeToItem} className="anchor-to-single" data-id={data.attributes.id}>
                       <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
                     </a>
                     <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
@@ -67,16 +68,19 @@ const MultiView = React.createClass({
     return (
       <div className="multi-container">
         <div className="sign-in-btn">
+          <a href="#authview"><button type="button" className="btn btn-default btn-md alignleft">About-Us</button></a>
           <a href="#authview"><button type="button" className="btn btn-default btn-md">Sign-in / Sign-up</button></a>
           <a href="logout"><button type="button" className="btn btn-default btn-md sign-out">Sign Out</button></a>
         </div>
-        <div className="multi-header">
+        <div className="multi-header text-center">
           <h2>LOGO</h2>
           <h1>Presta Trading Post</h1>
+          {/* <h3>The ultimate meet-up spot for those who have, and for those who don't</h3> */}
         </div>
         <div className="garage-pic"></div>
-        <div className="multi-description">
-          <h1>Presta Trading Post is the ultimate meet-up spot for the people who have and the people who don't.</h1>
+        <div className="multi-description text-center">
+          <h2> The ultimate meet-up spot for those who have, and those who don't...</h2>
+
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
           <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}>General</button>
@@ -85,8 +89,6 @@ const MultiView = React.createClass({
           <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}>Electronics</button>
           <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}>Outdoors</button>
         </div>
-
-
 
         <div className="row row-eq-height is-flex multi-pic-body">
           {itemListings}
@@ -109,4 +111,9 @@ const MultiView = React.createClass({
 module.exports = MultiView
 
 // onClick={this._routeToCategory}
-//          <h4>Presta Trading Post is the ultimate meet-up spot for the people who have and the people who don't. Have you ever wanted to try out a stand-up paddle board but didn't want to have to fork out the big money just to try it out for a weekend? How about, have you ever needed a special tool to fix something in an afternoon but didn't want to have to buy so that it can sit in your garage 99% of the time? Or maybe you want to have a jam session tonight but you don't have an amplifier.  Well here at Presta Trading Post we have people who have these kinds of things and more that are just sitting in their garages for 99% of the year and for a nominal price, which in most cases can be totally negotiable, you can use these items and not have to buy them.  All you have to do is register with Presta Trading Post today, and then you can begin to see the benefits. Or maybe you even have items sitting around in your garage that someone else might need to use.  Everybody wins. So, register today. </h4>
+//  Have you ever wanted to try out a stand-up paddle board but didn't want to have to fork out the big money just to try it out for a weekend?
+// How about, have you ever needed a special tool to fix something in an afternoon but didn't want to have to buy so that it can sit in your garage 99% of the time?
+// Or maybe you want to have a jam session tonight but you don't have an amplifier.  Well here at Presta Trading Post we have people who have these kinds of things
+// and more that are just sitting in their garages for 99% of the year and for a nominal price, which in most cases can be totally negotiable, you can use these items and not have to buy them.
+// All you have to do is register with Presta Trading Post today, and then you can begin to see the benefits. Or maybe you even have items sitting around in your garage that someone else might need to use.
+// Everybody wins. So, register today.

@@ -17,7 +17,7 @@ const AppRouter = Backbone.Router.extend({
       "oops" : "showOopsView",
       "profileview" : "showProfileView",
       "authview" : "showAuthView",
-      "singleview" : "showSingleView",
+      "singleview/:itemId" : "showSingleView",
       "*path" : "showMultiView"
     },
 
@@ -25,8 +25,8 @@ const AppRouter = Backbone.Router.extend({
     ReactDOM.render( <AppViewController routedFrom="MultiView"/>, document.querySelector('#app-container') )
     },
 
-    showSingleView: function(pid){
-    ReactDOM.render( <AppViewController routedFrom="SingleView" pidInRoute={pid} />, document.querySelector('#app-container') )
+    showSingleView: function(itemId){
+    ReactDOM.render( <AppViewController routedFrom="SingleView" itemId={itemId} />, document.querySelector('#app-container') )
     },
 
     showAuthView: function(){
@@ -55,9 +55,3 @@ const AppRouter = Backbone.Router.extend({
 })
 
 new AppRouter()
-
-
-
-
-
-// document.querySelector('#app-container').innerHTML = `<h1>Yah okay</h1>`

@@ -39,7 +39,6 @@ body{
 .oops-header {
 	position: relative;
 
-	// height: 200px;
 	background: #5E9F41;
 	// background-image: url('/images/full-garage-.jpg');
 	// background-size: cover;
@@ -411,6 +410,10 @@ body{
 	margin: auto;
 }
 
+.item-desc{
+	overflow: auto;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 .oops-auth-btn {
 	// font-size: 2em;
 	height: 50px;

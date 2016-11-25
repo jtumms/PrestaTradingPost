@@ -1,13 +1,29 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const Backbone = require('backbone')
+// const AppViewController = require('./component-viewcontroller.js')
+const {ItemsModel, ItemsModelCollection} = require("./models.js")
+const MultiView = require('./multi-view.js')
+const ACTIONS = require('./actions.js')
+const STORE = require('./store.js')
 
-
+// console.log('store data!!!', STORE._data)
+// console.log('store data!!!', STORE._data.attributes.itemId)
 
 const SingleView = React.createClass({
 
+  componentWillMount: function(){
+    let id = this.props.itemId
+    console.log('store data',STORE._data);
+
+
+  },
+
+
   render:function(){
     let self = this
+
+
 
     return(
       <div className="single-item-container text-center">
@@ -20,12 +36,11 @@ const SingleView = React.createClass({
           </div>
 
         <div className="thumbnail thumbnail-container text-center">
-               <img src="http://malakaiboards.com/wp-content/uploads/2016/04/Malakai-106-The-Trip.jpg"></img>
+               <img src={this.props.imageFileName}></img>
               <div className="caption">
-                 <h3>Renter: UserName</h3>
-                 <h3>Two LocalMotion Stand-Up Paddlboards</h3>
-                 <h3>Asking Price: $20/day for one, $35/both...non-negotiable.</h3>
-                 <h3>Misc. Info (*optional)</h3>
+                 <h4>Description: {this.props.itemDescription}</h4>
+                 <h4>Item: {this.props.itemName}</h4>
+                 <h4>Price: {this.props.askingPrice}</h4>
               </div>
         </div>
       </div>
@@ -35,3 +50,11 @@ const SingleView = React.createClass({
 })
 
 module.exports = SingleView
+
+// const SingleView = React.createClass({
+//    componentDidMount: function(){
+//      console.log('fetching....', this.props.pidVal)
+//      ACTIONS.itemsModel(this.props.pidVal)
+//
+//    },
+// })
