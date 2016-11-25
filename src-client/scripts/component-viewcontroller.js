@@ -23,7 +23,7 @@ const AppViewController = React.createClass({
 
   componentWillMount: function(){
     let component = this
-    ACTIONS.getCurrentUserInfo()
+    // ACTIONS.getCurrentUserInfo()  <===need to check this out======
 
     // let updateState = STORE.getStoreData()
     // // console.log( "the retrieved data:" ,updateState.currentInventory)

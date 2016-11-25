@@ -66,6 +66,10 @@ body{
 	}
 }
 
+.open .dropdown-menu {
+	display:block;
+}
+
 .garage-pic {
 	height: 375px;
 	background-image: url('/images/full-garage-.jpg');
