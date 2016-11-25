@@ -23,7 +23,7 @@ const AppViewController = React.createClass({
 
   componentWillMount: function(){
     let component = this
-    ACTIONS.getCurrentUserInfo()
+    // ACTIONS.getCurrentUserInfo()
 
 
     // let updateState = STORE.getStoreData()

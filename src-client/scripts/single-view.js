@@ -13,9 +13,9 @@ const STORE = require('./store.js')
 const SingleView = React.createClass({
 
   componentWillMount: function(){
-    // let id = this.props.itemId
-    // ACTIONS.fetchSingleItemModel(id)
-    console.log('store data',STORE._data)
+    let id = this.props.itemId
+    console.log('store data',STORE._data);
+
 
   },
 
@@ -36,11 +36,11 @@ const SingleView = React.createClass({
           </div>
 
         <div className="thumbnail thumbnail-container text-center">
-               <img src={this.imageFileName}></img>
+               <img src={this.props.imageFileName}></img>
               <div className="caption">
-                 <h4>Description: {this.itemDescription}</h4>
-                 <h4>Item: {this.itemName}</h4>
-                 <h4>Price: {this.askingPrice}</h4>
+                 <h4>Description: {this.props.itemDescription}</h4>
+                 <h4>Item: {this.props.itemName}</h4>
+                 <h4>Price: {this.props.askingPrice}</h4>
               </div>
         </div>
       </div>

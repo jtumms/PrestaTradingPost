@@ -1,6 +1,6 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-
+const SingleView = require('./single-view')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require("./models.js")
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
