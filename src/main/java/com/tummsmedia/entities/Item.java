@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.query.StringQueryParameterBinder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -59,13 +60,13 @@ public class Item {
     User user;
 
     @Transient
-    String mapUrl;
+    HashMap<String, Double> latLng;
 
 
     public Item() {
     }
 
-    public Item(int itemId, String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user, String mapUrl) {
+    public Item(int itemId, String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user, HashMap<String, Double> latLng) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -75,10 +76,10 @@ public class Item {
         this.condition = condition;
         this.images = images;
         this.user = user;
-        this.mapUrl = mapUrl;
+        this.latLng = latLng;
     }
 
-    public Item(String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user, String mapUrl) {
+    public Item(String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user, HashMap<String, Double> latLng) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.category = category;
@@ -87,7 +88,19 @@ public class Item {
         this.condition = condition;
         this.images = images;
         this.user = user;
-        this.mapUrl = mapUrl;
+        this.latLng = latLng;
+    }
+
+    public Item(String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user) {
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.category = category;
+        this.estValue = estValue;
+        this.askingPrice = askingPrice;
+        this.condition = condition;
+        this.images = images;
+        this.user = user;
+        this.latLng = latLng;
     }
 
     public int getItemId() {
@@ -162,11 +175,11 @@ public class Item {
         this.user = user;
     }
 
-    public String getMapUrl() {
-        return mapUrl;
+    public HashMap<String, Double> getLatLng() {
+        return latLng;
     }
 
-    public void setMapUrl(String mapUrl) {
-        this.mapUrl = mapUrl;
+    public void setLatLng(HashMap<String, Double> latLng) {
+        this.latLng = latLng;
     }
 }
