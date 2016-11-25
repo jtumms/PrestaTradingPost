@@ -2,7 +2,7 @@ const Backbone = require('backbone')
 
 const GetUserModel = Backbone.Model.extend({
    url: "/check-auth",
-  //  idAttribute: "id",
+   idAttribute: "id",
 
    initialize: function(){
 
