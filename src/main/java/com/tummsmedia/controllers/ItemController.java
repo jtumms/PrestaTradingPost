@@ -93,8 +93,11 @@ public class ItemController {
         GeocodingResult[] results = GeocodingApi.newRequest(context).address(address).await();
         Double latitude = results[0].geometry.location.lat;
         Double longitude = results[0].geometry.location.lng;
-        String gmapUrlByLatLng = String.format("https://www.google.com/maps/@%s,%s,16z", latitude, longitude);
-        selectedItem.setMapUrl(gmapUrlByLatLng);
+        HashMap<String, Double> coordsMap = new HashMap<>();
+        coordsMap.put("latitude", latitude);
+        coordsMap.put("longitude", longitude);
+        selectedItem.setLatLng(coordsMap);
+//        String gmapUrlByLatLng = String.format("https://www.google.com/maps/@%s,%s,16z", latitude, longitude);
     }
 //    public static void getLatLngWithItem(String address, Item selectedItem) throws Exception {
 //        final List<GeocodingResult[]> resps = new ArrayList<GeocodingResult[]>();
@@ -198,7 +201,7 @@ public class ItemController {
         }
         Image image = new Image(f.getName());
         itemImageSet.add(image);
-        Item item = new Item(itemName, itemDescription, (Item.Category) category, Long.parseLong(estValue), Long.parseLong(askingPrice), (Item.Condition) condition, itemImageSet, user, "");
+        Item item = new Item(itemName, itemDescription, (Item.Category) category, Long.parseLong(estValue), Long.parseLong(askingPrice), (Item.Condition) condition, itemImageSet, user);
         items.save(item);
         return new ResponseEntity<Object>("You have successfully added and item", HttpStatus.OK);
     }
