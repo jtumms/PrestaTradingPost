@@ -3,6 +3,9 @@ const ReactDOM = require('react-dom')
 const GetUserModel = require('./get-user-model.js')
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
+const AddItemModel = require('./add-item-model.js')
+
+
 const ProfileView = React.createClass({
 
   componentDidlMount: function(obj){
@@ -13,7 +16,7 @@ const ProfileView = React.createClass({
     // let currentUserId = STORE.getStoreData()
     ACTIONS.getCurrentUserInfo()
     // console.log('actions current info', ACTIONS.getCurrentUserInfo())
-    },
+  },
 
     // getUserDetails: function(userInfoObj) {
     // let getUserModelInstance = new GetUserModel()
@@ -21,7 +24,22 @@ const ProfileView = React.createClass({
     // // ACTIONS.fetchgetUserInfo()
     // }
   // },
+  // _addSubmisions: function(){
+  //
+  // }
 
+  _submitNewItemInfo: function(evt) {
+    let addItemModelInstance = new AddItemModel
+    console.log(evt)
+    console.log(evt.target)
+    let newItemData = {
+      itemName: evt.target.item.value,
+      itemDescription: evt.target.description.value,
+      askingPrice: evt.target.price.value,
+
+    }
+    console.log(newItemData)
+  },
 
 
   render: function(){
@@ -45,26 +63,27 @@ const ProfileView = React.createClass({
         </div>
         <div className="row profile-item-row">
           <div className="profile-add-pic-btn col-sm-4">
-            <h2>Add an item to rent</h2>
-            <input className="profile-item-inputs" type="text" name="item" placeholder="Item to rent"/>
-            <input className="profile-item-inputs" type="text" name="description" placeholder="Item description"/>
-            <input className="profile-item-inputs" type="text" name="price" placeholder="Item rent price"/>
+            <form>
+              <h2>Add an item to rent</h2>
+              <input className="profile-item-inputs" type="text" name="item" key="item" placeholder="Item to rent"/>
+              <input className="profile-item-inputs" type="text" name="description" key="description" placeholder="Item description"/>
+              <input className="profile-item-inputs" type="text" name="price" key="price" placeholder="Item rent price"/>
 
-            <div className="input-group profile-category-input">
-              <input type="text" className="form-control" placeholder="Category" aria-label="..."/>
-              <div className="input-group-btn">
-                <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="caret"></span></button>
-                <ul className="dropdown-menu dropdown-menu-right">
-                  <li>Sporting Goods</li>
-                  <li>Tools</li>
-                  <li>Electronics</li>
-                  <li>Outdoors</li>
-                </ul>
+              <div className="input-group profile-category-input">
+                <input type="text" className="form-control" placeholder="Category" aria-label="..."/>
+                <div className="input-group-btn dropdown">
+                  <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" ><span className="caret"></span></button>
+                  <ul className="dropdown-menu dropdown-menu-right">
+                    <li>Sporting Goods</li>
+                    <li>Tools</li>
+                    <li>Electronics</li>
+                    <li>Outdoors</li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            </form>
 
-
-            <button className="btn btn-primary btn-lg profile-add-btn">Add Item</button>
+            <button className="btn btn-primary btn-lg profile-add-btn" onClick={this._submitNewItemInfo}>Add Item</button>
             <button className="btn btn-primary btn-lg profile-add-btn">Add Pic</button>
           </div>
           <div className="profile-item-pic col-sm-4"></div>
@@ -84,6 +103,8 @@ const ProfileView = React.createClass({
 
 module.exports = ProfileView
 
+
+//aria-haspopup="true" aria-expanded="false"
 // <form>
 //   <h2>Profile</h2>
 //   <h4 className="user-label"><label>Username</label></h4>
