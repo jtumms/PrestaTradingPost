@@ -93,7 +93,7 @@ const ACTIONS = {
     console.log('id arg', attributes);
      const singleMod = new ItemsModel()
 
-     singleMod.url = `/get-item?itemId=` + itemId
+     singleMod.url = `/get-item?itemId=` + attributes
      console.log(singleMod.url);
      singleMod.fetch().then(function(){
 

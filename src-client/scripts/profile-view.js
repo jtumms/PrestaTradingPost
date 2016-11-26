@@ -67,7 +67,7 @@ const ProfileView = React.createClass({
       console.log("????")
       return <p> loading... </p>
     }
-    // console.log("!!!!!!!!!", theNewNew.userListing.attributes.username)
+    
     return(
       <div className="profile-container">
         <div className="profile-home-icon-container">
