@@ -1,6 +1,6 @@
-const ReactDOM = require('react-dom');
-const React = require('react');
-const Backbone = require('backbone');
+const ReactDOM = require('react-dom')
+const React = require('react')
+const Backbone = require('backbone')
 const SingleView = require('./single-view.js')
 const MultiView = require('./multi-view.js')
 const ProfileView = require('./profile-view.js')
@@ -8,6 +8,7 @@ const AppViewController = require('./component-viewcontroller.js')
 const OopsView = require('./oops-view.js')
 const ACTIONS = require('./actions.js')
 const SignOutView = require('./signout-view.js')
+const GoogleMap = require ('google-map-react')
 
 const AppRouter = Backbone.Router.extend({
 
