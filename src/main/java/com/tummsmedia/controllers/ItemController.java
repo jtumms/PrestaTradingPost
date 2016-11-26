@@ -24,6 +24,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletInputStream;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.nio.file.Files;
@@ -147,31 +148,6 @@ public class ItemController {
         return new ResponseEntity<Iterable<Item>>(items.findAllByCategory(cat), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
-    public ResponseEntity<Object> addNewItem(@RequestBody Item item, HttpSession session
-            ) throws Exception {
-
-        String username = (String) session.getAttribute("username");
-        User user = users.findFirstByUsername(username);
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
-
-//        File dir = new File("public/images");
-//        dir.mkdir();
-//        File f = File.createTempFile("file", file.getOriginalFilename(), dir);
-//        FileOutputStream fos = new FileOutputStream(f);
-//        fos.write(file.getBytes());
-        HashSet<Image> itemImageSet = new HashSet<>();
-//        Image image = new Image(f.getName());
-//        itemImageSet.add(image);
-//        Item.Category cat = Enum.valueOf(Item.Category.class, category);
-//        Item.Condition cond = Enum.valueOf(Item.Condition.class, condition);
-//        Item item = new Item(itemName, cat, Long.parseLong(estValue), Long.parseLong(askingPrice), cond, itemImageSet, user);
-        items.save(item);
-        return new ResponseEntity<Object>("You have successfully added the item", HttpStatus.OK);
-    }
-
 
     @RequestMapping(value = "/get-item", method = RequestMethod.GET)
     public ResponseEntity<Item> getSingleItem(String gmapUrlByLatLng, @RequestParam("itemId")int itemId, HttpSession session) throws Exception {
@@ -207,6 +183,22 @@ public class ItemController {
         emailDataMap.put("itemPrice", Long.toString(itemBorrowed.getAskingPrice()));
         emailDataMap.put("transactionId", Integer.toString(transaction.getTransactionId()));
         return emailDataMap;
+    }
+
+    // This is a basic JSON add item route with no photo upload. Use http://localhost:8080/add-item/upload for
+    // for full featured add item route with photo upload capability
+    @RequestMapping(path = "/add-item", method = RequestMethod.POST)
+    public ResponseEntity<Object> addNewItem(@RequestBody Item item, HttpSession session
+    ) throws Exception {
+
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        items.save(item);
+        return new ResponseEntity<Object>("You have successfully added the item", HttpStatus.OK);
     }
 
 }
