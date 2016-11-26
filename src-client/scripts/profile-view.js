@@ -6,12 +6,13 @@ const STORE = require('./store.js')
 const AddItemModel = require('./add-item-model.js')
 
 
+
 const ProfileView = React.createClass({
 
   componentDidlMount: function(obj){
     let getUserModelInstance = new GetUserModel()
     // console.log("profile auth", getUserModelInstance)
-    console.log('why didnt that work??')
+    console.log('why didnt that work??', STORE._data)
     console.log('?????///!!!!!!', STORE._data.userListing.attributes.userDetail)
     // let currentUserId = STORE.getStoreData()
     ACTIONS.getCurrentUserInfo()
@@ -30,22 +31,35 @@ const ProfileView = React.createClass({
 
   _submitNewItemInfo: function(evt) {
     let addItemModelInstance = new AddItemModel
-    console.log(evt)
-    console.log(evt.target)
+    // console.log("evt", this.refs.item.value)
+    // console.log('EVT TARGET', this.refs.item.value)
+
     let newItemData = {
-      itemName: evt.target.item.value,
-      itemDescription: evt.target.description.value,
-      askingPrice: evt.target.price.value,
+      itemName: this.refs.item.value,
+      itemDescription: this.refs.description.value,
+      askingPrice: this.refs.price.value,
+      category: this.refs.category.value,
+      user: {
+        "id": this.props.currentUser.id
+      },
 
     }
-    console.log(newItemData)
+    ACTIONS.addItemModel(newItemData)
+    // STORE.setStore('currentInventory', newItemData)
+    console.log('new item data', newItemData)
+    console.log("id", this.props.currentUser.id)
+  },
+
+  _seeChange: function(evt){
+    console.log(evt.target.name.value)
+
   },
 
 
   render: function(){
     let myUsr = this.props.currentUser.attributes
-    console.log('what up')
-    // console.log('?????/?????', myUsr)
+    console.log('what up',this.props)
+    console.log('?????/?????', this.props.currentUser.attributes.username)
 
     if (!this.props.currentUser.get('username')) {
       console.log("????")
@@ -62,32 +76,28 @@ const ProfileView = React.createClass({
           <h1>Presta Trading Post</h1>
         </div>
         <div className="row profile-item-row">
-          <div className="profile-add-pic-btn col-sm-4">
+          <div className="profile-add-container col-sm-4">
             <form>
               <h2>Add an item to rent</h2>
-              <input className="profile-item-inputs" type="text" name="item" key="item" placeholder="Item to rent"/>
-              <input className="profile-item-inputs" type="text" name="description" key="description" placeholder="Item description"/>
-              <input className="profile-item-inputs" type="text" name="price" key="price" placeholder="Item rent price"/>
-
-              <div className="input-group profile-category-input">
-                <input type="text" className="form-control" placeholder="Category" aria-label="..."/>
-                <div className="input-group-btn dropdown">
-                  <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" ><span className="caret"></span></button>
-                  <ul className="dropdown-menu dropdown-menu-right">
-                    <li>Sporting Goods</li>
-                    <li>Tools</li>
-                    <li>Electronics</li>
-                    <li>Outdoors</li>
-                  </ul>
-                </div>
+              <input className="profile-item-inputs" type="text" ref="item" key="item" placeholder="Item to rent"/>
+              <input className="profile-item-inputs" type="text" ref="description" key="description" placeholder="Item description"/>
+              <input className="profile-item-inputs" type="text" ref="price" key="price" placeholder="Item rent price"/>
+              <div className="form-group profile-dropdown-box">
+                <select ref="category">
+                  <option value="SPORTINGGOODS">Sporting Goods</option>
+                  <option value="TOOLS">Tools</option>
+                  <option value="ELECTRONICS">Electronics</option>
+                  <option value="OUTDOORS">Outdoors</option>
+                </select>
               </div>
+              <button className="btn btn-primary btn-lg profile-add-btn" onClick={this._submitNewItemInfo}>Add Item</button>
             </form>
 
-            <button className="btn btn-primary btn-lg profile-add-btn" onClick={this._submitNewItemInfo}>Add Item</button>
-            <button className="btn btn-primary btn-lg profile-add-btn">Add Pic</button>
           </div>
-          <div className="profile-item-pic col-sm-4"></div>
-
+          <div className="profile-item-pic col-sm-4">
+            <img className="profile-img" src=""/>
+            <button className="btn btn-primary btn-lg profile-add-pic-btn">Add Pic</button>
+          </div>
           <div className="profile-info col-sm-4">
             <h1><u>User Profile</u></h1>
             <h3>{myUsr.userDetail.firstName} {myUsr.userDetail.lastName}</h3>
@@ -118,3 +128,16 @@ module.exports = ProfileView
 //   <input className="profile-inputs" type="text" name="state" placeholder="State"/>
 //   <input className="profile-inputs" type="text" name="zipcode" placeholder="Zipcode"/>
 // </form>
+
+//<div className="input-group profile-category-input">
+//   <input type="text" className="form-control" ref="category" placeholder="Category" aria-label="..."/>
+//   <div className="input-group-btn dropdown open">
+//     <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" ><span className="caret"></span></button>
+//     <ul className="dropdown-menu dropdown-menu-right profile-dropdown-list">
+//       <li>SPORTINGGOODS</li>
+//       <li>TOOLS</li>
+//       <li>ELECTRONICS</li>
+//       <li>OUTDOORS</li>
+//     </ul>
+//   </div>
+// </div>

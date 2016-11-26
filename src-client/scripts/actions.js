@@ -4,6 +4,7 @@ const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
 const GetUserModel =require('./get-user-model.js')
+const AddItemModel = require('./add-item-model.js')
 
 const ACTIONS = {
 
@@ -101,10 +102,15 @@ const ACTIONS = {
      })
   },
 
-  // addItemModel: function(){
-  //   const addItemInstance = new AddItemModel()
-  //   addItemInstance.
-  // }
+  addItemModel: function(newItemDataObj){
+    const addItemModelInstance = new AddItemModel()
+    addItemModelInstance.fetch().then(function(){
+      STORE.setStore('currentInventory', addItemModelInstance)
+    })
+    console.log('new item data', newItemDataObj)
+
+
+  }
 
 }
 

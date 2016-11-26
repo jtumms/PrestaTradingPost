@@ -1,10 +1,17 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const STORE = require('./store.js')
+const UserModel = require('./model-user.js')
 
 
 // STORE.setStore('currentUser', {})
 const SignOutView = React.createClass({
+  // 
+  // let userModelInstance = new UserModel()
+  //
+  // userModelInstance.save().then(function(){
+  //   ACTIONS.routeTo(`/logout`)
+  // })
 
   render: function(){
 

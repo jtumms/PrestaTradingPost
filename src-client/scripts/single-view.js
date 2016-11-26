@@ -15,13 +15,15 @@ const SingleView = React.createClass({
   componentWillMount: function(){
     let id = this.props.itemId
     console.log('store data',STORE._data);
+    console.log('trying to get the pics', this.props);
+
 
 
   },
 
 
   render:function(){
-    let self = this
+    // let self = this
 
 
 
