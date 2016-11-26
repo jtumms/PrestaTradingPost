@@ -41,6 +41,7 @@ const AppViewController = React.createClass({
   },
 
   render: function(){
+    console.log(this.state)
       switch(this.props.routedFrom) {
         case "AuthView":
           return <AuthView/>
@@ -51,7 +52,7 @@ const AppViewController = React.createClass({
           break;
 
         case "SingleView":
-          return <SingleView itemId={this.props.itemId} />
+          return <SingleView itemId={this.props.itemId} singleItem={this.state.singleListing} />
           break;
 
         case "ProfileView":

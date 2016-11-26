@@ -47,7 +47,7 @@ body{
 	// opacity: .6;
 
 	h1 {
-		font-family: fantasy, sans-serif;
+		font-family: monospace;, sans-serif;
 		font-weight: bolder;
 		font-size: 100px;
 		color: #000;
@@ -335,10 +335,11 @@ body{
 		background-color: #E19D29;
 		border-top: 20px;
 		margin-top: 20px;
+
 	}
 	.caption{
 		color: white;
-		// text-shadow: .5px .5px .5px rgba(1,1,1,0.7);
+		text-shadow: .5px .5px .5px rgba(1,1,1,0.7);
 		background-color: #E19D29;
 	}
 
