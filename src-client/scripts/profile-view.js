@@ -35,6 +35,7 @@ const ProfileView = React.createClass({
     // console.log('EVT TARGET', this.refs.item.value)
 
     let newItemData = {
+      username: this.refs.username.value,
       itemName: this.refs.item.value,
       itemDescription: this.refs.description.value,
       askingPrice: this.refs.price.value,
@@ -44,10 +45,11 @@ const ProfileView = React.createClass({
       },
 
     }
-    ACTIONS.addItemModel(newItemData)
     // STORE.setStore('currentInventory', newItemData)
     console.log('new item data', newItemData)
     console.log("id", this.props.currentUser.id)
+    ACTIONS.addItemModel(newItemData)
+
   },
 
   _seeChange: function(evt){
@@ -79,6 +81,7 @@ const ProfileView = React.createClass({
           <div className="profile-add-container col-sm-4">
             <form>
               <h2>Add an item to rent</h2>
+              <input className="profile-item-inputs" type="text" ref="username" key="username" placeholder="Username"/>
               <input className="profile-item-inputs" type="text" ref="item" key="item" placeholder="Item to rent"/>
               <input className="profile-item-inputs" type="text" ref="description" key="description" placeholder="Item description"/>
               <input className="profile-item-inputs" type="text" ref="price" key="price" placeholder="Item rent price"/>
