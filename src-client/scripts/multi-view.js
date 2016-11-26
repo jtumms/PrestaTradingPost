@@ -34,10 +34,25 @@ const MultiView = React.createClass({
   _routeToCategory: function(evt){
     // STORE._data.currentInventory.filter('collection')
   ACTIONS.routeTo(`category/${evt.target.dataset.cathash}`)
+
   },
 
   _routeToItem: function(evt) {
+    let singleItem = STORE._data.currentInventory.filter(function(obj, i){
+      console.log(typeof parseInt(evt.target.dataset.id))
+      console.log('???????', obj.attributes.itemId)
+      if(parseInt(evt.target.dataset.id) === obj.attributes.itemId){
+        return true
+      }
+      // ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
+      // ACTIONS.fetchSingleItemModel()
+    // console.log(evt.target.dataset.id);
+
+    })
+    STORE.setStore('singleListing', singleItem)
     ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
+    console.log(singleItem)
+
 
   },
 
@@ -46,6 +61,7 @@ const MultiView = React.createClass({
 
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
+
       // console.log(data.attributes.itemId)
       if(i <= 11){
 
@@ -68,6 +84,7 @@ const MultiView = React.createClass({
     return (
       <div className="multi-container">
         <div className="sign-in-btn">
+
           <a href="#aboutus"><button type="button" className="btn btn-default btn-md ">About-Us</button></a>
           <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in">Sign-in / Sign-up</button></a>
           <a href="#logout"><button type="button" className="btn btn-default btn-md sign-out">Sign Out</button></a>
