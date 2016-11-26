@@ -12,6 +12,7 @@ const SignOutView = require('./signout-view.js')
 const AppRouter = Backbone.Router.extend({
 
     routes: {
+      "aboutus" : "showAboutUsView",
       "category/:catName" : "showCatName",
       "logout" : "showSignOutView",
       "oops" : "showOopsView",
@@ -22,31 +23,35 @@ const AppRouter = Backbone.Router.extend({
     },
 
     showMultiView: function(){
-    ReactDOM.render( <AppViewController routedFrom="MultiView"/>, document.querySelector('#app-container') )
+      ReactDOM.render( <AppViewController routedFrom="MultiView"/>, document.querySelector('#app-container') )
     },
 
     showSingleView: function(itemId){
-    ReactDOM.render( <AppViewController routedFrom="SingleView" itemId={itemId} />, document.querySelector('#app-container') )
+      ReactDOM.render( <AppViewController routedFrom="SingleView" itemId={itemId} />, document.querySelector('#app-container') )
     },
 
     showAuthView: function(){
-    ReactDOM.render(<AppViewController routedFrom="AuthView"/>, document.querySelector('#app-container') )
+      ReactDOM.render(<AppViewController routedFrom="AuthView"/>, document.querySelector('#app-container') )
     },
 
     showProfileView: function(){
-    ReactDOM.render(<AppViewController routedFrom="ProfileView"/>, document.querySelector('#app-container') )
+      ReactDOM.render(<AppViewController routedFrom="ProfileView"/>, document.querySelector('#app-container') )
     },
 
     showOopsView: function(){
-    ReactDOM.render(<AppViewController routedFrom="OopsView"/>, document.querySelector('#app-container') )
+      ReactDOM.render(<AppViewController routedFrom="OopsView"/>, document.querySelector('#app-container') )
     },
 
     showSignOutView: function(){
-    ReactDOM.render(<AppViewController routedFrom="SignOutView"/>, document.querySelector('#app-container') )
+      ReactDOM.render(<AppViewController routedFrom="SignOutView"/>, document.querySelector('#app-container') )
     },
 
     showCatName: function(catName){
-    ReactDOM.render(<AppViewController routedFrom="MultiView" catName={catName}/>, document.querySelector('#app-container') )
+      ReactDOM.render(<AppViewController routedFrom="MultiView" catName={catName}/>, document.querySelector('#app-container') )
+    },
+
+    showAboutUsView: function(){
+      ReactDOM.render(<AppViewController routedFrom="AboutUsView"/>, document.querySelector('#app-container') )
     },
 
       initialize: function() {

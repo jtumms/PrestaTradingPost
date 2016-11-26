@@ -84,18 +84,18 @@ const MultiView = React.createClass({
     return (
       <div className="multi-container">
         <div className="sign-in-btn">
-          <a href="#authview"><button type="button" className="btn btn-default btn-md alignleft">About-Us</button></a>
-          <a href="#authview"><button type="button" className="btn btn-default btn-md">Sign-in / Sign-up</button></a>
+
+          <a href="#aboutus"><button type="button" className="btn btn-default btn-md ">About-Us</button></a>
+          <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in">Sign-in / Sign-up</button></a>
           <a href="#logout"><button type="button" className="btn btn-default btn-md sign-out">Sign Out</button></a>
         </div>
         <div className="multi-header text-center">
           <h2>LOGO</h2>
           <h1>Presta Trading Post</h1>
-          {/* <h3>The ultimate meet-up spot for those who have, and for those who don't</h3> */}
         </div>
         <div className="garage-pic"></div>
         <div className="multi-description text-center">
-          <h2> The ultimate meet-up spot for those who have, and those who don't...</h2>
+          <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
 
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">

@@ -82,7 +82,7 @@ const ACTIONS = {
 
      const itemsColl = new ItemsModelCollection()
      itemsColl.fetch().then(function(){
-        // console.log("hey look right here this is what we need>>>>>>",itemsColl)
+        console.log("hey look right here this is what we need>>>>>>",itemsColl)
         STORE.setStore('currentInventory', itemsColl.models )
 
      })
@@ -100,6 +100,11 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
+
+  // addItemModel: function(){
+  //   const addItemInstance = new AddItemModel()
+  //   addItemInstance.
+  // }
 
 }
 
