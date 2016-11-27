@@ -30,6 +30,7 @@ const ProfileView = React.createClass({
   // }
 
   _submitNewItemInfo: function(evt) {
+    evt.preventDefault()
     let addItemModelInstance = new AddItemModel
     // console.log("evt", this.refs.item.value)
     // console.log('EVT TARGET', this.refs.item.value)
@@ -40,6 +41,7 @@ const ProfileView = React.createClass({
       itemDescription: this.refs.description.value,
       askingPrice: this.refs.price.value,
       category: this.refs.category.value,
+      condition: "GOOD",
       user: {
         "id": this.props.currentUser.id
       },
@@ -61,13 +63,13 @@ const ProfileView = React.createClass({
   render: function(){
     let myUsr = this.props.currentUser.attributes
     console.log('what up',this.props)
-    console.log('?????/?????', this.props.currentUser.attributes.username)
+    // console.log('?????/?????', this.props.currentUser.attributes.username)
 
     if (!this.props.currentUser.get('username')) {
       console.log("????")
       return <p> loading... </p>
     }
-    
+
     return(
       <div className="profile-container">
         <div className="profile-home-icon-container">

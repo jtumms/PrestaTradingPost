@@ -103,13 +103,15 @@ const ACTIONS = {
   },
 
   addItemModel: function(newItemDataObj){
+
     const addItemModelInstance = new AddItemModel()
-    addItemModelInstance.fetch().then(function(){
+    addItemModelInstance.set(newItemDataObj)
+    addItemModelInstance.save().then(function(){
       STORE.setStore('currentInventory', addItemModelInstance)
     })
     console.log('new item data', newItemDataObj)
 
-
+    window.location.hash = "/multiview"
   }
 
 }

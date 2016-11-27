@@ -43,8 +43,8 @@ const SingleView = React.createClass({
                  <h1 className="single-header">Presta Trading Post</h1>
           </div>
 
-        <div className="thumbnail thumbnail-container">
-           <img className="single-image" src={this.props.singleItem.get("images")}/>
+        <div className="thumbnail single-thumbnail-container">
+           <img className="single-image" src={"images/" + this.props.singleItem.get("images")[0].imageFileName}/>
           <div className="caption">
             <h3> Description:</h3> <h4>{this.props.singleItem.get('itemDescription')}</h4>
             <h3>Item:</h3> <h4>{this.props.singleItem.get('itemName')}</h4>
