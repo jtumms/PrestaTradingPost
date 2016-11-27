@@ -204,5 +204,15 @@ public class ItemController {
         items.save(item);
         return new ResponseEntity<Object>("You have successfully added the item", HttpStatus.OK);
     }
-
+    @RequestMapping(path = "/delete-item", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> deleteItem(@RequestParam ("itemId")int itemId, HttpSession session){
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        items.delete(itemId);
+        String deleteResponse = String.format("Item with itemID of: %s has been deleted from the database.", itemId);
+        return new ResponseEntity<Object>(deleteResponse, HttpStatus.OK);
+    }
 }

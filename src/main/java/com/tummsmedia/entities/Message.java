@@ -1,5 +1,6 @@
 package com.tummsmedia.entities;
 
+import com.sun.javafx.fxml.builder.URLBuilder;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -9,8 +10,10 @@ import com.sun.jersey.multipart.file.FileDataBodyPart;
 import com.tummsmedia.controllers.ItemController;
 
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriBuilder;
 import java.io.File;
 import java.util.*;
+import java.util.UUID;
 
 /**
  * Created by john.tumminelli on 11/26/16.
@@ -87,10 +90,13 @@ public class Message {
     public static ClientResponse sendOwnerMessage(Item itemBorrowed) {
 
         Message message = new Message();
+        String generatedKey = UUID.randomUUID().toString();
+        message.authKey = generatedKey;
         message.setOwner(ItemController.emailDataMap.get("owner"));
         message.setRenterId( Integer.valueOf(ItemController.emailDataMap.get("borrowerId")));
         String subjectText = String.format("You have a rental request for your one of your items. Transaction ID: %s", ItemController.emailDataMap.get("transactionId"));
         message.setSubject(subjectText);
+
         Client client = Client.create();
         client.addFilter(new HTTPBasicAuthFilter("api",
                 "key-e40dbe458be098bc00352bae39fd72ba"));
@@ -102,12 +108,13 @@ public class Message {
         form.field("to", message.getOwner());
 //        form.field("text", "Test text body");
         form.field("subject", subjectText);
-        form.field("html", getHtmlMessageBody());
+        String body = getHtmlMessageBody();
+        form.field("html", body);
         String file_separator = System.getProperty("file.separator");
-        File txtFile = new File("." + file_separator +
-                "files" + file_separator + "test.txt");
-        form.bodyPart(new FileDataBodyPart("attachment", txtFile,
-                MediaType.TEXT_PLAIN_TYPE));
+//        File txtFile = new File("." + file_separator +
+//                "files" + file_separator + "test.txt");
+//        form.bodyPart(new FileDataBodyPart("attachment", txtFile,
+//                MediaType.TEXT_PLAIN_TYPE));
         ArrayList<Object> imageArrayList = new ArrayList<>();
         Iterator iterator = itemBorrowed.getImages().iterator();
         while (iterator.hasNext()){
@@ -417,8 +424,8 @@ public class Message {
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td align=\"center\" valign=\"top\" class=\"textContent\">\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h1 style=\"color:#FFFFFF;line-height:100%;font-family:Helvetica,Arial,sans-serif;font-size:35px;font-weight:normal;margin-bottom:5px;text-align:center;\">Presta Trading Post</h1>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h2 style=\"text-align:center;font-weight:normal;font-family:Helvetica,Arial,sans-serif;font-size:23px;margin-bottom:10px;color:#205478;line-height:135%;\">Subheader introduction</h2>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div style=\"text-align:center;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#FFFFFF;line-height:135%;\">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</div>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h2 style=\"text-align:center;font-weight:normal;font-family:Helvetica,Arial,sans-serif;font-size:23px;margin-bottom:10px;color:#205478;line-height:135%;\">The Ulitimate meetup spot for those who have and those who don't</h2>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div style=\"text-align:center;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#FFFFFF;line-height:135%;\">A registered Presta user has requested your item. Please accept or decline. Presta Trading Post will take care of the rest!!</div>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
@@ -453,32 +460,6 @@ public class Message {
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td valign=\"top\" width=\"500\" class=\"flexibleContainerCell\">\n" +
                 "\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- CONTENT TABLE // -->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td align=\"left\" valign=\"top\" class=\"flexibleContainerBox\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"210\" style=\"max-width: 100%;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td align=\"left\" class=\"textContent\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 style=\"color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:left;\">Left Column</h3>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div style=\"text-align:left;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#5F5F5F;line-height:135%;\">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis.</div>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td align=\"right\" valign=\"middle\" class=\"flexibleContainerBox\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"flexibleContainerBoxNext\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"210\" style=\"max-width: 100%;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td align=\"left\" class=\"textContent\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 style=\"color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:left;\">Right Column</h3>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div style=\"text-align:left;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#5F5F5F;line-height:135%;\">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis.</div>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- // CONTENT TABLE -->\n" +
                 "\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
