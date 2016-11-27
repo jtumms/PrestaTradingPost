@@ -49,6 +49,7 @@
     "font-awesome": "^4.7.0",
     "google-map-react": "^0.21.5",
     "jquery": "2.2.4",
+    "jquery-match-height": "^0.7.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
   }

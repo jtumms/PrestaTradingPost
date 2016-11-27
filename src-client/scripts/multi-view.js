@@ -1,10 +1,11 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+// const JQuery = require('jquery')
 const SingleView = require('./single-view')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require("./models.js")
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
-
+// const matchHeight = require('jquery-match-height')
 
 
 const MultiView = React.createClass({
@@ -59,11 +60,15 @@ const MultiView = React.createClass({
   render: function(){
     let self = this
     console.log("what is going on?")
+    // $(function() {
+    //   $('multi-thumbnail-container').matchHeight(options);
+    // });
     // console.log(data)
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
-      // console.log(data.attributes.itemId)
-      if(i <= 11){
+      // console.log(data.attributes.images[0].imageFileName)
+
+      // if(i <= 11){
 
         return(
 
@@ -78,7 +83,7 @@ const MultiView = React.createClass({
                   </div>
               </div>
         )
-      }
+      // }
     })
 
     return (
@@ -99,13 +104,13 @@ const MultiView = React.createClass({
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
           <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}>General</button>
-          <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}>Sporting Goods</button>
-          <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}>Tools</button>
-          <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}>Electronics</button>
-          <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}>Outdoors</button>
+          <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={self._routeToCategory}>Sporting Goods</button>
+          <button type="button" className="btn btn-default" data-cathash="tools" onClick={self._routeToCategory}>Tools</button>
+          <button type="button" className="btn btn-default" data-cathash="electronics" onClick={self._routeToCategory}>Electronics</button>
+          <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={self._routeToCategory}>Outdoors</button>
         </div>
 
-        <div className="row row-eq-height is-flex multi-pic-body">
+        <div className="row row-eq-height is-flex multi-pic-body match-my-cols">
           {itemListings}
         </div>
         <div className="multi-next-page">
@@ -124,11 +129,3 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
-
-// onClick={this._routeToCategory}
-//  Have you ever wanted to try out a stand-up paddle board but didn't want to have to fork out the big money just to try it out for a weekend?
-// How about, have you ever needed a special tool to fix something in an afternoon but didn't want to have to buy so that it can sit in your garage 99% of the time?
-// Or maybe you want to have a jam session tonight but you don't have an amplifier.  Well here at Presta Trading Post we have people who have these kinds of things
-// and more that are just sitting in their garages for 99% of the year and for a nominal price, which in most cases can be totally negotiable, you can use these items and not have to buy them.
-// All you have to do is register with Presta Trading Post today, and then you can begin to see the benefits. Or maybe you even have items sitting around in your garage that someone else might need to use.
-// Everybody wins. So, register today.

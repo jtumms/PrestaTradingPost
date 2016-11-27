@@ -42,6 +42,9 @@ const ProfileView = React.createClass({
       askingPrice: this.refs.price.value,
       category: this.refs.category.value,
       condition: "GOOD",
+      images:[ {
+        imageFileName: this.refs.image.value,
+      }],
       user: {
         "id": this.props.currentUser.id
       },
@@ -87,6 +90,7 @@ const ProfileView = React.createClass({
               <input className="profile-item-inputs" type="text" ref="item" key="item" placeholder="Item to rent"/>
               <input className="profile-item-inputs" type="text" ref="description" key="description" placeholder="Item description"/>
               <input className="profile-item-inputs" type="text" ref="price" key="price" placeholder="Item rent price"/>
+              <input className="profile-item-inputs" type="text" ref="image" key="image" placeholder="Image Address"/>
               <div className="form-group profile-dropdown-box">
                 <select ref="category">
                   <option value="SPORTINGGOODS">Sporting Goods</option>
