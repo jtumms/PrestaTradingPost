@@ -15,12 +15,11 @@ body{
 .thumbnail-container-single{
 	h1{
 		height: 200px;
-//
-// h1 {
-	// font-size: 75px;
-// 	text-align: center;
 	}
 }
+
+
+//========  multi page ===================
 .multi-thumbnail-container{
 	background-color: #E49D4A;
 
@@ -38,7 +37,6 @@ body{
 
 .sign-out {
 	margin-left: 10px;
-	// text-align: right;
 }
 
 .multi-container {
@@ -100,6 +98,7 @@ body{
 .multi-button-container {
 	width: 100%;
 	margin-top: 20px;
+	margin-bottom: 20px;
 	button {
 		width: 20%;
 		background-color: #8CA387;
@@ -154,10 +153,11 @@ body{
 	text-align: center;
 	margin-bottom: 50px;
 }
+//========= end of multi page ==================
 
+//==========  auth page ======================
 
 .auth-header-container {
-	// height: 200px;
 	background: #5E9F41;
 	width: 90%;
 	margin: auto;
@@ -167,11 +167,6 @@ body{
 }
 
 .auth-header {
-		// font-family: fantasy, sans-serif;
-		// font-weight: bold;
-		// font-size: 90px;
-		// text-align: center;
-		// padding-top: 50px;
 		font-family: fantasy, sans-serif;
 		font-weight: bolder;
 		font-size: 100px;
@@ -223,12 +218,16 @@ body{
 .auth-home-icon {
 	margin-right: 60px;
 }
+//================ end of auth page =============================
 
 .item-card{
 	background-color: #E19D29;
 	border-top: 50px;
 	margin-top: 20px;
 }
+
+//========  profile page ============================
+
 .profile-home-icon-container {
 	text-align: right;
 }
@@ -236,10 +235,6 @@ body{
 .profile-home-icon {
 	margin-right: 60px;
 }
-// .profile-container {
-// 	width: 90%;
-// 	margin: auto;
-// }
 
 .profile-header {
 	width: 90%;
@@ -249,22 +244,13 @@ body{
 	margin: auto;
 	margin-top: 0px;
 	h1 {
-		// font-family: fantasy, sans-serif;
-		// font-weight: bold;
-		// font-size: 90px;
-		// text-align: center;
-		// padding-top: 60px;
-		// margin-top: 0px;
-			// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
 			font-family: fantasy, sans-serif;
 			font-weight: bolder;
 			font-size: 100px;
 			color: #000;
-			// text-shadow: 4px 4px 4px #4ac4b2;
 			text-align: center;
 			padding-top: 60px;
 			margin-top: 10px;
-
 	}
 	h2 {
 		position: absolute;
@@ -293,41 +279,6 @@ body{
 	margin: auto;
 	vertical-align: bottom;
 }
-// .single-header-container{
-//
-// 		h2{
-// 			position: absolute;
-// 		}
-// 		h1{
-// 			font-family: fantasy, sans-serif;
-// 			font-weight: bold;
-// 			font-size: 90px;
-// 			text-align: center;
-// 			padding-top: 60px;
-// 			padding-bottom: 30px;
-// 			margin-top: 0px;
-// 				// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
-// 		}
-// 		background-color: #5E9F41;
-// 		position: relative;
-// }
-	// .single-thumbnail-container{
-	// 	padding-top: 40px;
-	// 	background-color: #E19D29;
-	// 	border-top: 20px;
-	// 	margin-top: 20px;
-	// 	margin: auto;
-	// }
-
-// .single-image{
-// 	width: 80%
-// }
-	// .caption{
-	// 	color: white;
-	// 	text-shadow: .5px .5px .5px rgba(1,1,1,0.7);
-	// 	background-color: #E19D29;
-	// }
-
 
 .profile-item-pic {
 	height: 400px;
@@ -371,6 +322,14 @@ body{
 	display: block;
 }
 
+
+//=============  single page ====================
+
+.single-item-header {
+	width: 90%;
+	margin: auto;
+}
+
 .single-home-icon-container{
 	text-align: right;
 	margin-right: 60px;
@@ -388,7 +347,7 @@ body{
 			text-align: center;
 			padding-top: 60px;
 			padding-bottom: 30px;
-			margin-top: 0px;
+			margin-bottom: 0px;
 		}
 		background-color: #5E9F41;
 		position: relative;
@@ -398,14 +357,18 @@ body{
 	padding-top: 40px;
 	background-color: #E19D29;
 	border-top: 20px;
-	margin-top: 20px;
+	// margin-top: 20px;
 }
 
 .single-image {
-	width: 80%;
+	width: 50%;
 }
 
+//=============  signed out/logoff page ====================
+
 .signout-container {
+	width: 90%;
+	margin: auto;
 	text-align: center;
 }
 
@@ -418,6 +381,8 @@ body{
 	font-size: 50px;
 	margin-bottom: 30px;
 }
+
+//=============  oops page ==============================
 
 .oops-container {
 	width: 90%;
@@ -448,18 +413,15 @@ body{
 	margin-bottom: 40px;
 }
 
+//================ end of oops page ===============================
+
 .item-desc{
 	overflow: auto;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
-
-
-.signout-container {
-	width: 90%;
-	margin: auto;
-}
+//============  about page =============================
 
 .about-header {
 	position: relative;
@@ -508,8 +470,11 @@ body{
 	margin-right: 60px;
 }
 
+//===================== end of about page ==================
+
 .map-container{
 	height: 300px;
 	width: 300px;
 	display:inline-block;
+	margin: -150px 0 20px 70%;
 }

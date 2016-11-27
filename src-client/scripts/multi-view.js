@@ -58,7 +58,8 @@ const MultiView = React.createClass({
 
   render: function(){
     let self = this
-
+    console.log("what is going on?")
+    // console.log(data)
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
       // console.log(data.attributes.itemId)
@@ -93,7 +94,7 @@ const MultiView = React.createClass({
         </div>
         <div className="garage-pic"></div>
         <div className="multi-description text-center">
-          <h2>The ultimate meet-up spot for those who have, and those who don't.</h2>
+          <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
 
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
