@@ -41,6 +41,8 @@ import static org.aspectj.bridge.MessageUtil.fail;
 @RestController
 public class ItemController {
 
+    public static HashMap<String, String> emailDataMap = new HashMap<>();
+
     @Autowired
     ItemRepo items;
 
@@ -108,6 +110,7 @@ public class ItemController {
 //        String gmapUrlByLatLng = String.format("https://www.google.com/maps/@%s,%s,16z", latitude, longitude);
     }
 
+
     @RequestMapping(path = "/all-items", method = RequestMethod.GET)
     public ResponseEntity<Iterable<Item>> getItems(HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
@@ -166,7 +169,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/rent-item", method = RequestMethod.POST)
-    public HashMap<String, String> rentItem(@RequestParam("itemId")int itemId,  HttpSession session) throws Exception {
+    public ResponseEntity<Object> rentItem(@RequestParam("itemId")int itemId,  HttpSession session) throws Exception {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
         if (user == null) {
@@ -176,13 +179,14 @@ public class ItemController {
         String ownerUsername = items.findFirstByItemId(itemId).getUser().getUsername();
         Transaction transaction = new Transaction(user.getId(), items.findFirstByItemId(itemId).getUser().getId(), itemBorrowed);
         transactions.save(transaction);
-        HashMap<String, String> emailDataMap = new HashMap<>();
-        emailDataMap.put("borrower", user.getUsername());
+        emailDataMap.put("borrowerId", Integer.toString(user.getId()));
         emailDataMap.put("owner", ownerUsername);
         emailDataMap.put("itemBorrowed", itemBorrowed.getItemName());
         emailDataMap.put("itemPrice", Long.toString(itemBorrowed.getAskingPrice()));
         emailDataMap.put("transactionId", Integer.toString(transaction.getTransactionId()));
-        return emailDataMap;
+        Message.sendOwnerMessage(itemBorrowed);
+        String responseText = String.format("User: %s has rented ItemId: %s. A notifcation email is being sent.", user.getUsername(), itemBorrowed.getItemId());
+        return new ResponseEntity<Object>(responseText, HttpStatus.OK);
     }
 
     // This is a basic JSON add item route with no photo upload. Use http://localhost:8080/add-item/upload for
@@ -200,5 +204,15 @@ public class ItemController {
         items.save(item);
         return new ResponseEntity<Object>("You have successfully added the item", HttpStatus.OK);
     }
-
+    @RequestMapping(path = "/delete-item", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> deleteItem(@RequestParam ("itemId")int itemId, HttpSession session){
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        items.delete(itemId);
+        String deleteResponse = String.format("Item with itemID of: %s has been deleted from the database.", itemId);
+        return new ResponseEntity<Object>(deleteResponse, HttpStatus.OK);
+    }
 }

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "transactions")
 public class Transaction {
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     int transactionId;
 
     @Column(nullable = false)
