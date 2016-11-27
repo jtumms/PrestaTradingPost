@@ -15,6 +15,13 @@ const SingleView = React.createClass({
     ACTIONS.fetchSingleItemModel(this.props.itemId)
 
   },
+  _routeToMessenger: function(evt){
+    console.log('MESSENGER!!', this.props.itemId)
+
+  // ACTIONS.routeTo(`/rent-item?itemId=${this.props}`)
+
+  },
+
 
   render:function(){
   console.log(this.props.singleItem);
@@ -26,7 +33,7 @@ const SingleView = React.createClass({
       )
 
     }
-    console.log('!!!!!', this.props)
+    console.log('!!!!!', this.props.itemId)
 
     let CharlestonMap = {
         center: {lat: 32.784618, lng: -79.940918},
@@ -51,7 +58,7 @@ const SingleView = React.createClass({
             <h3><u>Description:</u></h3><h4>{this.props.singleItem.get('itemDescription')}</h4>
             <h3><u>Item:</u></h3> <h4>{this.props.singleItem.get('itemName')}</h4>
             <h3><u>Price:</u></h3> <h4>{this.props.singleItem.get('askingPrice')}</h4>
-            <a href="#"><button type="button" className="btn btn-default btn-large sign-in">Contact renter</button></a>
+            <a onClick={this._routeToMessenger}><button type="button" className="btn btn-default btn-large sign-in" data-id={this.props.itemId}>Rent Item / Contact Renter</button></a>
             <div className="map-container">
             <MapPage center={CharlestonMap.center} zoom={CharlestonMap.zoom}/>
             </div>

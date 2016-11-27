@@ -3,9 +3,20 @@ const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
-const GetUserModel =require('./get-user-model.js')
-
+const GetUserModel = require('./get-user-model.js')
+const RentItemModel = require('./models.js')
 const ACTIONS = {
+
+  // fetchRentItemModel: function(attributes){
+  //   const rentItemMod = new RentItemModel()
+  //   rentItemMod.url = `/rent-item?itemId=` + attributes
+  //   console.log(rentItemMod.url);
+  //    rentItemMod.fetch().then(function(){
+  //      console.log('hey hey hey',rentItemMod )
+  //      ACTIONS.routeTo(`/rent-item?itemId=${this.props}`)
+  //
+  //    })
+  // },
 
   logOutUser: function(){
     let logOutUserInstance = new UserModel('/logout')
@@ -62,6 +73,11 @@ const ACTIONS = {
   },
 
   routeTo: function(path){
+    newItem = new RentItemModel(path)
+    newItem.set()
+    newItem.save().then(function(serverRes){
+      console.log(serverRes)
+    })
     window.location.hash = path
   },
 
@@ -101,10 +117,6 @@ const ACTIONS = {
      })
   },
 
-  // addItemModel: function(){
-  //   const addItemInstance = new AddItemModel()
-  //   addItemInstance.
-  // }
 
 }
 

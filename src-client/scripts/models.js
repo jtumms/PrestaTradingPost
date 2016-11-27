@@ -1,7 +1,13 @@
 const Backbone = require('backbone');
 
+const RentItemModel = Backbone.Collection.extend({
+  urlRoot: "/rent-item?itemId=",
+  idAttribute: "id",
+  initialize: function(id){
+    this.url = "/rent-item?itemId=" + id
 
-
+  }
+});
 
 const ItemsModel = Backbone.Model.extend({
   url: "",

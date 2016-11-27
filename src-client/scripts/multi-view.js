@@ -44,9 +44,7 @@ const MultiView = React.createClass({
       if(parseInt(evt.target.dataset.id) === obj.attributes.itemId){
         return true
       }
-      // ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
-      // ACTIONS.fetchSingleItemModel()
-    // console.log(evt.target.dataset.id);
+
 
     })
     STORE.setStore('singleListing', singleItem[0])
@@ -133,3 +131,6 @@ module.exports = MultiView
 // and more that are just sitting in their garages for 99% of the year and for a nominal price, which in most cases can be totally negotiable, you can use these items and not have to buy them.
 // All you have to do is register with Presta Trading Post today, and then you can begin to see the benefits. Or maybe you even have items sitting around in your garage that someone else might need to use.
 // Everybody wins. So, register today.
+// ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
+// ACTIONS.fetchSingleItemModel()
+// console.log(evt.target.dataset.id);
