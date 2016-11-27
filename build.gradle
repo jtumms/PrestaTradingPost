@@ -35,4 +35,6 @@ dependencies {
 	compile('org.jodd:jodd-json:3.8')
 	compile 'com.google.maps:google-maps-services:0.1.16'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile files('libs/jersey-bundle-1.19.1.jar')
+	compile files('libs/jersey-multipart-1.19.3.jar')
 }
