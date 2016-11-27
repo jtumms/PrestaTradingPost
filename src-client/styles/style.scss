@@ -15,8 +15,15 @@ body{
 .thumbnail-container-single{
 	h1{
 		height: 200px;
-
+//
+// h1 {
+	// font-size: 75px;
+// 	text-align: center;
 	}
+}
+.multi-thumbnail-container{
+	background-color: #E49D4A;
+
 }
 
 .sign-in-btn {
@@ -82,9 +89,13 @@ body{
 	}
 }
 
-.thumbnail a>img {
-	max-width: 85%;
-}
+// .thumbnail a>img {
+// 	max-width: 85%;
+// }
+// .multi-img {
+// 	width: 85%;
+// }
+
 
 .multi-button-container {
 	width: 100%;
@@ -282,6 +293,41 @@ body{
 	margin: auto;
 	vertical-align: bottom;
 }
+// .single-header-container{
+//
+// 		h2{
+// 			position: absolute;
+// 		}
+// 		h1{
+// 			font-family: fantasy, sans-serif;
+// 			font-weight: bold;
+// 			font-size: 90px;
+// 			text-align: center;
+// 			padding-top: 60px;
+// 			padding-bottom: 30px;
+// 			margin-top: 0px;
+// 				// text-shadow: 2px 2px 2px rgba(1,1,1,0.7);
+// 		}
+// 		background-color: #5E9F41;
+// 		position: relative;
+// }
+	// .single-thumbnail-container{
+	// 	padding-top: 40px;
+	// 	background-color: #E19D29;
+	// 	border-top: 20px;
+	// 	margin-top: 20px;
+	// 	margin: auto;
+	// }
+
+// .single-image{
+// 	width: 80%
+// }
+	// .caption{
+	// 	color: white;
+	// 	text-shadow: .5px .5px .5px rgba(1,1,1,0.7);
+	// 	background-color: #E19D29;
+	// }
+
 
 .profile-item-pic {
 	height: 400px;
@@ -452,4 +498,18 @@ body{
 		font-size: 1.8em;
 		margin: 30px 20px 30px 60px;
 	}
+}
+
+.about-home-icon-container {
+	text-align: right;
+}
+
+.about-home-icon {
+	margin-right: 60px;
+}
+
+.map-container{
+	height: 300px;
+	width: 300px;
+	display:inline-block;
 }

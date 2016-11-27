@@ -37,7 +37,22 @@ const MultiView = React.createClass({
   },
 
   _routeToItem: function(evt) {
+    // ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
+    let singleItem = STORE._data.currentInventory.filter(function(obj, i){
+      console.log(typeof parseInt(evt.target.dataset.id))
+      console.log('???????', obj.attributes.itemId)
+      if(parseInt(evt.target.dataset.id) === obj.attributes.itemId){
+        return true
+      }
+      // ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
+      // ACTIONS.fetchSingleItemModel()
+    // console.log(evt.target.dataset.id);
+
+    })
+    STORE.setStore('singleListing', singleItem[0])
     ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
+    console.log('route to',singleItem[0])
+
 
   },
 
@@ -52,7 +67,7 @@ const MultiView = React.createClass({
         return(
 
               <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
-                  <div className="thumbnail thumbnail-container">
+                  <div className="thumbnail multi-thumbnail-container">
                     <a onClick={self._routeToItem} className="anchor-to-single" data-id={data.attributes.id}>
                       <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
                     </a>
@@ -78,7 +93,7 @@ const MultiView = React.createClass({
         </div>
         <div className="garage-pic"></div>
         <div className="multi-description text-center">
-          <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
+          <h2>The ultimate meet-up spot for those who have, and those who don't.</h2>
 
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">

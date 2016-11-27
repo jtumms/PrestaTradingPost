@@ -5,8 +5,8 @@ const AboutUsView = React.createClass({
   render: function(){
     return (
       <div className="about-us-page-container">
-        <div className="auth-home-icon-container">
-          <a href=" "><i className="fa fa-home fa-4x auth-home-icon" aria-hidden="true"></i></a>
+        <div className="about-home-icon-container">
+          <a href=" "><i className="fa fa-home fa-4x about-home-icon" aria-hidden="true"></i></a>
         </div>
         <div className="about-header text-center">
           <h2>LOGO</h2>
