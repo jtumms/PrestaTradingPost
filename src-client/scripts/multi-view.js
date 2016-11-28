@@ -60,9 +60,6 @@ const MultiView = React.createClass({
   render: function(){
     let self = this
     console.log("what is going on?")
-    // $(function() {
-    //   $('multi-thumbnail-container').matchHeight(options);
-    // });
     // console.log(data)
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
@@ -114,7 +111,7 @@ const MultiView = React.createClass({
           {itemListings}
         </div>
         <div className="multi-next-page">
-          <h3>| 1 | 2 |</h3>
+
         </div>
         <div>
           <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
@@ -129,3 +126,4 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
+//          <h3>| 1 | 2 |</h3>

@@ -4,11 +4,17 @@ const GetUserModel = require('./get-user-model.js')
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 const AddItemModel = require('./add-item-model.js')
-// const JQuery = require('jquery')
 
 
 
 const ProfileView = React.createClass({
+  getInitialState: function(){
+    return {
+      selectedImage: <img className="item-img" height="200" src="" alt="Image preview ..."/>
+    }
+
+
+  },
 
   componentDidlMount: function(obj){
     let getUserModelInstance = new GetUserModel()
@@ -20,15 +26,7 @@ const ProfileView = React.createClass({
     // console.log('actions current info', ACTIONS.getCurrentUserInfo())
   },
 
-    // getUserDetails: function(userInfoObj) {
-    // let getUserModelInstance = new GetUserModel()
-    // // console.log(getUserModelInstance)
-    // // ACTIONS.fetchgetUserInfo()
-    // }
-  // },
-  // _addSubmisions: function(){
-  //
-  // }
+
 
   _submitNewItemInfo: function(evt) {
     evt.preventDefault()
@@ -43,27 +41,46 @@ const ProfileView = React.createClass({
       askingPrice: this.refs.price.value,
       category: this.refs.category.value,
       condition: "GOOD",
-      images:[ {
-        imageFileName: this.refs.image.value,
-      }],
       user: {
         "id": this.props.currentUser.id
       },
 
+
     }
+    this.refs.username.value = ''
+    this.refs.item.value = ''
+    this.refs.description.value = ''
+    this.refs.price.value = ''
+    // this.refs.category.value = ''
     // STORE.setStore('currentInventory', newItemData)
     console.log('new item data', newItemData)
     console.log("id", this.props.currentUser.id)
     ACTIONS.addItemModel(newItemData)
-    // this.refs.*.value = ''
-    // ('#profile-form-submit').children('input').val('')
-    // var frm = document.getItemById('profile-form-submit');
-    // frm.reset()
+
   },
 
   _seeChange: function(evt){
     console.log(evt.target.name.value)
 
+  },
+
+  _loadFile: function(evt){
+    let self = this
+    var reader  = new FileReader();
+    console.log('evt target',[evt.target.files[0]])
+    let fileOnDom = evt.target.files[0]
+    reader.addEventListener("load", function () {
+      console.log('???', reader.result)
+      self.setState({
+        selectedImage: <img className="item-img" height="200" src={reader.result} alt="Image preview ..."/>,
+        fileBlob: reader.result
+
+      })
+    }, false);
+
+    if (fileOnDom) {
+     reader.readAsDataURL(fileOnDom);
+    }
   },
 
 
@@ -76,6 +93,8 @@ const ProfileView = React.createClass({
       console.log("????")
       return <p> loading... </p>
     }
+
+
 
     return(
       <div className="profile-container">
@@ -94,7 +113,6 @@ const ProfileView = React.createClass({
               <input className="profile-item-inputs" type="text" ref="item" key="item" placeholder="Item to rent"/>
               <input className="profile-item-inputs" type="text" ref="description" key="description" placeholder="Item description"/>
               <input className="profile-item-inputs" type="text" ref="price" key="price" placeholder="Item rent price"/>
-              <input className="profile-item-inputs" type="text" ref="image" key="image" placeholder="Image Address"/>
               <div className="form-group profile-dropdown-box">
                 <select ref="category" className="profile-dropdown-select">
                   <option value="SPORTINGGOODS">Sporting Goods</option>
@@ -108,8 +126,11 @@ const ProfileView = React.createClass({
 
           </div>
           <div className="profile-item-pic col-sm-4">
-            <img className="profile-img" src=""/>
-            <button className="btn btn-primary btn-lg profile-add-pic-btn">Add Pic</button>
+
+            <input type="file" id="input" onChange={this._loadFile}/>
+            {this.state.selectedImage}
+
+
           </div>
           <div className="profile-info col-sm-4">
             <h1><u>User Profile</u></h1>
@@ -126,31 +147,5 @@ const ProfileView = React.createClass({
 
 module.exports = ProfileView
 
-
-//aria-haspopup="true" aria-expanded="false"
-// <form>
-//   <h2>Profile</h2>
-//   <h4 className="user-label"><label>Username</label></h4>
-//   <input className="profile-inputs profile-email-holder" type="text" name="username" placeholder="UserName"/>
-//   <h4 className="user-label"><label>Name</label></h4>
-//   <input className="profile-inputs" type="text" name="firstName" placeholder="First Name"/>
-//   <input className="profile-inputs" type="text" name="lastName" placeholder="Last Name"/>
-//   <h4 className="user-label"><label>Address</label></h4>
-//   <input className="profile-inputs" type="text" name="street" placeholder="Address"/>
-//   <input className="profile-inputs" type="text" name="city" placeholder="City"/>
-//   <input className="profile-inputs" type="text" name="state" placeholder="State"/>
-//   <input className="profile-inputs" type="text" name="zipcode" placeholder="Zipcode"/>
-// </form>
-
-//<div className="input-group profile-category-input">
-//   <input type="text" className="form-control" ref="category" placeholder="Category" aria-label="..."/>
-//   <div className="input-group-btn dropdown open">
-//     <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" ><span className="caret"></span></button>
-//     <ul className="dropdown-menu dropdown-menu-right profile-dropdown-list">
-//       <li>SPORTINGGOODS</li>
-//       <li>TOOLS</li>
-//       <li>ELECTRONICS</li>
-//       <li>OUTDOORS</li>
-//     </ul>
-//   </div>
-// </div>
+//              <input className="profile-item-inputs" type="text" ref="image" key="image" placeholder="Image Address"/>
+//            <button className="btn btn-primary btn-lg profile-add-pic-btn">Add Pic</button>

@@ -107,12 +107,21 @@ const ACTIONS = {
     const addItemModelInstance = new AddItemModel()
     addItemModelInstance.set(newItemDataObj)
     addItemModelInstance.save().then(function(){
+      return (
+        $.post('/upload-photo/:itemId', {data: fileblob})
+      )
       STORE.setStore('currentInventory', addItemModelInstance)
     })
     console.log('new item data', newItemDataObj)
     alert("New Item Uploaded!")
     // window.location.hash = "/multiview"
+  },
+
+  addImageData: function(file) {
+
   }
+
+
 
 }
 
