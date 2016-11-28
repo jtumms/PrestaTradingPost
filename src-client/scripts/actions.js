@@ -5,8 +5,7 @@ const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection, RentItemModel} = require('./models.js')
 const GetUserModel =require('./get-user-model.js')
 const AddItemModel = require('./add-item-model.js')
-
-
+const $ = require('jquery')
 const ACTIONS = {
 
   // fetchRentItemModel: function(attributes){
@@ -127,16 +126,26 @@ const ACTIONS = {
      })
   },
 
-  addItemModel: function(newItemDataObj){
+  addItemModel: function(newItemDataObj, fileBlobParam){
 
     const addItemModelInstance = new AddItemModel()
     addItemModelInstance.set(newItemDataObj)
     addItemModelInstance.save().then(function(serverRes){
       console.log("ppp", serverRes)
+      let reqConfig = {
+        url: `/upload-photo/${serverRes.itemId}`,
+        data: fileBlobParam,
+        headers: {
+          "Content-Type" : "text/plain"
+        }
+      }
+
       return (
-        $.post('/upload-photo/:itemId', {data: fileblob})
-      )
-      STORE.setStore('currentInventory', addItemModelInstance)
+        $.post(reqConfig)
+      ).then(function(serverRes){
+        console.log('image uploaded', serverRes)
+        STORE.setStore('currentInventory', addItemModelInstance)
+      })
     })
     console.log('new item data', newItemDataObj)
     alert("New Item Uploaded!")

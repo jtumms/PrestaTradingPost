@@ -54,7 +54,7 @@ const ProfileView = React.createClass({
     // STORE.setStore('currentInventory', newItemData)
     console.log('new item data', newItemData)
     console.log("id", this.props.currentUser.id)
-    ACTIONS.addItemModel(newItemData)
+    ACTIONS.addItemModel(newItemData, this.state.fileBlob)
 
   },
 
