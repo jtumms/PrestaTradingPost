@@ -2,9 +2,8 @@ const Backbone = require('backbone')
 const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
-const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
+const {ItemsModel, ItemsModelCollection, CategoryCollection, RentItemModel} = require('./models.js')
 const GetUserModel = require('./get-user-model.js')
-const RentItemModel = require('./models.js')
 const ACTIONS = {
 
   // fetchRentItemModel: function(attributes){
@@ -73,16 +72,24 @@ const ACTIONS = {
   },
 
   routeTo: function(path){
-    newItem = new RentItemModel(path)
-    newItem.set()
-    newItem.save().then(function(serverRes){
-      console.log(serverRes)
-    })
+
     window.location.hash = path
   },
 
   routeHome: function(){
     window.location.hash = '/'
+  },
+
+  createRentalTransaction: function(id){
+    let rentItemMod = new RentItemModel(id)
+    // rentItemMod.set()
+    rentItemMod.save().then(function(serverRes){
+      console.log(serverRes)
+      ACTIONS.routeTo("")
+    }).fail(function(err){
+      console.log(err);
+    })
+
   },
 
 
