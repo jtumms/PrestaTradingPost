@@ -43,6 +43,7 @@ public class AddItemController {
             String noValidLogin = "User not logged in";
             return new ResponseEntity<Object>(noValidLogin, HttpStatus.FORBIDDEN);
         }
+        File uploadDir = new File("public/images");
         String fileName = uploadedFileRef.getOriginalFilename();
         String path = "public/images/" + fileName;
         byte[] buffer = new byte[1000];
