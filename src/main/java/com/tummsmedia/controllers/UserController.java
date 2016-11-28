@@ -69,7 +69,7 @@ public class UserController {
         }
         return new ResponseEntity<Object>(users.findFirstById(id), HttpStatus.OK);
     }
-    @RequestMapping(path = "/logout", method = RequestMethod.GET)
+    @RequestMapping(path = "/logout", method = RequestMethod.DELETE)
     public ResponseEntity<Object> logout(HttpSession session) {
         String name = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(name);

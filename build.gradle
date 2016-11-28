@@ -37,4 +37,6 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile files('libs/jersey-bundle-1.19.1.jar')
 	compile files('libs/jersey-multipart-1.19.3.jar')
+	compile('org.springframework.boot:spring-boot-starter-mustache')
+
 }
