@@ -20,7 +20,7 @@ public class Transaction {
     public Item item;
 
     @Transient
-    boolean isFinal;
+    boolean isAccepted;
     @Transient
     boolean isBorrowerNotified;
     @Transient
@@ -29,17 +29,22 @@ public class Transaction {
     public Transaction() {
     }
 
+    public Transaction(String owner) {
+
+    }
+
     public Transaction(int borrowerId, int ownerId, Item item) {
         this.borrowerId = borrowerId;
         this.ownerId = ownerId;
         this.item = item;
+
     }
 
-    public Transaction(int borrowerId, int ownerId, Item item, boolean isFinal, boolean isBorrowerNotified, boolean isOwnerNotifed) {
+    public Transaction(int borrowerId, int ownerId, Item item, boolean isAccepted, boolean isBorrowerNotified, boolean isOwnerNotifed) {
         this.borrowerId = borrowerId;
         this.ownerId = ownerId;
         this.item = item;
-        this.isFinal = isFinal;
+        this.isAccepted = isAccepted;
         this.isBorrowerNotified = isBorrowerNotified;
         this.isOwnerNotifed = isOwnerNotifed;
     }
@@ -56,7 +61,7 @@ public class Transaction {
         return borrowerId;
     }
 
-    public void setBorrowerId() {
+    public void setBorrowerId(int borrowerId) {
         this.borrowerId = borrowerId;
     }
 
@@ -64,24 +69,24 @@ public class Transaction {
         return ownerId;
     }
 
-    public void setOwnerId() {
+    public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
     }
 
-    public Item item() {
+    public Item getItem() {
         return item;
     }
 
-    public void item(Item item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 
-    public boolean isFinal() {
-        return isFinal;
+    public boolean isAccepted() {
+        return isAccepted;
     }
 
-    public void setFinal(boolean aFinal) {
-        isFinal = aFinal;
+    public void setAccepted(boolean accepted) {
+        isAccepted = accepted;
     }
 
     public boolean isBorrowerNotified() {
