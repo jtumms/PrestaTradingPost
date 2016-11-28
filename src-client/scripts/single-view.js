@@ -12,6 +12,11 @@ import MapPage from './map-api.js'
 const SingleView = React.createClass({
 
   componentWillMount: function(){
+    let id = this.props.itemId
+    console.log('store data',STORE._data);
+    console.log('trying to get the pics', this.props);
+
+
     ACTIONS.fetchSingleItemModel(this.props.itemId)
 
   },
@@ -21,6 +26,8 @@ const SingleView = React.createClass({
     ACTIONS.createRentalTransaction(this.props.itemId)
 
   },
+
+
 
 
   render:function(){
@@ -48,20 +55,20 @@ const SingleView = React.createClass({
             <a href=" "><i className="fa fa-home fa-4x single-home-icon" aria-hidden="true"></i></a>
           </div>
           <div className="single-header-container">
-             <h2>LOGO</h2>
-             <h1 className="single-header">Presta Trading Post</h1>
+           <h2>LOGO</h2>
+           <h1 className="single-header">Presta Trading Post</h1>
           </div>
 
         <div className="thumbnail single-thumbnail-container">
            <img className="single-image" src={"images/" + this.props.singleItem.get("images")[0].imageFileName}/>
-          <div className="caption">
+          <div className="single-caption">
             <h3><u>Description:</u></h3><h4>{this.props.singleItem.get('itemDescription')}</h4>
             <h3><u>Item:</u></h3> <h4>{this.props.singleItem.get('itemName')}</h4>
             <h3><u>Price:</u></h3> <h4>{this.props.singleItem.get('askingPrice')}</h4>
             {/* <button  onClick={this._routeToMessenger} type="button" className="btn btn-default btn-large sign-in" data-id={this.props.itemId}>Rent Item / Contact Renter</button> */}
             <a href="/#confirm-rentalview"><button type="button" className="btn btn-primary btn-lg confirm-rental-btn">Rent Item / Contact Renter</button></a>
             <div className="map-container">
-            <MapPage center={CharlestonMap.center} zoom={CharlestonMap.zoom}/>
+              <MapPage center={CharlestonMap.center} zoom={CharlestonMap.zoom}/>
             </div>
           </div>
         </div>

@@ -1,10 +1,9 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-const SingleView = require('./single-view')
+const SingleView = require('./single-view.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection} = require("./models.js")
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
-
 
 
 const MultiView = React.createClass({
@@ -33,11 +32,11 @@ const MultiView = React.createClass({
 
   _routeToCategory: function(evt){
     // STORE._data.currentInventory.filter('collection')
-  ACTIONS.routeTo(`category/${evt.target.dataset.cathash}`)
-
+    ACTIONS.routeTo(`category/${evt.target.dataset.cathash}`)
   },
 
   _routeToItem: function(evt) {
+    // ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
     let singleItem = STORE._data.currentInventory.filter(function(obj, i){
       console.log(typeof parseInt(evt.target.dataset.id))
       console.log('???????', obj.attributes.itemId)
@@ -56,18 +55,19 @@ const MultiView = React.createClass({
 
   render: function(){
     let self = this
-
+    console.log("what is going on?")
+    // console.log(data)
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
+      // console.log(data.attributes.images[0].imageFileName)
 
-      // console.log(data.attributes.itemId)
-      if(i <= 11){
+
 
         return(
 
               <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
                   <div className="thumbnail multi-thumbnail-container">
-                    <a onClick={self._routeToItem} className="anchor-to-single" data-id={data.attributes.id}>
+                    <a onClick={self._routeToItem} className="multi-anchor-to-single" data-id={data.attributes.id}>
                       <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
                     </a>
                     <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
@@ -76,43 +76,33 @@ const MultiView = React.createClass({
                   </div>
               </div>
         )
-      }
     })
 
     return (
       <div className="multi-container">
         <div className="garage-pic">
-
           <div className="sign-in-btn">
             <a href="#aboutus"><button type="button" className="btn btn-default btn-md about-us "><h4>About-Us</h4></button></a>
             <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in"><h4>Sign-in / Sign-up</h4></button></a>
             <a href="#logout"><button type="button" className="btn btn-default btn-md sign-out"><h4>Sign Out</h4></button></a>
           </div>
-
           <div className="multi-header text-center">
             <h2>LOGO</h2>
             <h1>Presta Trading Post</h1>
           </div>
-
         </div>
-
-          <div className="multi-description text-center">
-            <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
-          </div>
-          <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-            <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h3>General</h3></button>
-            <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h3>Sporting Goods</h3></button>
-            <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h3>Tools</h3></button>
-            <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h3>Electronics</h3></button>
-            <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h3>Outdoors</h3></button>
-          </div>
-
-          <div className="row row-eq-height is-flex multi-pic-body">
-            {itemListings}
-          </div>
-
-        <div className="multi-next-page">
-          <h3>| 1 | 2 |</h3>
+        <div className="multi-description text-center">
+          <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
+        </div>
+        <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
+          <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h3>General</h3></button>
+          <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h3>Sporting Goods</h3></button>
+          <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h3>Tools</h3></button>
+          <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h3>Electronics</h3></button>
+          <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h3>Outdoors</h3></button>
+        </div>
+        <div className="row row-eq-height is-flex multi-pic-body">
+          {itemListings}
         </div>
         <div>
           <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
@@ -128,13 +118,27 @@ const MultiView = React.createClass({
 
 module.exports = MultiView
 
-// onClick={this._routeToCategory}
-//  Have you ever wanted to try out a stand-up paddle board but didn't want to have to fork out the big money just to try it out for a weekend?
-// How about, have you ever needed a special tool to fix something in an afternoon but didn't want to have to buy so that it can sit in your garage 99% of the time?
-// Or maybe you want to have a jam session tonight but you don't have an amplifier.  Well here at Presta Trading Post we have people who have these kinds of things
-// and more that are just sitting in their garages for 99% of the year and for a nominal price, which in most cases can be totally negotiable, you can use these items and not have to buy them.
-// All you have to do is register with Presta Trading Post today, and then you can begin to see the benefits. Or maybe you even have items sitting around in your garage that someone else might need to use.
-// Everybody wins. So, register today.
-// ACTIONS.routeTo(`singleview/${evt.target.dataset.id}`)
-// ACTIONS.fetchSingleItemModel()
-// console.log(evt.target.dataset.id);
+//<div className="sign-in-btn">
+//   <a href="#aboutus"><button type="button" className="btn btn-default btn-md ">About-Us</button></a>
+//   <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in">Sign-in / Sign-up</button></a>
+//   <a href="#logout"><button type="button" className="btn btn-default btn-md sign-out">Sign Out</button></a>
+// </div>
+// <div className="multi-header text-center">
+//   <h2>LOGO</h2>
+//   <h1>Presta Trading Post</h1>
+// </div>
+// <div className="garage-pic"></div>
+// <div className="multi-description text-center">
+//   <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
+//
+// </div>
+// <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
+//   <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}>General</button>
+//   <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={self._routeToCategory}>Sporting Goods</button>
+//   <button type="button" className="btn btn-default" data-cathash="tools" onClick={self._routeToCategory}>Tools</button>
+//   <button type="button" className="btn btn-default" data-cathash="electronics" onClick={self._routeToCategory}>Electronics</button>
+//   <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={self._routeToCategory}>Outdoors</button>
+// </div>
+//
+// <div className="row row-eq-height is-flex multi-pic-body match-my-cols">
+//     {itemListings}
