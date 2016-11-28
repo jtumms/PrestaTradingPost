@@ -286,11 +286,11 @@ body{
 	line-height: .8em;
 }
 
-.profile-dropdown-list {
-	li {
-		margin-left: 10px;
-	}
-}
+// .profile-dropdown-list {
+// 	li {
+// 		margin-left: 10px;
+// 	}
+// }
 
 .profile-add-container {
 	text-align: center;
@@ -333,6 +333,11 @@ body{
 	margin: 20px auto 0;
 	// width: 100px;
 	height: 30px;
+}
+
+.profile-dropdown-select {
+	height:40px;
+	width: 150px;
 }
 
 .profile-image {

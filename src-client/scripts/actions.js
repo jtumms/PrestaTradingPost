@@ -10,7 +10,7 @@ const ACTIONS = {
 
   logOutUser: function(){
     let logOutUserInstance = new UserModel('/logout')
-    logOutUserInstance.fetch()
+    logOutUserInstance.get()
       .then(function(){
         STORE.setStore('currentUser', new UserModel() )
       })
@@ -110,8 +110,8 @@ const ACTIONS = {
       STORE.setStore('currentInventory', addItemModelInstance)
     })
     console.log('new item data', newItemDataObj)
-
-    window.location.hash = "/multiview"
+    alert("New Item Uploaded!")
+    // window.location.hash = "/multiview"
   }
 
 }

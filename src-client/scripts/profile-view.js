@@ -4,6 +4,7 @@ const GetUserModel = require('./get-user-model.js')
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 const AddItemModel = require('./add-item-model.js')
+// const JQuery = require('jquery')
 
 
 
@@ -54,7 +55,10 @@ const ProfileView = React.createClass({
     console.log('new item data', newItemData)
     console.log("id", this.props.currentUser.id)
     ACTIONS.addItemModel(newItemData)
-
+    // this.refs.*.value = ''
+    // ('#profile-form-submit').children('input').val('')
+    // var frm = document.getItemById('profile-form-submit');
+    // frm.reset()
   },
 
   _seeChange: function(evt){
@@ -92,7 +96,7 @@ const ProfileView = React.createClass({
               <input className="profile-item-inputs" type="text" ref="price" key="price" placeholder="Item rent price"/>
               <input className="profile-item-inputs" type="text" ref="image" key="image" placeholder="Image Address"/>
               <div className="form-group profile-dropdown-box">
-                <select ref="category">
+                <select ref="category" className="profile-dropdown-select">
                   <option value="SPORTINGGOODS">Sporting Goods</option>
                   <option value="TOOLS">Tools</option>
                   <option value="ELECTRONICS">Electronics</option>

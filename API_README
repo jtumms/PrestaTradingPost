@@ -97,6 +97,5 @@ JSON needed from front end
   }
 }
 
-
-
-
+to delete item:
+localhost:8080/delete-item?itemId={itemId#}

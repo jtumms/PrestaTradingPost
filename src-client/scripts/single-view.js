@@ -21,6 +21,8 @@ const SingleView = React.createClass({
 
   },
 
+  
+
   render:function(){
   console.log(this.props.singleItem);
     // let self = this
