@@ -4,7 +4,7 @@
   "description": "a lightweight build system for transpiling js & scss, browserifying and running a simple node server. auto-installs backbone and react",
   "main": "index.html",
   "scripts": {
-    "go": "npm run watch",
+    "go": "npm run stop && npm run watch",
     "stop": "bash ./bin/kill.sh",
     "watch": "npm run watch-js && npm run watch-css && echo '\n\n===== watching js and scss files in src-client/, writing changes to public/ =====\n\n'&",
     "watch-js": "./node_modules/.bin/watchify src-client/scripts/app.js --debug --verbose --transform babelify -o public/js/app.js&",
