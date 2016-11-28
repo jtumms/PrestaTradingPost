@@ -2,10 +2,20 @@ const Backbone = require('backbone')
 const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
-const {ItemsModel, ItemsModelCollection, CategoryCollection} = require('./models.js')
-const GetUserModel =require('./get-user-model.js')
-
+const {ItemsModel, ItemsModelCollection, CategoryCollection, RentItemModel} = require('./models.js')
+const GetUserModel = require('./get-user-model.js')
 const ACTIONS = {
+
+  // fetchRentItemModel: function(attributes){
+  //   const rentItemMod = new RentItemModel()
+  //   rentItemMod.url = `/rent-item?itemId=` + attributes
+  //   console.log(rentItemMod.url);
+  //    rentItemMod.fetch().then(function(){
+  //      console.log('hey hey hey',rentItemMod )
+  //      ACTIONS.routeTo(`/rent-item?itemId=${this.props}`)
+  //
+  //    })
+  // },
 
   logOutUser: function(){
     let logOutUserInstance = new UserModel('/logout')
@@ -62,11 +72,24 @@ const ACTIONS = {
   },
 
   routeTo: function(path){
+
     window.location.hash = path
   },
 
   routeHome: function(){
     window.location.hash = '/'
+  },
+
+  createRentalTransaction: function(id){
+    let rentItemMod = new RentItemModel(id)
+    // rentItemMod.set()
+    rentItemMod.save().then(function(serverRes){
+      console.log(serverRes)
+      ACTIONS.routeTo("")
+    }).fail(function(err){
+      console.log(err);
+    })
+
   },
 
 
@@ -101,10 +124,6 @@ const ACTIONS = {
      })
   },
 
-  // addItemModel: function(){
-  //   const addItemInstance = new AddItemModel()
-  //   addItemInstance.
-  // }
 
 }
 
