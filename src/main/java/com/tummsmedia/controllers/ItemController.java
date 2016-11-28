@@ -219,12 +219,14 @@ public class ItemController {
         try (FileOutputStream stream = new FileOutputStream(imageFile)) {
             stream.write(decodedBytes);
         }
+        item.setImages(null);
         Image workingImage = new Image();
         workingImage.setImageFileName(imageFile.getName());
 
         HashSet<Image> images = new HashSet<>();
         images.add(workingImage);
         item.setImages(images);
+        items.save(item);
         return new ResponseEntity<Object>(item, HttpStatus.OK);
     }
 
