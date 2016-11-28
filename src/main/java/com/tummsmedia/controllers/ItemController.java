@@ -6,30 +6,21 @@ import com.google.maps.PendingResult;
 import com.google.maps.model.GeocodingResult;
 import com.tummsmedia.entities.*;
 import com.tummsmedia.services.ItemRepo;
+import com.tummsmedia.services.MessageRepo;
 import com.tummsmedia.services.TransactionRepo;
 import com.tummsmedia.services.UserRepo;
 import com.tummsmedia.utilities.PasswordStorage;
-import javassist.bytecode.ByteArray;
 import jodd.json.JsonParser;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletInputStream;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -51,6 +42,10 @@ public class ItemController {
 
     @Autowired
     TransactionRepo transactions;
+
+    @Autowired
+    MessageRepo messages;
+
 
 
     Server h2;
@@ -173,20 +168,15 @@ public class ItemController {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
         if (user == null) {
-            throw new Exception("No valid user session!!!");
+            String unauthorized = "User must be logged in to rent an item";
+            return new ResponseEntity<Object>(unauthorized, HttpStatus.FORBIDDEN);
         }
         Item itemBorrowed = items.findFirstByItemId(itemId);
         String ownerUsername = items.findFirstByItemId(itemId).getUser().getUsername();
         Transaction transaction = new Transaction(user.getId(), items.findFirstByItemId(itemId).getUser().getId(), itemBorrowed);
         transactions.save(transaction);
-        emailDataMap.put("borrowerId", Integer.toString(user.getId()));
-        emailDataMap.put("owner", ownerUsername);
-        emailDataMap.put("itemBorrowed", itemBorrowed.getItemName());
-        emailDataMap.put("itemPrice", Long.toString(itemBorrowed.getAskingPrice()));
-        emailDataMap.put("transactionId", Integer.toString(transaction.getTransactionId()));
-        Message.sendOwnerMessage(itemBorrowed);
-        String responseText = String.format("User: %s has rented ItemId: %s. A notifcation email is being sent.", user.getUsername(), itemBorrowed.getItemId());
-        return new ResponseEntity<Object>(responseText, HttpStatus.OK);
+        MessageController.sendOwnerMessage(itemBorrowed, transaction, messages, users);
+        return new ResponseEntity<Object>(transaction, HttpStatus.OK);
     }
 
     // This is a basic JSON add item route with no photo upload. Use http://localhost:8080/add-item/upload for
