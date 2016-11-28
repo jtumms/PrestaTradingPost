@@ -80,12 +80,16 @@ const ACTIONS = {
     window.location.hash = '/'
   },
 
-  createRentalTransaction: function(id){
-    let rentItemMod = new RentItemModel(id)
+  createRentalTransaction: function(itemId){
+    let rentItemMod = new RentItemModel(itemId)
     // rentItemMod.set()
     rentItemMod.save().then(function(serverRes){
       console.log(serverRes)
-      ACTIONS.routeTo("")
+      let confirmedRentalModelInstance = new ItemsModel()
+      confirmedRentalModelInstance.set(serverRes)
+      STORE.setStore('confirmedListingRequest',confirmedRentalModelInstance )
+
+      ACTIONS.routeTo("confirm-rentalview")
     }).fail(function(err){
       console.log(err);
     })
@@ -123,7 +127,9 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
-
+ clearConfirmedRequest: function(){
+   STORE.setStore('confirmedListingRequest',{})
+ }
 
 }
 

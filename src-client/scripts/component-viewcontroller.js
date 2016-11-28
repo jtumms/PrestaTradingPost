@@ -59,7 +59,12 @@ const AppViewController = React.createClass({
           break;
 
         case "ConfirmRentalView":
-          return <ConfirmRentalView/>
+          if (typeof this.state.confirmedListingRequest.get === 'undefined'){
+            ACTIONS.routeTo("")
+            return
+          }
+
+          return <ConfirmRentalView confirmedItem={this.state.confirmedListingRequest}/>
           break;
 
         case "ProfileView":

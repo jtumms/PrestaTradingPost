@@ -58,8 +58,7 @@ const SingleView = React.createClass({
             <h3><u>Description:</u></h3><h4>{this.props.singleItem.get('itemDescription')}</h4>
             <h3><u>Item:</u></h3> <h4>{this.props.singleItem.get('itemName')}</h4>
             <h3><u>Price:</u></h3> <h4>{this.props.singleItem.get('askingPrice')}</h4>
-            {/* <button  onClick={this._routeToMessenger} type="button" className="btn btn-default btn-large sign-in" data-id={this.props.itemId}>Rent Item / Contact Renter</button> */}
-            <a href="/#confirm-rentalview"><button type="button" className="btn btn-primary btn-lg confirm-rental-btn">Rent Item / Contact Renter</button></a>
+            <button  onClick={this._routeToMessenger} type="button" className="btn btn-default btn-large confirm-rental-btn " data-id={this.props.itemId}>Rent Item / Contact Renter</button>
             <div className="map-container">
             <MapPage center={CharlestonMap.center} zoom={CharlestonMap.zoom}/>
             </div>
@@ -69,7 +68,7 @@ const SingleView = React.createClass({
             <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
             <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
             <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
-            <h1 className="copyright multi-icons">&#xa9;  2016 Team SilverBack</h1>
+            <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
         </div>
 
       </div>

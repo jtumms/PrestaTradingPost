@@ -67,7 +67,7 @@ const MultiView = React.createClass({
 
               <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
                   <div className="thumbnail multi-thumbnail-container">
-                    <a onClick={self._routeToItem} className="anchor-to-single" data-id={data.attributes.id}>
+                    <a onClick={self._routeToItem} className="multi-anchor-to-single" data-id={data.attributes.id}>
                       <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
                     </a>
                     <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
@@ -97,14 +97,14 @@ const MultiView = React.createClass({
         </div>
 
           <div className="multi-description text-center">
-            <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
+            <h2>The <strong><em>ultimate</em></strong> meet-up spot for those who have and for those who don't.</h2>
           </div>
           <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-            <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h3>General</h3></button>
-            <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h3>Sporting Goods</h3></button>
-            <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h3>Tools</h3></button>
-            <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h3>Electronics</h3></button>
-            <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h3>Outdoors</h3></button>
+            <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>
+            <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h2>Sporting Goods</h2></button>
+            <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h2>Tools</h2></button>
+            <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h2>Electronics</h2></button>
+            <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h2>Outdoors</h2></button>
           </div>
 
           <div className="row row-eq-height is-flex multi-pic-body">
@@ -118,7 +118,7 @@ const MultiView = React.createClass({
           <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
           <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
-          <h1 className="copyright multi-icons">&#xa9;  2016 Team SilverBack</h1>
+          <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
         </div>
       </div>
     )
