@@ -13,6 +13,7 @@ const GoogleMap = require ('google-map-react')
 const AppRouter = Backbone.Router.extend({
 
     routes: {
+      "confirm-rentalview" : "showConfirmRentalView",
       "aboutus" : "showAboutUsView",
       "category/:catName" : "showCatName",
       "logout" : "showSignOutView",
@@ -21,6 +22,7 @@ const AppRouter = Backbone.Router.extend({
       "authview" : "showAuthView",
       "singleview/:itemId" : "showSingleView",
       "*path" : "showMultiView"
+
     },
 
     showMultiView: function(){
@@ -29,6 +31,9 @@ const AppRouter = Backbone.Router.extend({
 
     showSingleView: function(itemId){
       ReactDOM.render( <AppViewController routedFrom="SingleView" itemId={itemId} />, document.querySelector('#app-container') )
+    },
+    showConfirmRentalView: function(){
+      ReactDOM.render( <AppViewController routedFrom="ConfirmRentalView" />, document.querySelector('#app-container') )
     },
 
     showAuthView: function(){

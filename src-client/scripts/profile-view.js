@@ -10,10 +10,9 @@ const AddItemModel = require('./add-item-model.js')
 const ProfileView = React.createClass({
   getInitialState: function(){
     return {
-      selectedImage: <img className="item-img" height="200" src="" alt="Image preview ..."/>
+      selectedImage: <img className="item-img" height="200" src="" alt="Image preview ..."/>,
+      fileBlob: ""
     }
-
-
   },
 
   componentDidlMount: function(obj){

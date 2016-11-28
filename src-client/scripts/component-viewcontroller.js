@@ -5,6 +5,7 @@ const OopsView = require('./oops-view.js')
 const AuthView = require('./auth-view.js')
 const MultiView = require('./multi-view.js')
 const SingleView = require('./single-view.js')
+const ConfirmRentalView = require ('./confirm-rental.js')
 const ProfileView = require('./profile-view.js')
 const SignOutView = require('./signout-view.js')
 const STORE = require('./store.js')
@@ -55,6 +56,10 @@ const AppViewController = React.createClass({
 
         case "SingleView":
           return <SingleView itemId={this.props.itemId} singleItem={this.state.singleListing} />
+          break;
+
+        case "ConfirmRentalView":
+          return <ConfirmRentalView/>
           break;
 
         case "ProfileView":

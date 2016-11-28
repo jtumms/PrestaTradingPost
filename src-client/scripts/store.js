@@ -2,8 +2,6 @@ const Backbone = require('backbone')
 const ACTIONS = require('./actions.js')
 const UserModel = require('./model-user.js')
 
-// const STORE = {
-//    _data:  {
 
 
 
