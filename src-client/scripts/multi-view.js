@@ -30,6 +30,10 @@ const MultiView = React.createClass({
     }
   },
 
+  _handleLogOut: function(){
+    ACTIONS.logOutUser()
+  },
+
   _routeToCategory: function(evt){
     // STORE._data.currentInventory.filter('collection')
     ACTIONS.routeTo(`category/${evt.target.dataset.cathash}`)
@@ -84,52 +88,37 @@ const MultiView = React.createClass({
           <div className="sign-in-btn">
             <a href="#aboutus"><button type="button" className="btn btn-default btn-md about-us "><h4>About-Us</h4></button></a>
             <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in"><h4>Sign-in / Sign-up</h4></button></a>
-            <a href="#logout"><button type="button" className="btn btn-default btn-md sign-out"><h4>Sign Out</h4></button></a>
+            <button type="button" className="btn btn-default btn-md sign-out" onClick={this._handleLogOut}><h4>Sign Out</h4></button>
           </div>
           <div className="multi-header text-center">
             <h2>LOGO</h2>
             <h1>Presta Trading Post</h1>
           </div>
         </div>
-<<<<<<< HEAD
-
-          <div className="multi-description text-center">
-            <h2>The <strong><em>ultimate</em></strong> meet-up spot for those who have and for those who don't.</h2>
-          </div>
-          <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-            <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>
-            <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h2>Sporting Goods</h2></button>
-            <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h2>Tools</h2></button>
-            <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h2>Electronics</h2></button>
-            <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h2>Outdoors</h2></button>
-          </div>
-
-          <div className="row row-eq-height is-flex multi-pic-body">
-            {itemListings}
-          </div>
-
-        <div className="multi-next-page">
-          <h3>| 1 | 2 |</h3>
-=======
         <div className="multi-description text-center">
-          <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
+          <h2>The <strong><em>ultimate</em></strong> meet-up spot for those who have and for those who don't.</h2>
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-          <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h3>General</h3></button>
-          <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h3>Sporting Goods</h3></button>
-          <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h3>Tools</h3></button>
-          <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h3>Electronics</h3></button>
-          <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h3>Outdoors</h3></button>
+          <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>
+          <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h2>Sporting Goods</h2></button>
+          <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h2>Tools</h2></button>
+          <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h2>Electronics</h2></button>
+          <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h2>Outdoors</h2></button>
         </div>
+
         <div className="row row-eq-height is-flex multi-pic-body">
           {itemListings}
->>>>>>> 4772213c269c229dabc3a2374baf9d2e69bc5f1a
         </div>
-        <div>
-          <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
-          <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
-          <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
-          <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
+
+        <div className="multi-next-page">
+
+
+          <div>
+            <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
+            <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
+          </div>
         </div>
       </div>
     )
@@ -163,3 +152,17 @@ module.exports = MultiView
 //
 // <div className="row row-eq-height is-flex multi-pic-body match-my-cols">
 //     {itemListings}
+
+// <div className="multi-description text-center">
+//   <h1>The ultimate meet-up spot for those who have and those who don't.</h1>
+// </div>
+// <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
+//   <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h3>General</h3></button>
+//   <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h3>Sporting Goods</h3></button>
+//   <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h3>Tools</h3></button>
+//   <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h3>Electronics</h3></button>
+//   <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h3>Outdoors</h3></button>
+// </div>
+// <div className="row row-eq-height is-flex multi-pic-body">
+//   {itemListings}
+// </div>

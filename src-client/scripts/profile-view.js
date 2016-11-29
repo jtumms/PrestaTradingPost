@@ -50,8 +50,6 @@ const ProfileView = React.createClass({
     this.refs.item.value = ''
     this.refs.description.value = ''
     this.refs.price.value = ''
-    // this.refs.category.value = ''
-    // STORE.setStore('currentInventory', newItemData)
     console.log('new item data', newItemData)
     console.log("id", this.props.currentUser.id)
     ACTIONS.addItemModel(newItemData, this.state.fileBlob)
@@ -122,14 +120,10 @@ const ProfileView = React.createClass({
               </div>
               <button className="btn btn-primary btn-lg profile-add-btn" onClick={this._submitNewItemInfo}>Add Item</button>
             </form>
-
           </div>
           <div className="profile-item-pic col-sm-4">
-
             <input type="file" id="input" onChange={this._loadFile}/>
             {this.state.selectedImage}
-
-
           </div>
           <div className="profile-info col-sm-4">
             <h1><u>User Profile</u></h1>

@@ -6,12 +6,7 @@ const ACTIONS = require('./actions.js')
 
 // STORE.setStore('currentUser', {})
 const SignOutView = React.createClass({
-  //
-  // let logoutModelInstance = new LogoutModel()
-  //
-  // logoutModelInstance.get('/logout').then(function(){
-    // ACTIONS.logOutUser('/logout')
-  // })
+
 
   render: function(){
 

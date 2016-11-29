@@ -6,6 +6,16 @@ import GoogleMap from 'google-map-react'
 
 export default class MapPage extends Component {
 
+  // var cityCircle = new google.maps.Circle({
+  //   strokeColor: '#FF0000',
+  //   strokeOpacity: 0.8,
+  //   strokeWeight: 2,
+  //   fillColor: '#FF0000',
+  //   fillOpacity: 0.35,
+  //   map: map,
+  //   center: {this.props.center},
+  //   radius: 500
+  // }),
 
     constructor(props) {
         super(props);
@@ -16,7 +26,7 @@ export default class MapPage extends Component {
 
        return (
 
-         <GoogleMap
+         <GoogleMap        
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}>
 

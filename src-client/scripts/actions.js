@@ -8,22 +8,15 @@ const AddItemModel = require('./add-item-model.js')
 const $ = require('jquery')
 const ACTIONS = {
 
-  // fetchRentItemModel: function(attributes){
-  //   const rentItemMod = new RentItemModel()
-  //   rentItemMod.url = `/rent-item?itemId=` + attributes
-  //   console.log(rentItemMod.url);
-  //    rentItemMod.fetch().then(function(){
-  //      console.log('hey hey hey',rentItemMod )
-  //      ACTIONS.routeTo(`/rent-item?itemId=${this.props}`)
-  //
-  //    })
-  // },
 
   logOutUser: function(){
     let logOutUserInstance = new UserModel('/logout')
-    logOutUserInstance.get()
-      .then(function(){
+    logOutUserInstance.set({id: 'forDELETE'})
+    logOutUserInstance.destroy()
+      .then(function(serverRes){
+        console.log('server RES', serverRes)
         STORE.setStore('currentUser', new UserModel() )
+        ACTIONS.routeTo("#logout")
       })
   },
 
@@ -129,11 +122,9 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
-<<<<<<< HEAD
- clearConfirmedRequest: function(){
-   STORE.setStore('confirmedListingRequest',{})
- }
-=======
+   clearConfirmedRequest: function(){
+     STORE.setStore('confirmedListingRequest',{})
+   },
 
   addItemModel: function(newItemDataObj, fileBlobParam){
 
@@ -164,11 +155,6 @@ const ACTIONS = {
   addImageData: function(file) {
 
   }
-
-
-
->>>>>>> 4772213c269c229dabc3a2374baf9d2e69bc5f1a
-
 }
 
 module.exports = ACTIONS
