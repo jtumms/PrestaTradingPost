@@ -83,12 +83,12 @@ public class MessageController {
         String content = contentBuilder.toString();
         Mustache.compiler().compile(content).execute(m, writer);
         form.field("html", String.valueOf(writer));
-
-
-
-
         return webResource.type(MediaType.MULTIPART_FORM_DATA_TYPE).
                 post(ClientResponse.class, form);
+    }
+
+    public static void sendRenterEmail(){
+
     }
 }
 

@@ -31,7 +31,9 @@ public class TransactionController {
             Transaction transaction = transactions.findOne(transactionId);
             transaction.setAccepted(true);
             transactions.save(transaction);
+            MessageController.sendRenterEmail();
             return "toOwnerResponseAccept";
+
         }
         else if (isAccepted == false){
             Transaction transaction = transactions.findOne(transactionId);
