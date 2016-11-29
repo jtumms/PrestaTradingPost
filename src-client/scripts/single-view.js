@@ -36,6 +36,13 @@ const SingleView = React.createClass({
         center: {lat: 32.784618, lng: -79.940918},
         zoom: 13,
     }
+    console.log('this props???', this.props.singleItem.attributes.latLng)
+    // let model = this.props.singleItem.attributes.latLng
+    // pins: {
+    //         latitude: model.get('latitude'),
+    //         longitude: model.get('longitude'),
+    //      }
+    // })
 
 
     return(
@@ -56,8 +63,9 @@ const SingleView = React.createClass({
             <h3><u>Item:</u></h3> <h4>{this.props.singleItem.get('itemName')}</h4>
             <h3><u>Price:</u></h3> <h4>{this.props.singleItem.get('askingPrice')}</h4>
             <button  onClick={this._routeToMessenger} type="button" className="btn btn-default btn-large confirm-rental-btn " data-id={this.props.itemId}>Rent Item / Contact Renter</button>
-            <div className="map-container">
-            <MapPage center={CharlestonMap.center} zoom={CharlestonMap.zoom}/>
+            <div className="map-container" >
+              <MapPage center={CharlestonMap.center} zoom={CharlestonMap.zoom}/>
+
             </div>
           </div>
         </div>
@@ -74,3 +82,4 @@ const SingleView = React.createClass({
 
 
 module.exports = SingleView
+// === >  goes in MapPage==>   pinsData={pins}
