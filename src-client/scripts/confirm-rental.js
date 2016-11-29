@@ -2,9 +2,12 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const Backbone = require('backbone')
 const SingleView = require('./single-view.js')
+const ACTIONS = require('./actions.js')
 
 const ConfirmRentalView = React.createClass({
-
+  componentWillUnmount: function(){
+    ACTIONS.clearConfirmedRequest()
+  },
   render: function(){
 
     return (
@@ -21,9 +24,12 @@ const ConfirmRentalView = React.createClass({
           <div className="rental-body-container text-center">
              <h1>Thank You!</h1>
              <h2>  Your request has been sent to the renter. You will be contacted
-                 via email to negotiate/confirm the terms of your rental request.
-                 Thanks for using Presta Trading Post! We look forward to helping you
-                 with your next project, or your next adventure! Happy Trading!</h2>
+                 via email to confirm the terms of your rental request.
+                 Thanks for using <strong><em>Presta Trading Post</em></strong>. We look forward to helping you
+                 with your next project or your next adventure. Happy Trading!</h2>
+
+              <h4> For item: {this.props.confirmedItem.get('item').itemName}</h4>
+
 
               <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
               <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>

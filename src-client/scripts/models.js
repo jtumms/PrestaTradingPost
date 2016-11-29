@@ -48,18 +48,3 @@ module.exports = {
   CategoryCollection,
   RentItemModel,
 }
-
-//urlRoot: "/get-item",
-// SINGLE ITEM ROUTE =
-//
-// localhost:8080/get-item?itemId=1
-//
-// returns single item by itemId
-
-// const InventoryModel = Backbone.Model.extend({
-//   urlRoot: "/get-boot",
-//
-//   initialize: function(){
-//
-//   }
-// });

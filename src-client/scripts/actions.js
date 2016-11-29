@@ -8,16 +8,6 @@ const AddItemModel = require('./add-item-model.js')
 const $ = require('jquery')
 const ACTIONS = {
 
-  // fetchRentItemModel: function(attributes){
-  //   const rentItemMod = new RentItemModel()
-  //   rentItemMod.url = `/rent-item?itemId=` + attributes
-  //   console.log(rentItemMod.url);
-  //    rentItemMod.fetch().then(function(){
-  //      console.log('hey hey hey',rentItemMod )
-  //      ACTIONS.routeTo(`/rent-item?itemId=${this.props}`)
-  //
-  //    })
-  // },
 
   logOutUser: function(){
     let logOutUserInstance = new UserModel('/logout')
@@ -85,12 +75,16 @@ const ACTIONS = {
     window.location.hash = '/'
   },
 
-  createRentalTransaction: function(id){
-    let rentItemMod = new RentItemModel(id)
+  createRentalTransaction: function(itemId){
+    let rentItemMod = new RentItemModel(itemId)
     // rentItemMod.set()
     rentItemMod.save().then(function(serverRes){
       console.log(serverRes)
-      ACTIONS.routeTo("")
+      let confirmedRentalModelInstance = new ItemsModel()
+      confirmedRentalModelInstance.set(serverRes)
+      STORE.setStore('confirmedListingRequest',confirmedRentalModelInstance )
+
+      ACTIONS.routeTo("confirm-rentalview")
     }).fail(function(err){
       console.log(err);
     })
@@ -128,6 +122,9 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
+   clearConfirmedRequest: function(){
+     STORE.setStore('confirmedListingRequest',{})
+   },
 
   addItemModel: function(newItemDataObj, fileBlobParam){
 
@@ -158,10 +155,6 @@ const ACTIONS = {
   addImageData: function(file) {
 
   }
-
-
-
-
 }
 
 module.exports = ACTIONS
