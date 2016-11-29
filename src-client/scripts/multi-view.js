@@ -95,30 +95,32 @@ const MultiView = React.createClass({
             <h1>Presta Trading Post</h1>
           </div>
         </div>
-        <div className="multi-description text-center">
-          <h2>The <strong><em>ultimate</em></strong> meet-up spot for those who have and for those who don't.</h2>
-        </div>
-        <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-          <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>
-          <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h2>Sporting Goods</h2></button>
-          <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h2>Tools</h2></button>
-          <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h2>Electronics</h2></button>
-          <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h2>Outdoors</h2></button>
-        </div>
 
-        <div className="row row-eq-height is-flex multi-pic-body">
-          {itemListings}
-        </div>
+          <div className="multi-description text-center">
+            <h2>The <strong><em>ultimate</em></strong> meet-up spot for those who have and for those who don't.</h2>
+          </div>
+          <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
+            <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>
+            <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h2>Sporting Goods</h2></button>
+            <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h2>Tools</h2></button>
+            <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h2>Electronics</h2></button>
+            <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h2>Outdoors</h2></button>
+          </div>
+
+          <div className="row row-eq-height is-flex multi-pic-body">
+            {itemListings}
+          </div>
 
         <div className="multi-next-page">
+          <h3>| 1 | 2 |</h3>
+        </div>
 
+        <div>
+          <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
+          <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
 
-          <div>
-            <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
-            <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
-            <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
-            <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
-          </div>
         </div>
       </div>
     )

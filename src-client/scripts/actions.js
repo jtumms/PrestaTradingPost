@@ -123,6 +123,7 @@ const ACTIONS = {
      })
   },
    clearConfirmedRequest: function(){
+
      STORE.setStore('confirmedListingRequest',{})
    },
 
@@ -155,6 +156,7 @@ const ACTIONS = {
   addImageData: function(file) {
 
   }
+
 }
 
 module.exports = ACTIONS

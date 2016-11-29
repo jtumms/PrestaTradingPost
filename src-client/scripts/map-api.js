@@ -19,14 +19,14 @@ export default class MapPage extends Component {
 
     constructor(props) {
         super(props);
-        console.log('this props', this.props)
+        console.log('this props center', this.props.center)
     }
 
     render() {
 
        return (
 
-         <GoogleMap        
+         <GoogleMap
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}>
 
