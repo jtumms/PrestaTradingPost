@@ -82,12 +82,16 @@ const ACTIONS = {
     window.location.hash = '/'
   },
 
-  createRentalTransaction: function(id){
-    let rentItemMod = new RentItemModel(id)
+  createRentalTransaction: function(itemId){
+    let rentItemMod = new RentItemModel(itemId)
     // rentItemMod.set()
     rentItemMod.save().then(function(serverRes){
       console.log(serverRes)
-      ACTIONS.routeTo("")
+      let confirmedRentalModelInstance = new ItemsModel()
+      confirmedRentalModelInstance.set(serverRes)
+      STORE.setStore('confirmedListingRequest',confirmedRentalModelInstance )
+
+      ACTIONS.routeTo("confirm-rentalview")
     }).fail(function(err){
       console.log(err);
     })
@@ -125,6 +129,11 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
+<<<<<<< HEAD
+ clearConfirmedRequest: function(){
+   STORE.setStore('confirmedListingRequest',{})
+ }
+=======
 
   addItemModel: function(newItemDataObj, fileBlobParam){
 
@@ -158,6 +167,7 @@ const ACTIONS = {
 
 
 
+>>>>>>> 4772213c269c229dabc3a2374baf9d2e69bc5f1a
 
 }
 
