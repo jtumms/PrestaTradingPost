@@ -28,7 +28,7 @@ const ConfirmRentalView = React.createClass({
                  Thanks for using <strong><em>Presta Trading Post</em></strong>. We look forward to helping you
                  with your next project or your next adventure. Happy Trading!</h2>
 
-              <h4> For item: {this.props.confirmedItem.get('item').itemName}</h4>
+              <h2> For item: {this.props.confirmedItem.get('item').itemName}</h2>
 
 
               <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>

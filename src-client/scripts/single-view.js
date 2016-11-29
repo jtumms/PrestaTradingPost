@@ -25,15 +25,12 @@ const SingleView = React.createClass({
 
   render:function(){
   console.log(this.props.singleItem);
-    // let self = this
     if(!this.props.singleItem.attributes.itemName){
       return(
         <p>loading...</p>
-
       )
-
     }
-    console.log('!!!!!', this.props.itemId)
+    // console.log('!!!!!', this.props.itemId)
 
     let CharlestonMap = {
         center: {lat: 32.784618, lng: -79.940918},
@@ -70,7 +67,6 @@ const SingleView = React.createClass({
             <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
             <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
         </div>
-
       </div>
     )
   }
@@ -78,13 +74,3 @@ const SingleView = React.createClass({
 
 
 module.exports = SingleView
-// <p><i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-//  <span className="sr-only">Loading...</span></p>
-
-// const SingleView = React.createClass({
-//    componentDidMount: function(){
-//      console.log('fetching....', this.props.pidVal)
-//      ACTIONS.itemsModel(this.props.pidVal)
-//
-//    },
-// })
