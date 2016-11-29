@@ -15,6 +15,7 @@ import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import sun.misc.BASE64Decoder;
 
@@ -165,7 +166,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/rent-item", method = RequestMethod.POST)
-    public ResponseEntity<Object> rentItem(@RequestParam("itemId")int itemId,  HttpSession session) throws Exception {
+    public ResponseEntity<Object> rentItem(@RequestParam("itemId") int itemId, HttpSession session, Model model) throws Exception {
         String username = (String) session.getAttribute("username");
         User user = users.findFirstByUsername(username);
         if (user == null) {
@@ -176,8 +177,9 @@ public class ItemController {
         String ownerUsername = items.findFirstByItemId(itemId).getUser().getUsername();
         Transaction transaction = new Transaction(user.getId(), items.findFirstByItemId(itemId).getUser().getId(), itemBorrowed);
         transactions.save(transaction);
-        MessageController.sendOwnerMessage(itemBorrowed, transaction, messages, users);
-        return new ResponseEntity<Object>(transaction, HttpStatus.OK);
+        MessageController.sendOwnerMessage(transaction, users, items, messages);
+        return new ResponseEntity<Object>(itemBorrowed, HttpStatus.OK);
+
     }
 
     // This is a basic JSON add item route with no photo upload. Use http://localhost:8080/add-item/upload for
@@ -219,6 +221,7 @@ public class ItemController {
         try (FileOutputStream stream = new FileOutputStream(imageFile)) {
             stream.write(decodedBytes);
         }
+
         item.setImages(null);
         Image workingImage = new Image();
         workingImage.setImageFileName(imageFile.getName());

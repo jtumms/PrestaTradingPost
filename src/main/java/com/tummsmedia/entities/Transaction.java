@@ -18,6 +18,8 @@ public class Transaction {
     int ownerId;
     @ManyToOne
     public Item item;
+    @Column
+
 
     @Transient
     boolean isAccepted;
