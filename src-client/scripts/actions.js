@@ -21,9 +21,12 @@ const ACTIONS = {
 
   logOutUser: function(){
     let logOutUserInstance = new UserModel('/logout')
-    logOutUserInstance.get()
-      .then(function(){
+    logOutUserInstance.set({id: 'forDELETE'})
+    logOutUserInstance.destroy()
+      .then(function(serverRes){
+        console.log('server RES', serverRes)
         STORE.setStore('currentUser', new UserModel() )
+        ACTIONS.routeTo("#logout")
       })
   },
 
