@@ -56,13 +56,13 @@ const AuthView = React.createClass({
             <div className="row auth-container-row">
               <div className="col-sm-6 auth-container">
                 <form className="form-group auth-grid-container" onSubmit={this._handleUserAuth}>
-                   <h2 className="auth-sign-in">Sign-in</h2>
+                   <h1 className="auth-sign-in">Sign-in</h1>
                    <div className="form-field auth-user-container">
-                       <h4 className="user-label"><label>Username</label></h4>
+                       <h4 className="user-label"><label><h3><u>Username</u></h3></label></h4>
                        <input className="auth-inputs" type="text" name="username" placeholder="Enter Email"/>
                    </div>
                    <div className="form-field auth-pass-container ">
-                       <h4 className="pass-label"><label>Password </label></h4>
+                       <h4 className="pass-label"><label><h3><u>Password</u></h3></label></h4>
                        <input className="auth-inputs" type="password" name="password" placeholder="Enter Password"/>
                    </div>
                    <div className="form-field auth-btn-container">
@@ -73,18 +73,18 @@ const AuthView = React.createClass({
               <div className="col-sm-6 auth-container">
                 <form className="form-group auth-grid-container" onSubmit={this._handleNewUserAuth}>
                   <div className="form-field auth-user-container">
-                      <h2 className="auth-sign-in">Sign-up</h2>
-                      <h4 className="user-label"><label>Username</label></h4>
+                      <h1 className="auth-sign-in">Sign-up</h1>
+                      <h4 className="user-label"><label><h3><u>Username</u></h3></label></h4>
                       <input className="auth-inputs" type="text" name="username" placeholder="Enter Email"/>
-                      <h4 className="user-label"><label>Name</label></h4>
+                      <h4 className="user-label"><label><h3><u>Name</u></h3></label></h4>
                       <input className="auth-inputs" type="text" name="firstName" placeholder="Enter First Name"/>
                       <input className="auth-inputs" type="text" name="lastName" placeholder="Enter Last Name"/>
-                      <h4 className="user-label"><label>Address</label></h4>
+                      <h4 className="user-label"><label><h3><u>Address</u></h3></label></h4>
                       <input className="auth-inputs" type="text" name="street" placeholder="Enter Address"/>
                       <input className="auth-inputs" type="text" name="city" placeholder="Enter City"/>
                       <input className="auth-inputs" type="text" name="state" placeholder="Enter State"/>
                       <input className="auth-inputs" type="text" name="zipcode" placeholder="Enter Zipcode"/>
-                      <h4 className="user-label"><label>Password</label></h4>
+                      <h4 className="user-label"><label><h3><u>Password</u></h3></label></h4>
                       <input className="auth-inputs" type="password" name="password" placeholder="Enter Password"/>
                       <div className="form-field auth-btn-container">
                         <input type="submit" className="btn primary auth-button" placeholder="Submit" />

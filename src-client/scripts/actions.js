@@ -123,6 +123,7 @@ const ACTIONS = {
      })
   },
    clearConfirmedRequest: function(){
+
      STORE.setStore('confirmedListingRequest',{})
    },
 
@@ -159,6 +160,7 @@ const ACTIONS = {
   checkIfVerified: function(){
     window.location.hash = "/authview"
   }
+
 }
 
 module.exports = ACTIONS

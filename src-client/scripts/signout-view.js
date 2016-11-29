@@ -16,11 +16,18 @@ const SignOutView = React.createClass({
           <h2>LOGO</h2>
           <h1>Presta Trading Post</h1>
         </div>
-        <h1 className="signout-thanks">Thank You For Visiting</h1>
+        <h1 className="signout-thanks">Thank You For Visiting!</h1>
 
         <h2 className="signout-come-again">Please come again</h2>
         <iframe src="//giphy.com/embed/uzPdj5NDahoI0" width="480" height="360" frameBorder="0" className="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/uzPdj5NDahoI0">via GIPHY</a></p>
+        <div>
+          <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
+          <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
+        </div>
       </div>
+
     )
   }
 });

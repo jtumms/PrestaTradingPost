@@ -30,7 +30,7 @@ export default class MapPage extends Component {
 
     constructor(props) {
         super(props);
-        console.log('this props', this.props)
+        console.log('this props center', this.props.center)
     }
 
     // let pinsJSX = this.props.pinsData.map(function(obj){
