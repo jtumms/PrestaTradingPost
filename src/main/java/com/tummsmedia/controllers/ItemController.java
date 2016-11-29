@@ -221,6 +221,7 @@ public class ItemController {
         try (FileOutputStream stream = new FileOutputStream(imageFile)) {
             stream.write(decodedBytes);
         }
+
         item.setImages(null);
         Image workingImage = new Image();
         workingImage.setImageFileName(imageFile.getName());
