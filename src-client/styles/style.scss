@@ -23,7 +23,6 @@ body{
 //========  multi page ===================
 .multi-thumbnail-container {
 	background-color:  #00c6ff;
-
 }
 
 .sign-in-btn {
@@ -31,7 +30,6 @@ body{
 	text-align: center;
 	padding-top: 10px;
 	padding-left: 20px;
-
 }
 .about-us {
 	margin-left: 10px;
@@ -51,6 +49,18 @@ body{
 	border-style: solid;
   border-width: 2px;
 	margin-top: 10px;
+}
+
+.add-item {
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color:  #00c6ff;
+	border-color: #ffcc33;
+	border-style: solid;
+	border-width: 2px;
+	float: right;
+	margin-top: 10px;
+	text-align: right;
 }
 
 .sign-out {
@@ -86,6 +96,7 @@ body{
 	h2 {
 		position: absolute;
 		font-family: 'Ubuntu', sans-serif;
+		color: #ffffff;
 	}
 }
 
@@ -430,9 +441,9 @@ body{
 }
 
 .confirm-rental-btn{
-	position:relative;
-  top: 0%;
-  right: 15%;
+	// position:relative;
+  // top: 0%;
+  // right: 15%;
 	margin-bottom: 300px;
 	border-color: #ffcc33;
 	border-style: solid;
@@ -665,6 +676,6 @@ body{
 .map-container{
 	height: 300px;
 	width: 300px;
-	display:inline-block;
-	margin: -150px 0 20px 70%;
+	display:block;
+	margin: -220px 0 20px 70%;
 }

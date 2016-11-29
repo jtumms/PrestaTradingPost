@@ -41,7 +41,7 @@ const ACTIONS = {
     newUserMod.set(newUserDataObj)
     newUserMod.save().then(function(serverRes){
       STORE.setStore('currentUser', newUserMod)
-      location.hash = "/profileview"
+      location.hash = "/multiview"
     }).fail(function(err){
       location.hash = "/authview"
     })
@@ -58,7 +58,7 @@ const ACTIONS = {
       // console.log('serverres', serverRes)
       console.log(userMod)
       STORE.setStore('currentUser', userMod)
-      location.hash = "/profileview"
+      location.hash = "/multiview"
     }).fail(function(err){
       // console.log('wrong pw bro')
       location.hash = "/oops"
@@ -154,6 +154,10 @@ const ACTIONS = {
 
   addImageData: function(file) {
 
+  },
+
+  checkIfVerified: function(){
+    window.location.hash = "/authview"
   }
 }
 

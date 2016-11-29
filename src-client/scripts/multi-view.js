@@ -30,6 +30,10 @@ const MultiView = React.createClass({
     }
   },
 
+  _handleIfVerified: function(){
+    ACTIONS.checkIfVerified()
+  },
+
   _handleLogOut: function(){
     ACTIONS.logOutUser()
   },
@@ -88,6 +92,7 @@ const MultiView = React.createClass({
           <div className="sign-in-btn">
             <a href="#aboutus"><button type="button" className="btn btn-default btn-md about-us "><h4>About-Us</h4></button></a>
             <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in"><h4>Sign-in / Sign-up</h4></button></a>
+            <a href="#profileview"><button type="button" className="btn btn-default btn-md add-item "><h4>Add Item</h4></button></a>
             <button type="button" className="btn btn-default btn-md sign-out" onClick={this._handleLogOut}><h4>Sign Out</h4></button>
           </div>
           <div className="multi-header text-center">
@@ -127,6 +132,7 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
+//            <a href="#profileview"><button type="button" className="btn btn-default btn-md about-us "><h4>Add Item</h4></button></a>
 
 //<div className="sign-in-btn">
 //   <a href="#aboutus"><button type="button" className="btn btn-default btn-md ">About-Us</button></a>

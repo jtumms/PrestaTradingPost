@@ -3,6 +3,17 @@ import React, {Component, PropTypes} from 'react'
 import GoogleMap from 'google-map-react'
 
 
+let Pin = React.createClass({
+
+   render: function(){
+
+      return (
+         <div>
+            <i className="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+         </div>
+      )
+   }
+})
 
 export default class MapPage extends Component {
 
@@ -22,6 +33,10 @@ export default class MapPage extends Component {
         console.log('this props', this.props)
     }
 
+    // let pinsJSX = this.props.pinsData.map(function(obj){
+    //      return < lat={obj.latitude} lng={obj.longitude}  />
+    // })
+
     render() {
 
        return (
@@ -34,7 +49,7 @@ export default class MapPage extends Component {
        );
     }
 };
-
+module.exports = MapPage
 // const location ={
 //    lat: 32.784618,
 //    lng: -79.940918,
@@ -49,25 +64,5 @@ export default class MapPage extends Component {
 // AIzaSyAGoG15YaqO4Hp9Si4jUP2u_61EHK-jw-4
 //    },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ///////////////////////
-module.exports = MapPage
+//<== goes after render  <==after defaultZoom  {pinsJSX}
+///
