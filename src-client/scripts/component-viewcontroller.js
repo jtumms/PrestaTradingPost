@@ -15,7 +15,6 @@ const AboutUsView = require('./about-us.js')
 const AppViewController = React.createClass({
   getInitialState: function(){
       // console.log( "the retrieved data:" ,updateState.currentInventory)
-      // STORE.setStore('currentInventory', updateState.currentInventory)
       STORE.setStore('singleListing', new ItemsModel())
       STORE.setStore('currentUser', new ItemsModel())
 
@@ -25,21 +24,12 @@ const AppViewController = React.createClass({
 
   componentWillMount: function(){
     let component = this
-    // ACTIONS.getCurrentUserInfo()  <===need to check this out======
-
-
-
-    // let updateState = STORE.getStoreData()
     // // console.log( "the retrieved data:" ,updateState.currentInventory)
-    // self.setState({currentInventory: updateState.currentInventory})
-
 
     STORE.onChange(function(){
         let updatedState = STORE.getStoreData()
         // console.log( "the retrieved data:" ,updateState.currentInventory)
         component.setState(updatedState)
-
-
     })
   },
 
@@ -59,7 +49,12 @@ const AppViewController = React.createClass({
           break;
 
         case "ConfirmRentalView":
-          return <ConfirmRentalView/>
+          if (typeof this.state.confirmedListingRequest.get === 'undefined'){
+            ACTIONS.routeTo("")
+            return
+          }
+
+          return <ConfirmRentalView confirmedItem={this.state.confirmedListingRequest}/>
           break;
 
         case "ProfileView":
@@ -82,6 +77,3 @@ const AppViewController = React.createClass({
 })
 
 module.exports = AppViewController
-// singleData={this.state.singleListing} pidVal={this.props.pidInRoute}
-//MultiView payloadData={this.state.currentInventory
-//<SingleView singleData={this.state.singleListing} pidVal={this.props.pidInRoute}

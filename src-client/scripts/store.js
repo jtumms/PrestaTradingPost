@@ -12,7 +12,8 @@ const STORE = {
        userListing: [],
        categoryListing: [],
        currentUser: new UserModel(),
-       singleListing: {}
+       singleListing: {},
+       confirmedListingRequest: {}
     },
 
    setStore: function(storeProp, payload){
@@ -31,6 +32,8 @@ const STORE = {
       return this._data
 
    },
+
+
 
    onChange: function(someFunc){
       Backbone.Events.on('storeChange', someFunc)

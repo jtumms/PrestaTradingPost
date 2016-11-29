@@ -3,25 +3,20 @@ const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection, RentItemModel} = require('./models.js')
-const GetUserModel = require('./get-user-model.js')
+const GetUserModel =require('./get-user-model.js')
+const AddItemModel = require('./add-item-model.js')
+const $ = require('jquery')
 const ACTIONS = {
 
-  // fetchRentItemModel: function(attributes){
-  //   const rentItemMod = new RentItemModel()
-  //   rentItemMod.url = `/rent-item?itemId=` + attributes
-  //   console.log(rentItemMod.url);
-  //    rentItemMod.fetch().then(function(){
-  //      console.log('hey hey hey',rentItemMod )
-  //      ACTIONS.routeTo(`/rent-item?itemId=${this.props}`)
-  //
-  //    })
-  // },
 
   logOutUser: function(){
     let logOutUserInstance = new UserModel('/logout')
-    logOutUserInstance.fetch()
-      .then(function(){
+    logOutUserInstance.set({id: 'forDELETE'})
+    logOutUserInstance.destroy()
+      .then(function(serverRes){
+        console.log('server RES', serverRes)
         STORE.setStore('currentUser', new UserModel() )
+        ACTIONS.routeTo("#logout")
       })
   },
 
@@ -80,12 +75,16 @@ const ACTIONS = {
     window.location.hash = '/'
   },
 
-  createRentalTransaction: function(id){
-    let rentItemMod = new RentItemModel(id)
+  createRentalTransaction: function(itemId){
+    let rentItemMod = new RentItemModel(itemId)
     // rentItemMod.set()
     rentItemMod.save().then(function(serverRes){
       console.log(serverRes)
-      ACTIONS.routeTo("")
+      let confirmedRentalModelInstance = new ItemsModel()
+      confirmedRentalModelInstance.set(serverRes)
+      STORE.setStore('confirmedListingRequest',confirmedRentalModelInstance )
+
+      ACTIONS.routeTo("confirm-rentalview")
     }).fail(function(err){
       console.log(err);
     })
@@ -123,8 +122,39 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
+   clearConfirmedRequest: function(){
+     STORE.setStore('confirmedListingRequest',{})
+   },
 
+  addItemModel: function(newItemDataObj, fileBlobParam){
 
+    const addItemModelInstance = new AddItemModel()
+    addItemModelInstance.set(newItemDataObj)
+    addItemModelInstance.save().then(function(serverRes){
+      console.log("ppp", serverRes)
+      let reqConfig = {
+        url: `/upload-photo/${serverRes.itemId}`,
+        data: fileBlobParam,
+        headers: {
+          "Content-Type" : "text/plain"
+        }
+      }
+
+      return (
+        $.post(reqConfig)
+      ).then(function(serverRes){
+        console.log('image uploaded', serverRes)
+        STORE.setStore('currentInventory', addItemModelInstance)
+      })
+    })
+    console.log('new item data', newItemDataObj)
+    alert("New Item Uploaded!")
+    // window.location.hash = "/multiview"
+  },
+
+  addImageData: function(file) {
+
+  }
 }
 
 module.exports = ACTIONS
