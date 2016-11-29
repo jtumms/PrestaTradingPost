@@ -3,7 +3,9 @@ const STORE = require('./store.js')
 const UserModel= require('./model-user.js')
 const NewUserModel = require('./new-user-model.js')
 const {ItemsModel, ItemsModelCollection, CategoryCollection, RentItemModel} = require('./models.js')
-const GetUserModel = require('./get-user-model.js')
+const GetUserModel =require('./get-user-model.js')
+const AddItemModel = require('./add-item-model.js')
+const $ = require('jquery')
 const ACTIONS = {
 
   // fetchRentItemModel: function(attributes){
@@ -19,7 +21,7 @@ const ACTIONS = {
 
   logOutUser: function(){
     let logOutUserInstance = new UserModel('/logout')
-    logOutUserInstance.fetch()
+    logOutUserInstance.get()
       .then(function(){
         STORE.setStore('currentUser', new UserModel() )
       })
@@ -127,9 +129,45 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
+<<<<<<< HEAD
  clearConfirmedRequest: function(){
    STORE.setStore('confirmedListingRequest',{})
  }
+=======
+
+  addItemModel: function(newItemDataObj, fileBlobParam){
+
+    const addItemModelInstance = new AddItemModel()
+    addItemModelInstance.set(newItemDataObj)
+    addItemModelInstance.save().then(function(serverRes){
+      console.log("ppp", serverRes)
+      let reqConfig = {
+        url: `/upload-photo/${serverRes.itemId}`,
+        data: fileBlobParam,
+        headers: {
+          "Content-Type" : "text/plain"
+        }
+      }
+
+      return (
+        $.post(reqConfig)
+      ).then(function(serverRes){
+        console.log('image uploaded', serverRes)
+        STORE.setStore('currentInventory', addItemModelInstance)
+      })
+    })
+    console.log('new item data', newItemDataObj)
+    alert("New Item Uploaded!")
+    // window.location.hash = "/multiview"
+  },
+
+  addImageData: function(file) {
+
+  }
+
+
+
+>>>>>>> 4772213c269c229dabc3a2374baf9d2e69bc5f1a
 
 }
 

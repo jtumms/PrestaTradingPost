@@ -39,21 +39,6 @@ const CategoryCollection = Backbone.Collection.extend({
     console.log("here it is", this.url)
   }
 });
-// const CategoryCollection = Backbone.Collection.extend({
-//   model: ItemsModel,
-//   _getRoute: {
-//     "tools" : "TOOLS",
-//     "sporting-goods" :"SPORTINGGOODS",
-//     "electronics" : "ELECTRONICS",
-//     "outdoor" : "OUTDOOR",
-//   },
-//     initialize: function(valueInHash){
-//
-//       this.url=`/items?category=${this._serverCatQuery[valueInHash]}`
-//
-//   }
-//
-// });
 
 
 // console.log('this is', ItemsModelCollection.data)

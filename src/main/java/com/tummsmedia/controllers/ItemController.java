@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sun.misc.BASE64Decoder;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -190,10 +191,45 @@ public class ItemController {
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-
+        HashSet<Image> tempSet = new HashSet<>();
+        Image defImage = new Image("default_no_image.jpg");
+        tempSet.add(defImage);
+        item.setImages(tempSet);
         items.save(item);
-        return new ResponseEntity<Object>("You have successfully added the item", HttpStatus.OK);
+        return new ResponseEntity<Object>(item, HttpStatus.OK);
     }
+    @RequestMapping(value = "/upload-photo/{itemId}", method = RequestMethod.POST)
+    public ResponseEntity<Object> uploadPhoto(@PathVariable("itemId")int itemId, HttpSession session, @RequestBody String imageData) throws IOException {
+        String username = (String) session.getAttribute("username");
+        User user = users.findFirstByUsername(username);
+        Item item = items.findFirstByItemId(itemId);
+        if (user == null) {
+            String noValidLogin = "User not logged in";
+            return new ResponseEntity<Object>(noValidLogin, HttpStatus.FORBIDDEN);
+        }
+        System.out.println(imageData);
+        String [] dataArray = imageData.split(",");
+        int last = dataArray.length -1;
+        imageData = dataArray[last];
+        File uploadDir = new File("public/images");
+        File imageFile = File.createTempFile(Integer.toString(item.getItemId()) + "_", ".jpg", uploadDir);
+        BASE64Decoder decoder = new BASE64Decoder();
+        InputStream input = new ByteArrayInputStream(imageData.getBytes());
+        byte[] decodedBytes = decoder.decodeBuffer(input);
+        try (FileOutputStream stream = new FileOutputStream(imageFile)) {
+            stream.write(decodedBytes);
+        }
+        item.setImages(null);
+        Image workingImage = new Image();
+        workingImage.setImageFileName(imageFile.getName());
+
+        HashSet<Image> images = new HashSet<>();
+        images.add(workingImage);
+        item.setImages(images);
+        items.save(item);
+        return new ResponseEntity<Object>(item, HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/delete-item", method = RequestMethod.DELETE)
     public ResponseEntity<Object> deleteItem(@RequestParam ("itemId")int itemId, HttpSession session){
         String username = (String) session.getAttribute("username");

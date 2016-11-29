@@ -33,6 +33,8 @@ const STORE = {
 
    },
 
+
+
    onChange: function(someFunc){
       Backbone.Events.on('storeChange', someFunc)
    }
