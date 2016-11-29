@@ -96,7 +96,7 @@ const MultiView = React.createClass({
           </div>
         </div>
         <div className="multi-description text-center">
-          <h2>The <strong><em>ultimate</em></strong> meet-up spot for those who have and for those who don't.</h2>
+          <h1>The <strong><em>ultimate</em></strong> meet-up spot for those who have and those who don't.</h1>
         </div>
         <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
           <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>

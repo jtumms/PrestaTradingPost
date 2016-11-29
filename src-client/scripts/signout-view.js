@@ -7,9 +7,9 @@ const ACTIONS = require('./actions.js')
 // STORE.setStore('currentUser', {})
 const SignOutView = React.createClass({
 
-
+  // console.log('this',this)
   render: function(){
-
+    console.log('this', STORE._data)
     return(
       <div className="signout-container">
         <div className="multi-header">

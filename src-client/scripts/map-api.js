@@ -26,7 +26,7 @@ export default class MapPage extends Component {
 
        return (
 
-         <GoogleMap        
+         <GoogleMap
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}>
 
