@@ -21,8 +21,7 @@ const AppRouter = Backbone.Router.extend({
       "profileview" : "showProfileView",
       "authview" : "showAuthView",
       "singleview/:itemId" : "showSingleView",
-      "*path" : "showMultiView"
-
+      "*path" : "showMultiView",
     },
 
     showMultiView: function(){

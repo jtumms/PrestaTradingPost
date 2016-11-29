@@ -129,11 +129,10 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
-<<<<<<< HEAD
- clearConfirmedRequest: function(){
+   clearConfirmedRequest: function(){
    STORE.setStore('confirmedListingRequest',{})
- }
-=======
+ },
+
 
   addItemModel: function(newItemDataObj, fileBlobParam){
 
@@ -164,10 +163,6 @@ const ACTIONS = {
   addImageData: function(file) {
 
   }
-
-
-
->>>>>>> 4772213c269c229dabc3a2374baf9d2e69bc5f1a
 
 }
 

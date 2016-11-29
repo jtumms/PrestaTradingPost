@@ -91,7 +91,6 @@ const MultiView = React.createClass({
             <h1>Presta Trading Post</h1>
           </div>
         </div>
-<<<<<<< HEAD
 
           <div className="multi-description text-center">
             <h2>The <strong><em>ultimate</em></strong> meet-up spot for those who have and for those who don't.</h2>
@@ -110,21 +109,8 @@ const MultiView = React.createClass({
 
         <div className="multi-next-page">
           <h3>| 1 | 2 |</h3>
-=======
-        <div className="multi-description text-center">
-          <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
         </div>
-        <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-          <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h3>General</h3></button>
-          <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h3>Sporting Goods</h3></button>
-          <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h3>Tools</h3></button>
-          <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h3>Electronics</h3></button>
-          <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h3>Outdoors</h3></button>
-        </div>
-        <div className="row row-eq-height is-flex multi-pic-body">
-          {itemListings}
->>>>>>> 4772213c269c229dabc3a2374baf9d2e69bc5f1a
-        </div>
+
         <div>
           <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
           <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
