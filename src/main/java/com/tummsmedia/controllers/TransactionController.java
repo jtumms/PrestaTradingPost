@@ -1,8 +1,10 @@
 package com.tummsmedia.controllers;
 
 import com.tummsmedia.entities.Transaction;
+import com.tummsmedia.services.ItemRepo;
 import com.tummsmedia.services.MessageRepo;
 import com.tummsmedia.services.TransactionRepo;
+import com.tummsmedia.services.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,11 @@ public class TransactionController {
     MessageRepo messages;
     @Autowired
     TransactionRepo transactions;
+    @Autowired
+    UserRepo users;
+    @Autowired
+    ItemRepo items;
+
 
     @RequestMapping(path = "/accept-or-decline", method = RequestMethod.GET)
     public String acceptOrDecline(@RequestParam("transactionId") int transactionId,
@@ -31,7 +38,7 @@ public class TransactionController {
             Transaction transaction = transactions.findOne(transactionId);
             transaction.setAccepted(true);
             transactions.save(transaction);
-            MessageController.sendRenterEmail();
+            MessageController.sendRenterEmail(transaction, users, items, messages);
             return "toOwnerResponseAccept";
 
         }

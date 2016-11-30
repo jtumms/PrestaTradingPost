@@ -294,7 +294,7 @@
                                                             <td align="center" valign="top" class="textContent">
                                                                 <h1 style="color:#FFFFFF;line-height:100%;font-family:Helvetica,Arial,sans-serif;font-size:35px;font-weight:normal;margin-bottom:5px;text-align:center;">Presta Trading Post</h1>
                                                                 <h2 style="text-align:center;font-weight:normal;font-family:Helvetica,Arial,sans-serif;font-size:23px;margin-bottom:10px;color:#205478;line-height:135%;">The Ultimate Meetup Spot for those who have and those who don't</h2>
-                                                                <div style="text-align:center;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#FFFFFF;line-height:135%;">Thank you for accepting the offer.</div>
+                                                                <div style="text-align:center;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#FFFFFF;line-height:135%;">{{messageBody}}</div>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -357,12 +357,19 @@
                                                 <td style="padding-top:0;" align="center" valign="top" width="500" class="flexibleContainerCell">
 
                                                     <!-- CONTENT TABLE // -->
-                                                    <table border="0" cellpadding="0" cellspacing="0" width="50%" class="emailButton" style="background-color: #3498DB;">
-                                                        <tr>
-                                                            <td align="center" valign="middle" class="buttonContent" style="padding-top:15px;padding-bottom:15px;padding-right:15px;padding-left:15px;">
-                                                                <a style="color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:135%;" href=http://localhost:8080/#authview target="_blank">Log in to your Presta Account</a>
-                                                            </td>
-                                                        </tr>
+                                                    <div id="map"></div>
+                                                    <script type="javascript">
+                                                      var map;
+                                                      var initMap = function() {
+                                                        map = new google.maps.Map(document.getElementById('map'), {
+                                                          center: {lat: {{latitude}}, lng: {{longitude}}},
+                                                          zoom: 8
+                                                        });
+                                                      }
+                                                    </script>
+                                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoJQeTx3w8IDY6zOp3DbrYmSSs0O-5HfE&callback=initMap"
+                                                            async defer></script>
+                                                    </body>
 
                                                     <!-- // CONTENT TABLE -->
 
@@ -403,8 +410,8 @@
                                                                                 you to edit certain row. It makes it easy for you to quickly edit row sections.
                                                                                 http://kb.mailchimp.com/templates/code/create-editable-content-areas-with-mailchimps-template-language
                                                                             -->
-                                                                            <h3 mc:edit="header" style="color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:left;">Renter notification has been sent</h3>
-                                                                            <div mc:edit="body" style="text-align:left;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#5F5F5F;line-height:135%;"> Presta has taken care of notifying the renter of your accpeted offer.</div>
+                                                                            <h3 mc:edit="header" style="color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:left;">Thank you for using Presta Trading Post</h3>
+                                                                            <div mc:edit="body" style="text-align:left;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#5F5F5F;line-height:135%;">Be sure to check out our website for the latest additions of hard to find tools and toys for rent, barter, or borrow...</div>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
