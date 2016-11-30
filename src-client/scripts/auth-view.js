@@ -50,7 +50,6 @@ const AuthView = React.createClass({
               <a href=" "><i className="fa fa-home fa-4x auth-home-icon" aria-hidden="true"></i></a>
             </div>
             <div className="auth-header-container">
-                <h2>LOGO</h2>
                 <h1 className="auth-header">Presta Trading Post</h1>
             </div>
             <div className="row auth-container-row">

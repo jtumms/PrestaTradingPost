@@ -123,6 +123,7 @@ const ACTIONS = {
         STORE.setStore('singleListing', singleMod)
      })
   },
+
    clearConfirmedRequest: function(){
 
      STORE.setStore('confirmedListingRequest',{})

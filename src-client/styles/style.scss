@@ -49,13 +49,14 @@ body{
 .add-item {
 	margin-left: 10px;
 	margin-right: 10px;
-	background-color:  #00c6ff;
+	background-color:  #6699CC;
 	border-color: #ffcc33;
 	border-style: solid;
 	border-width: 2px;
 	float: right;
 	margin-top: 10px;
 	text-align: right;
+	color: #ffffff;
 }
 
 .sign-out {
@@ -84,11 +85,9 @@ body{
 		color: #00c6ff;
 		text-shadow: 4px 4px 4px black;
 		text-align: center;
-		margin: 20px 30px 0 30px;
-		// padding-top: 60px;
-		// margin-top: 10px;
-		padding-bottom: 15px;
-		// margin-bottom: 10px;
+		margin: 20px 80px 0 80px;
+    padding-bottom: 15px;
+    background: rgba(210, 202, 191, .9);
 	}
 	h2 {
 		position: absolute;
@@ -117,8 +116,8 @@ body{
 }
 
 .garage-pic {
-	height: 600px;
-	background-image: url('/images/full-garage-.jpg');
+	height: 650px;
+	background-image: url('/images/opening-image.jpg');
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -130,13 +129,14 @@ body{
 	text-shadow: .5px .5px .5px #00c6ff;
 	h1 {
 		font-family: 'Ubuntu', sans-serif;
-		font-size: 30px;
+		// font-size: 30px;
 		text-align: center;
 		width: 90%;
 		margin-top: 20px;
 		margin: auto;
 		line-height: 1.5em;
 		padding: 20px;
+
 	}
 }
 
@@ -455,7 +455,7 @@ body{
 .single-home-icon-container{
 	position:fixed;
 	top: 25px;
-	right: 25px;
+	right: 75px;
 	z-index:999999;
  }
 
@@ -543,13 +543,8 @@ body{
 	height: 300px;
 	width: 300px;
 	display:inline-block;
-<<<<<<< HEAD
 	position: relative;
 	left: 200px;
-=======
-  position: relative;
-  left: 200px;
->>>>>>> 9880246f92963a490a89ac58634e39ac054be4e7
 	box-shadow: 9px 9px 9px grey;
 }
 
@@ -582,10 +577,7 @@ body{
 	width: 90%;
 	padding-left: 100px;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 9880246f92963a490a89ac58634e39ac054be4e7
 //=============  signed out/logoff page ====================
 
 .signout-container {
