@@ -63,6 +63,3 @@ module.exports = MapPage
 //       return <Marker {...marker}/>
 // AIzaSyAGoG15YaqO4Hp9Si4jUP2u_61EHK-jw-4
 //    },
-
-//<== goes after render  <==after defaultZoom  {pinsJSX}
-///
