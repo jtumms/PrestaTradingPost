@@ -5,6 +5,33 @@ const {ItemsModel, ItemsModelCollection, CategoryCollection} = require("./models
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 
+// const Search = React.createClass({
+//     getInitialState: function() {
+//         return { showResults: false };
+//     },
+//     onClick: function() {
+//         this.setState({ showResults: true });
+//     },
+//     if ()
+//
+//     render: function() {
+//         return (
+//             <div>
+//                 <input type="submit" value="Search" onClick={this.onClick} />
+//                 { this.state.showResults ? <Results /> : null }
+//             </div>
+//         );
+//     }
+// });
+//
+// var Results = React.createClass({
+//     render: function() {
+//         return (
+//             <div id="results" className="search-results">
+//                 Some Results
+//             </div>
+//         );
+//     }
 
 const MultiView = React.createClass({
 
@@ -86,6 +113,8 @@ const MultiView = React.createClass({
         )
     })
 
+
+
     return (
       <div className="multi-container">
         <div className="garage-pic">
@@ -129,42 +158,3 @@ const MultiView = React.createClass({
 
 module.exports = MultiView
 //            <a href="#profileview"><button type="button" className="btn btn-default btn-md about-us "><h4>Add Item</h4></button></a>
-
-//<div className="sign-in-btn">
-//   <a href="#aboutus"><button type="button" className="btn btn-default btn-md ">About-Us</button></a>
-//   <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in">Sign-in / Sign-up</button></a>
-//   <a href="#logout"><button type="button" className="btn btn-default btn-md sign-out">Sign Out</button></a>
-// </div>
-// <div className="multi-header text-center">
-//   <h2>LOGO</h2>
-//   <h1>Presta Trading Post</h1>
-// </div>
-// <div className="garage-pic"></div>
-// <div className="multi-description text-center">
-//   <h1>The ultimate meet-up spot for those who have, and those who don't.</h1>
-//
-// </div>
-// <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-//   <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}>General</button>
-//   <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={self._routeToCategory}>Sporting Goods</button>
-//   <button type="button" className="btn btn-default" data-cathash="tools" onClick={self._routeToCategory}>Tools</button>
-//   <button type="button" className="btn btn-default" data-cathash="electronics" onClick={self._routeToCategory}>Electronics</button>
-//   <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={self._routeToCategory}>Outdoors</button>
-// </div>
-//
-// <div className="row row-eq-height is-flex multi-pic-body match-my-cols">
-//     {itemListings}
-
-// <div className="multi-description text-center">
-//   <h1>The ultimate meet-up spot for those who have and those who don't.</h1>
-// </div>
-// <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-//   <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h3>General</h3></button>
-//   <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h3>Sporting Goods</h3></button>
-//   <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h3>Tools</h3></button>
-//   <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h3>Electronics</h3></button>
-//   <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h3>Outdoors</h3></button>
-// </div>
-// <div className="row row-eq-height is-flex multi-pic-body">
-//   {itemListings}
-// </div>

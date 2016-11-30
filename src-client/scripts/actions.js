@@ -58,6 +58,7 @@ const ACTIONS = {
       // console.log('serverres', serverRes)
       console.log(userMod)
       STORE.setStore('currentUser', userMod)
+      console.log('current user', userMod)
       location.hash = "/multiview"
     }).fail(function(err){
       // console.log('wrong pw bro')

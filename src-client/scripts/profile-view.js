@@ -88,7 +88,7 @@ const ProfileView = React.createClass({
 
     if (!this.props.currentUser.get('username')) {
       console.log("????")
-      return <p> loading... </p>
+      return <h1> loading... You need to sign-in or sign-up</h1>
     }
 
 
