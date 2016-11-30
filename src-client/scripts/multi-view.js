@@ -125,7 +125,6 @@ const MultiView = React.createClass({
             <button type="button" className="btn btn-default btn-md sign-out" onClick={this._handleLogOut}><h4>Sign Out</h4></button>
           </div>
           <div className="multi-header text-center">
-            <h2>LOGO</h2>
             <h1>Presta Trading Post</h1>
           </div>
         </div>
@@ -148,7 +147,6 @@ const MultiView = React.createClass({
           <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
           <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
-
         </div>
       </div>
     )
@@ -158,3 +156,4 @@ const MultiView = React.createClass({
 
 module.exports = MultiView
 //            <a href="#profileview"><button type="button" className="btn btn-default btn-md about-us "><h4>Add Item</h4></button></a>
+//            <h2>LOGO</h2>

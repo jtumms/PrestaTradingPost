@@ -221,7 +221,7 @@ body{
 	position: absolute;
 	transform: translate(-50%, -50%);
 	top: 50%;
-	left: 50%
+	left: 50%;
 }
 
 //========= end of multi page ==================
@@ -544,6 +544,7 @@ body{
 	display:inline-block;
 	position: relative;
 	left: 200px;
+	box-shadow: 9px 9px 9px grey;
 }
 
 
@@ -575,14 +576,6 @@ body{
 	width: 90%;
 	padding-left: 100px;
 }
-// =============================confirm-rental-end==========
-
-
-
-
-
-
-
 
 //=============  signed out/logoff page ====================
 
