@@ -100,56 +100,52 @@ const MultiView = React.createClass({
 
         return(
 
-              <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
-                  <div className="thumbnail multi-thumbnail-container">
-                    <a onClick={self._routeToItem} className="multi-anchor-to-single" data-id={data.attributes.id}>
-                      <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
-                    </a>
-                    <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
-                    <p className="multi-item-info">Item: {data.attributes.itemName}</p>
-                    <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
-                  </div>
+          <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
+              <div className="thumbnail multi-thumbnail-container">
+                <a onClick={self._routeToItem} className="multi-anchor-to-single" data-id={data.attributes.id}>
+                  <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
+                </a>
+                <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
+                <p className="multi-item-info">Item: {data.attributes.itemName}</p>
+                <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
               </div>
+          </div>
         )
     })
-
-
-
     return (
-      <div className="multi-container">
-        <div className="garage-pic">
-          <div className="sign-in-btn">
-            <a href="#aboutus"><button type="button" className="btn btn-default btn-md about-us "><h4>About-Us</h4></button></a>
-            <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in"><h4>Sign-in / Sign-up</h4></button></a>
-            <a href="#profileview"><button type="button" className="btn btn-default btn-md add-item "><h4>Add Item</h4></button></a>
-            <button type="button" className="btn btn-default btn-md sign-out" onClick={this._handleLogOut}><h4>Sign Out</h4></button>
-          </div>
-          <div className="multi-header text-center">
-            <h1>Presta Trading Post</h1>
-          </div>
-        </div>
-        <div className="multi-description text-center">
-                 <h1>The <strong><em>ultimate</em></strong> meet-up spot for those who have and those who don't.</h1>
-               </div>
-               <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
+            <div className="multi-container">
+                <div className="garage-pic">
+                  <div className="sign-in-btn">
+                    <a href="#aboutus"><button type="button" className="btn btn-default btn-md about-us "><h4>About-Us</h4></button></a>
+                    <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in"><h4>Sign-in / Sign-up</h4></button></a>
+                    <a href="#profileview"><button type="button" className="btn btn-default btn-md add-item "><h4>Add Item</h4></button></a>
+                    <button type="button" className="btn btn-default btn-md sign-out" onClick={this._handleLogOut}><h4>Sign Out</h4></button>
+                  </div>
+                  <div className="multi-header text-center">
+                    <h1>Presta Trading Post</h1>
+                  </div>
+                </div>
+              <div className="multi-description text-center">
+                <h1>The <strong><em>ultimate</em></strong> meet-up spot for those who have and those who don't.</h1>
+              </div>
+              <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
                  <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>
                  <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h2>Sporting Goods</h2></button>
                  <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h2>Tools</h2></button>
                  <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h2>Electronics</h2></button>
                  <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h2>Outdoors</h2></button>
-               </div>
-               <div className="row row-eq-height is-flex multi-pic-body">
+              </div>
+              <div className="row row-eq-height is-flex multi-pic-body">
                   {itemListings}
-                </div>
+              </div>
 
-               <div>
+              <div>
                  <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
                  <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
                  <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
                  <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
-
-               </div>
-             </div>
+              </div>
+            </div>
            )
 
          }

@@ -13,7 +13,6 @@ const SignOutView = React.createClass({
     return(
       <div className="signout-container">
         <div className="multi-header">
-          <h2>LOGO</h2>
           <h1>Presta Trading Post</h1>
         </div>
         <h1 className="signout-thanks">Thank You For Visiting!</h1>

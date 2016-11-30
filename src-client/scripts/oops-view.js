@@ -14,7 +14,6 @@ const OopsView = React.createClass({
           <a href=" "><i className="fa fa-home fa-4x auth-home-icon" aria-hidden="true"></i></a>
         </div>
         <div className="oops-header">
-          <h2>LOGO</h2>
           <h1>Presta Trading Post</h1>
         </div>
         <div className="oops-message">
