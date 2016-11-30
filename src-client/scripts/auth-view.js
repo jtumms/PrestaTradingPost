@@ -74,17 +74,21 @@ const AuthView = React.createClass({
                 <form className="form-group auth-grid-container" onSubmit={this._handleNewUserAuth}>
                   <div className="form-field auth-user-container">
                       <h1 className="auth-sign-in">Sign-up</h1>
-                      <h4 className="user-label"><label><u>Username</u></label></h4>
+
+
+                      <h4 className="user-label auth-input-label"><label><u>Username</u></label></h4>
                       <input className="auth-inputs" type="text" name="username" placeholder="Enter Email"/>
-                      <h4 className="user-label"><label><u>Name</u></label></h4>
+                      <h4 className="user-label auth-input-label"><label><u>Name</u></label></h4>
                       <input className="auth-inputs" type="text" name="firstName" placeholder="Enter First Name"/>
                       <input className="auth-inputs" type="text" name="lastName" placeholder="Enter Last Name"/>
-                      <h4 className="user-label"><label><u>Address</u></label></h4>
+                      <h4 className="user-label auth-input-label"><label><u>Address</u></label></h4>
+
+
                       <input className="auth-inputs" type="text" name="street" placeholder="Enter Address"/>
                       <input className="auth-inputs" type="text" name="city" placeholder="Enter City"/>
                       <input className="auth-inputs" type="text" name="state" placeholder="Enter State"/>
                       <input className="auth-inputs" type="text" name="zipcode" placeholder="Enter Zipcode"/>
-                      <h4 className="user-label"><label><u>Password</u></label></h4>
+                      <h4 className="user-label auth-input-label"><label><u>Password</u></label></h4>
                       <input className="auth-inputs" type="password" name="password" placeholder="Enter Password"/>
                       <div className="form-field auth-btn-container">
                         <input type="submit" className="btn primary auth-button" placeholder="Submit" />
