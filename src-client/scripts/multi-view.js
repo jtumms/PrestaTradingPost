@@ -66,6 +66,7 @@ const MultiView = React.createClass({
   },
 
   _routeToCategory: function(evt){
+    console.log("whatz up?", evt.target.dataset)
     // STORE._data.currentInventory.filter('collection')
     ACTIONS.routeTo(`category/${evt.target.dataset.cathash}`)
   },
@@ -96,8 +97,6 @@ const MultiView = React.createClass({
     var itemListings = STORE._data.currentInventory.map(function(data, i){
       // console.log(data.attributes.images[0].imageFileName)
 
-
-
         return(
 
               <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
@@ -113,8 +112,6 @@ const MultiView = React.createClass({
         )
     })
 
-
-
     return (
       <div className="multi-container">
         <div className="garage-pic">
@@ -129,30 +126,31 @@ const MultiView = React.createClass({
           </div>
         </div>
         <div className="multi-description text-center">
-                 <h1>The <strong><em>ultimate</em></strong> meet-up spot for those who have and those who don't.</h1>
-               </div>
-               <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
-                 <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>
-                 <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h2>Sporting Goods</h2></button>
-                 <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h2>Tools</h2></button>
-                 <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h2>Electronics</h2></button>
-                 <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h2>Outdoors</h2></button>
-               </div>
-               <div className="row row-eq-height is-flex multi-pic-body">
-                  {itemListings}
-                </div>
+          <h1>The <strong><em>ultimate</em></strong> meet-up spot for those who have<br/>and for those who don't.</h1>
+        </div>
+        <div className="btn-group btn-group-lg multi-button-container" role="group" aria-label="...">
+          <button type="button" className="btn btn-default" data-cathash="all-items" onClick={ACTIONS.routeHome}><h2>General</h2></button>
+          <button type="button" className="btn btn-default" data-cathash="sporting-goods" onClick={this._routeToCategory}><h2>Sporting Goods</h2></button>
+          <button type="button" className="btn btn-default" data-cathash="tools" onClick={this._routeToCategory}><h2>Tools</h2></button>
+          <button type="button" className="btn btn-default" data-cathash="electronics" onClick={this._routeToCategory}><h2>Electronics</h2></button>
+          <button type="button" className="btn btn-default" data-cathash="outdoor" onClick={this._routeToCategory}><h2>Outdoors</h2></button>
+        </div>
+        <div className="row row-eq-height is-flex multi-pic-body">
+           {itemListings}
+         </div>
 
-               <div>
-                 <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
-                 <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
-                 <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
-                 <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
+        <div>
+          <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
+          <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
+        </div>
+      </div>
+    )
 
-               </div>
-             </div>
-           )
+  }
+})
 
-         }
-        })
-
-        module.exports = MultiView
+module.exports = MultiView
+//            <a href="#profileview"><button type="button" className="btn btn-default btn-md about-us "><h4>Add Item</h4></button></a>
+//            <h2>LOGO</h2>
