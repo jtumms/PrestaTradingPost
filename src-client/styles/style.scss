@@ -296,6 +296,7 @@ body{
 	input {
 		width: 80%;
 		height: 30px;
+		color: #000;
 	}
 }
 
@@ -316,6 +317,11 @@ body{
 	top: 25px;
 	right: 25px;
 	z-index:999999;
+}
+
+.auth-input-label {
+	margin-top: 5px;
+	font-size: 1.4em;
 }
 //================ end of auth page =============================
 
@@ -667,7 +673,7 @@ body{
 		color: #00c6ff;
 		text-shadow: 5px 5px 5px black;
 		text-align: center;
-		padding-top: 60px;
+		// padding-top: 60px;
 		margin-top: 10px;
 		padding-bottom: 30px;
 		margin-bottom: 0px;
