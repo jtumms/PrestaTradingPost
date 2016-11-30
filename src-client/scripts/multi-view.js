@@ -91,7 +91,6 @@ const MultiView = React.createClass({
             <button type="button" className="btn btn-default btn-md sign-out" onClick={this._handleLogOut}><h4>Sign Out</h4></button>
           </div>
           <div className="multi-header text-center">
-            <h2>LOGO</h2>
             <h1>Presta Trading Post</h1>
           </div>
         </div>
@@ -111,17 +110,12 @@ const MultiView = React.createClass({
             {itemListings}
           </div>
 
-        <div className="multi-next-page">
-          <h3>| 1 | 2 |</h3>
-        </div>
-
-        <div>
-          <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
-          <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
-          <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
-          <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
-
-        </div>
+          <div>
+            <a href="https://www.facebook.com/"><i className="fa fa-facebook-official fa-4x multi-icons" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/"><i className="fa fa-twitter-square fa-4x multi-icons" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/?hl=en"><i className="fa fa-instagram fa-4x multi-icons" aria-hidden="true"></i></a>
+            <h1 className="copyright multi-icons">&#xa9; <strong><em>2016 Team SilverBack</em></strong></h1>
+          </div>
       </div>
     )
 

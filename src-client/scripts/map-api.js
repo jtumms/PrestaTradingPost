@@ -48,26 +48,5 @@ export default class MapPage extends Component {
 //       return <Marker {...marker}/>
 // AIzaSyAGoG15YaqO4Hp9Si4jUP2u_61EHK-jw-4
 //    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ///////////////////////
 module.exports = MapPage
