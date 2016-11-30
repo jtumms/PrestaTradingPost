@@ -85,11 +85,9 @@ body{
 		color: #00c6ff;
 		text-shadow: 4px 4px 4px black;
 		text-align: center;
-		margin: 20px 30px 0 30px;
-		// padding-top: 60px;
-		// margin-top: 10px;
-		padding-bottom: 15px;
-		// margin-bottom: 10px;
+		margin: 20px 80px 0 80px;
+    padding-bottom: 15px;
+    background: rgba(210, 202, 191, .9);
 	}
 	h2 {
 		position: absolute;
@@ -118,8 +116,8 @@ body{
 }
 
 .garage-pic {
-	height: 600px;
-	background-image: url('');
+	height: 650px;
+	background-image: url('/images/opening-image.jpg');
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -138,6 +136,7 @@ body{
 		margin: auto;
 		line-height: 1.5em;
 		padding: 20px;
+
 	}
 }
 
@@ -561,8 +560,8 @@ body{
 	height: 300px;
 	width: 300px;
 	display:inline-block;
-  position: relative;
-  left: 200px;
+	position: relative;
+	left: 200px;
 	box-shadow: 9px 9px 9px grey;
 }
 
@@ -595,6 +594,7 @@ body{
 	width: 90%;
 	padding-left: 100px;
 }
+
 //=============  signed out/logoff page ====================
 
 .signout-container {

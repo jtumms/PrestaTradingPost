@@ -15,18 +15,15 @@ const ConfirmRentalView = React.createClass({
           <div className="confirm-home-icon-container">
             <a href=" "><i className="fa fa-home fa-4x confirm-home-icon" aria-hidden="true"></i></a>
           </div>
-
           <div className="confirm-header-container text-center">
              <h1 className="rental-header">Presta Trading Post</h1>
           </div>
-
           <div className="rental-body-container text-center">
              <h1>Thank You!</h1>
              <h2>  Your request has been sent to the renter. You will be contacted
                  via email to confirm the terms of your rental request.
                  Thanks for using <strong><em>Presta Trading Post</em></strong> . We look forward to helping you
                  with your next project or your next adventure. Happy Trading!</h2>
-
                  {/* <h2> For item: {this.props.confirmedItem.get('itemName').itemName}</h2> */}
                  <h1><u>For item: <em>{this.props.confirmedItem.get('itemName')}</em></u></h1>
 

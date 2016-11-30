@@ -57,14 +57,17 @@ const SingleView = React.createClass({
 
         <div className="thumbnail single-thumbnail-container">
            <img className="single-image" src={"images/" + this.props.singleItem.get("images")[0].imageFileName}/>
-          <div className="caption text-center">
-            <h2><u>Description: </u>{this.props.singleItem.get('itemDescription')}</h2>
-            <h2><u>Item: </u>{this.props.singleItem.get('itemName')}</h2>
-            <h2><u>Price: </u> ${this.props.singleItem.get('askingPrice')}</h2>
-            <button  onClick={this._routeToMessenger} type="button" className="btn btn-default btn-large confirm-rental-btn " data-id={this.props.itemId}>Rent Item / Contact Renter</button>
-
+          <div className="caption">
+            <h3><u>Description:</u></h3>
+            <h4>{this.props.singleItem.get('itemDescription')}</h4>
+            <h3><u>Item:</u></h3>
+            <h4>{this.props.singleItem.get('itemName')}</h4>
+            <h3><u>Price:</u></h3>
+            <h4>{this.props.singleItem.get('askingPrice')}</h4>
+            <button  onClick={this._routeToMessenger} type="button" className="btn btn-default btn-large confirm-rental-btn " data-id={this.props.itemId}>Rent Item / Contact Renter<br/>*must be logged in*</button>
             <div className="map-container" >
               <MapPage center={CharlestonMap.center} zoom={CharlestonMap.zoom}/>
+
             </div>
           </div>
         </div>

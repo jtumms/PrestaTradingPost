@@ -83,13 +83,81 @@ public class MessageController {
         String content = contentBuilder.toString();
         Mustache.compiler().compile(content).execute(m, writer);
         form.field("html", String.valueOf(writer));
+        transaction.setOwnerNotifed(true);
         return webResource.type(MediaType.MULTIPART_FORM_DATA_TYPE).
                 post(ClientResponse.class, form);
     }
 
-    public static void sendRenterEmail(){
+    public static ClientResponse sendRenterEmail(Transaction transaction, UserRepo users, ItemRepo items, MessageRepo messages) throws Exception {
+        Message message = new Message();
+        User renter = users.findFirstById(transaction.getBorrowerId());
+        User owner = users.findFirstById(transaction.getOwnerId());
+        Item rentedItem = items.findFirstByItemId(transaction.getItem().getItemId());
+        String[] ownerNameArray = owner.getUsername().split("@");
+        String ownerName = ownerNameArray[0];
+        HashMap<String, Double> latLngMap = new HashMap<>();
+        HashMap<String, String> m = new HashMap<>();
+        String body = null;
+        String subjectText = null;
+        if (transaction.isAccepted() == true) {
+            body = String.format("Congratulations. Your fellow Presta user %s has just accepted the rental of %s. Please refer to the information below for pickup location information", ownerName, rentedItem.getItemName());
+            subjectText = String.format("Presta Trading Post - Transaction ID: %s has been accepted", transaction.getTransactionId());
+            String street = rentedItem.getUser().getUserDetail().getStreet();
+            String city = rentedItem.getUser().getUserDetail().getState();
+            String state = rentedItem.getUser().getUserDetail().getState();
+            String zip = Integer.toString(rentedItem.getUser().getUserDetail().getZipcode());
+            String address = String.format("%s %s, %s %s", street, city, state, zip);
+            ItemController.getGeolocateMapDetail(address, rentedItem);
+            double lat = rentedItem.getLatLng().get("latitude");
+            double lng = rentedItem.getLatLng().get("longitude");
+            m.put("latitude", Double.toString(lat));
+            m.put("longitude", Double.toString(lng));
 
+
+
+        }
+        if (transaction.isAccepted() == false) {
+            body = String.format("Pending rental with transaction ID %s has been declined or the item is not currently available.", transaction.getTransactionId(), rentedItem);
+            subjectText = String.format("Presta Trading Post - Transaction ID: %s has been declined", transaction.getTransactionId());
+
+        }
+        m.put("messageBody", body);
+        m.put("subject", subjectText);
+        message.setOwnerId(transaction.getOwnerId());
+        message.setRenterId(transaction.getBorrowerId());
+        message.setSubject(subjectText);
+        message.setBody(body);
+        messages.save(message);
+
+        Client client = Client.create();
+        client.addFilter(new HTTPBasicAuthFilter("api",
+                "key-e40dbe458be098bc00352bae39fd72ba"));
+        WebResource webResource =
+                client.resource("https://api.mailgun.net/v3/sandbox24e2ae74809546f08a2ce2168f7ba9e8.mailgun.org/" +
+                        "messages");
+        FormDataMultiPart form = new FormDataMultiPart();
+        form.field("from", "Mailgun Sandbox <postmaster@sandbox24e2ae74809546f08a2ce2168f7ba9e8.mailgun.org>");
+        form.field("to", renter.getUsername());
+        form.field("subject", subjectText);
+        StringWriter writer = new StringWriter();
+        StringBuilder contentBuilder = new StringBuilder();
+        try {
+            BufferedReader in = new BufferedReader(new FileReader("public/toRenterMailTemplate.html"));
+            String str;
+            while ((str = in.readLine()) != null) {
+                contentBuilder.append(str);
+            }
+            in.close();
+        } catch (IOException e) {
+        }
+        String content = contentBuilder.toString();
+        Mustache.compiler().compile(content).execute(m, writer);
+        form.field("html", String.valueOf(writer));
+        transaction.setBorrowerNotified(true);
+        return webResource.type(MediaType.MULTIPART_FORM_DATA_TYPE).
+                post(ClientResponse.class, form);
     }
+
 }
 
 

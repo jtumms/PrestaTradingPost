@@ -36,7 +36,7 @@ const CategoryCollection = Backbone.Collection.extend({
   initialize: function(valueInHash){
 
     this.url=`/items?category=${this._serverCatQuery[valueInHash]}`
-    console.log("here it is", this.url)
+    console.log("here it is, the category/cathash", this.url)
   }
 });
 
