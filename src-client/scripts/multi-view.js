@@ -99,18 +99,19 @@ const MultiView = React.createClass({
 
         return(
 
-              <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
-                  <div className="thumbnail multi-thumbnail-container">
-                    <a onClick={self._routeToItem} className="multi-anchor-to-single" data-id={data.attributes.id}>
-                      <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
-                    </a>
-                    <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
-                    <p className="multi-item-info">Item: {data.attributes.itemName}</p>
-                    <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
-                  </div>
+          <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
+              <div className="thumbnail multi-thumbnail-container">
+                <a onClick={self._routeToItem} className="multi-anchor-to-single" data-id={data.attributes.id}>
+                  <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
+                </a>
+                <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
+                <p className="multi-item-info">Item: {data.attributes.itemName}</p>
+                <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
               </div>
+          </div>
         )
     })
+
 
     return (
       <div className="multi-container">

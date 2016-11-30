@@ -56,7 +56,7 @@ body{
 	float: right;
 	margin-top: 10px;
 	text-align: right;
-	color: #ffffff;
+	color: white;
 }
 
 .sign-out {
@@ -129,7 +129,7 @@ body{
 	text-shadow: .5px .5px .5px #00c6ff;
 	h1 {
 		font-family: 'Ubuntu', sans-serif;
-		// font-size: 30px;
+		font-size: 36px;
 		text-align: center;
 		width: 90%;
 		margin-top: 20px;
@@ -283,6 +283,11 @@ body{
 	border-color: #ffcc33;
 	border-style: solid;
 	border-width: 3px;
+	color: white;
+	text-shadow: .8px .8px .8px black;
+	box-shadow: 4px 4px 4px grey;
+
+
  }
 }
 
@@ -486,6 +491,14 @@ body{
 		margin-top: 20px;
 		margin: auto;
 		box-shadow: 6px 6px 6px grey;
+		h2{
+			color:white;
+			text-shadow: .9px .9px .9px black;
+		}
+		h3{
+			color:white;
+			text-shadow: .9px .9px .9px black;
+		}
 	}
 
 .single-image{
@@ -498,9 +511,6 @@ body{
 }
 
 .confirm-rental-btn{
-	// position:relative;
-  // top: 0%;
-  // right: 15%;
 	margin-bottom: 300px;
 	border-color: #ffcc33;
 	color: white;
@@ -509,6 +519,13 @@ body{
 	background-color: #0375B4;
 	height: 65px;
 	font-size:20px;
+	box-shadow: 6px 6px 6px grey;
+}
+.rental-body-container{
+  em {
+	  color: #00C6FF;
+		text-shadow: 1px 1px 1px black;
+	}
 }
 // .map-container{
 //   position: relative;
