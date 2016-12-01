@@ -10,11 +10,7 @@ import com.sun.jersey.multipart.file.FileDataBodyPart;
 import com.tummsmedia.entities.*;
 import com.tummsmedia.services.ItemRepo;
 import com.tummsmedia.services.MessageRepo;
-import com.tummsmedia.services.TransactionRepo;
 import com.tummsmedia.services.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.core.MediaType;
@@ -61,7 +57,7 @@ public class MessageController {
         form.field("to", owner.getUsername());
         form.field("subject", subjectText);
         ArrayList<String> photoNames = new ArrayList<>();
-        Set<Image> itemImageSet = rentedItem.getImages();
+        List<Image> itemImageSet = rentedItem.getImages();
         for (Image img: itemImageSet){
             photoNames.add(itemImageSet.iterator().next().getImageFileName());
         }
@@ -144,7 +140,7 @@ public class MessageController {
         form.field("to", renter.getUsername());
         form.field("subject", subjectText);
         ArrayList<String> photoNames = new ArrayList<>();
-        Set<Image> itemImageSet = rentedItem.getImages();
+        List<Image> itemImageSet = rentedItem.getImages();
         for (Image img: itemImageSet){
             photoNames.add(itemImageSet.iterator().next().getImageFileName());
         }

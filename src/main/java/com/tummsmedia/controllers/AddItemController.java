@@ -5,7 +5,6 @@ import com.tummsmedia.entities.Item;
 import com.tummsmedia.entities.User;
 import com.tummsmedia.services.ItemRepo;
 import com.tummsmedia.services.UserRepo;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by john.tumminelli on 11/25/16.
@@ -77,7 +78,7 @@ public class AddItemController {
                 e.printStackTrace();
             }
         }
-        HashSet<Image> itemImageSet = new HashSet<>();
+        List<Image> itemImageSet = new ArrayList<>();
         Image image = new Image(fileName);
         itemImageSet.add(image);
         Item.Category cat = Enum.valueOf(Item.Category.class, category);
@@ -102,7 +103,7 @@ public class AddItemController {
             String noValidLogin = "User not logged in";
             return new ResponseEntity<Object>(noValidLogin, HttpStatus.FORBIDDEN);
         }
-        HashSet<Image> itemImageSet = new HashSet<>();
+        List<Image> itemImageSet = new ArrayList<>();
         int imgCount = 0;
         for(int i =0 ;i < uploadedFilesRef.length; i++) {
             if (uploadedFilesRef[i] != null && uploadedFilesRef[i].getSize() > 0){
