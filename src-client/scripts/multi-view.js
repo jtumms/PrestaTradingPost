@@ -5,34 +5,6 @@ const {ItemsModel, ItemsModelCollection, CategoryCollection} = require("./models
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 
-// const Search = React.createClass({
-//     getInitialState: function() {
-//         return { showResults: false };
-//     },
-//     onClick: function() {
-//         this.setState({ showResults: true });
-//     },
-//     if ()
-//
-//     render: function() {
-//         return (
-//             <div>
-//                 <input type="submit" value="Search" onClick={this.onClick} />
-//                 { this.state.showResults ? <Results /> : null }
-//             </div>
-//         );
-//     }
-// });
-//
-// var Results = React.createClass({
-//     render: function() {
-//         return (
-//             <div id="results" className="search-results">
-//                 Some Results
-//             </div>
-//         );
-//     }
-
 const MultiView = React.createClass({
 
   componentWillMount: function(){
@@ -114,16 +86,16 @@ const MultiView = React.createClass({
 
         return(
 
-              <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
-                  <div className="thumbnail multi-thumbnail-container">
-                    <a onClick={self._routeToItem} className="multi-anchor-to-single" data-id={data.attributes.id}>
-                      <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
-                    </a>
-                    <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
-                    <p className="multi-item-info">Item: {data.attributes.itemName}</p>
-                    <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
-                  </div>
+          <div className="col-xs-4  col-md-4" key={data.attributes.itemId}>
+              <div className="thumbnail multi-thumbnail-container">
+                <a onClick={self._routeToItem} className="multi-anchor-to-single" data-id={data.attributes.id}>
+                  <img className="multi-img" src={"images/" + data.attributes.images[0].imageFileName} alt="" data-id={data.attributes.itemId} />
+                </a>
+                <h4 className="multi-item-info multi-item-desc">{data.attributes.itemDescription}</h4>
+                <p className="multi-item-info">Item: {data.attributes.itemName}</p>
+                <p className="multi-item-info">Price: {data.attributes.askingPrice}</p>
               </div>
+          </div>
         )
     })
 
@@ -167,5 +139,3 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
-//            <a href="#profileview"><button type="button" className="btn btn-default btn-md about-us "><h4>Add Item</h4></button></a>
-//            <h2>LOGO</h2>
