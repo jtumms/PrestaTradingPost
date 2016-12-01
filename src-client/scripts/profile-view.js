@@ -4,7 +4,7 @@ const GetUserModel = require('./get-user-model.js')
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 const AddItemModel = require('./add-item-model.js')
-
+const {NavToHome} = require('./components-shared.js')
 
 
 const ProfileView = React.createClass({
@@ -21,8 +21,18 @@ const ProfileView = React.createClass({
     console.log('why didnt that work??', STORE._data)
     console.log('?????///!!!!!!', STORE._data.userListing.attributes.userDetail)
     // let currentUserId = STORE.getStoreData()
-    ACTIONS.getCurrentUserInfo()
     // console.log('actions current info', ACTIONS.getCurrentUserInfo())
+  },
+
+  componentWillReceiveProps(newProps){
+    console.log('newProps', newProps.currentUser)
+
+    if (!newProps.currentUser.get('username')) {
+
+      console.log("no username" , newProps)
+      ACTIONS.routeTo('authview')
+    }
+
   },
 
 
@@ -86,18 +96,27 @@ const ProfileView = React.createClass({
     console.log('what up',this.props)
     // console.log('?????/?????', this.props.currentUser.attributes.username)
 
+
+    if (this.props.navHistory.length > 1 && !this.props.currentUser.get('username')){
+      console.log("??????")
+      ACTIONS.routeTo('authview')
+      return <div> okay </div>
+    }
+
     if (!this.props.currentUser.get('username')) {
+
+
       console.log("????")
       return <h1> loading... You need to sign-in or sign-up</h1>
     }
 
 
 
+
+
     return(
       <div className="profile-container">
-        <div className="profile-home-icon-container">
-          <a href=" "><i className="fa fa-home fa-4x profile-home-icon" aria-hidden="true"></i></a>
-        </div>
+        <NavToHome/>
         <div className="profile-header">
           <h1>Presta Trading Post</h1>
         </div>

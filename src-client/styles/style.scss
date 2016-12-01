@@ -92,10 +92,11 @@ body{
 		color: #00c6ff;
 		text-shadow: 4px 4px 4px rgba(0,0,0,1);
 		text-align: center;
-		margin: 10px 80px 0 80px;
-    padding-bottom: 15px;
-    background: rgba(210, 202, 191, .9);
-		border-radius: 10px;
+		// margin: 10px 80px 0 80px;
+    // padding-bottom: 15px;
+    // background: rgba(210, 202, 191, .9);
+		// border-radius: 10px;
+		margin-top: 5px;
 	}
 	h2 {
 		position: absolute;
@@ -129,7 +130,8 @@ body{
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
-	box-shadow: 4px 4px 4px rgba(0,0,0,.4);
+	background-attachment: fixed, fixed;
+	// box-shadow: 4px 4px 4px rgba(0,0,0,.4);
 }
 
 .multi-description {
@@ -456,6 +458,8 @@ body{
 
 .single-header-container{
 	position: relative;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	h1{
 		font-family: 'Ubuntu', sans-serif;
 		font-weight: bolder;
@@ -463,10 +467,14 @@ body{
 		color: #0375B4;
 		text-shadow: 4px 4px 4px grey;
 		text-align: center;
-		padding-top: 60px;
-		margin-top: 10px;
-		padding-bottom: 30px;
-		margin-bottom: 10px;
+		// padding-top: 60px;
+		// margin-top: 10px;
+		// padding-bottom: 30px;
+		// margin-bottom: 10px;
+		// margin: 0 80px 0 80px;
+    // padding-bottom: 15px;
+    // background: rgba(210, 202, 191, .9);
+		// border-radius: 10px;
 	}
 	h2{
 		position: absolute;
@@ -476,17 +484,19 @@ body{
 
 	.single-thumbnail-container{
 		padding-top: 40px;
-		background-color: #ECECEC;
+		padding-bottom: 40px;
+		width: 70%;
+		background-color: #00c6ff;
 		border-top: 20px;
 		margin-top: 20px;
 		margin: auto;
 		box-shadow: 6px 6px 6px grey;
 		h2{
-			color:white;
+			// color:white;
 			text-shadow: .9px .9px .9px black;
 		}
 		h3{
-			color:white;
+			// color:white;
 			text-shadow: .9px .9px .9px black;
 		}
 	}
@@ -529,15 +539,15 @@ body{
 
 }
 
-.single-thumbnail-container{
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #00c6ff;
-	border-top: 20px;
-	margin-top: 20px;
-	margin: auto;
-	width: 70%;
-}
+// .single-thumbnail-container{
+// 	padding-top: 40px;
+// 	padding-bottom: 40px;
+// 	background-color: #00c6ff;#ECECEC
+// 	border-top: 20px;
+// 	margin-top: 20px;
+// 	margin: auto;
+// 	width: 70%;
+// }
 
 .map-container{
 	height: 400px;

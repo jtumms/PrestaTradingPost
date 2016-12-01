@@ -25,7 +25,7 @@ const AppViewController = React.createClass({
   componentWillMount: function(){
     let component = this
     // // console.log( "the retrieved data:" ,updateState.currentInventory)
-
+    ACTIONS.getCurrentUserInfo(this.props.routedFrom)
     STORE.onChange(function(){
         let updatedState = STORE.getStoreData()
         // console.log( "the retrieved data:" ,updateState.currentInventory)
@@ -33,8 +33,11 @@ const AppViewController = React.createClass({
     })
   },
 
+
+
   render: function(){
-    console.log(this.state)
+
+     console.log(this.state)
 
       switch(this.props.routedFrom) {
         case "AuthView":
@@ -63,7 +66,7 @@ const AppViewController = React.createClass({
           break;
 
         case "ProfileView":
-          return <ProfileView currentUser={this.state.currentUser}/>
+          return <ProfileView navHistory={this.state.userNavHistory} currentUser={this.state.currentUser}/>
           break;
 
         case "OopsView":

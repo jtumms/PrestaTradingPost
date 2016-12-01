@@ -16,11 +16,11 @@ const ACTIONS = {
       .then(function(serverRes){
         console.log('server RES', serverRes)
         STORE.setStore('currentUser', new UserModel() )
-        ACTIONS.routeTo("#logout")
+        ACTIONS.routeTo("logout")
       })
   },
 
-  getCurrentUserInfo: function(){
+  getCurrentUserInfo: function(routedFrom){
     let getUserModelInstance = new UserModel('/check-auth')
     getUserModelInstance.fetch()
       .then(function(){
@@ -29,8 +29,12 @@ const ACTIONS = {
         console.log('something here',getUserModelInstance)
       })
       .fail(function(errRes){
-        console.log('?????', errRes)
-        ACTIONS.routeTo('authview')
+        let protectedRouteList = ["ConfirmRentalView", "ProfileView", "SignOutView" ]
+        let foundProtectedRoute = protectedRouteList.find(function(protectedRoute){ return protectedRoute === routedFrom })
+        if(foundProtectedRoute){
+          STORE.setStore('currentUser', new UserModel() )
+          ACTIONS.routeTo('authview')
+        }
       })
   },
 
@@ -155,13 +159,15 @@ const ACTIONS = {
     // window.location.hash = "/multiview"
   },
 
-  addImageData: function(file) {
+  addToNavHistory: function(navRoute) {
+    let newArrayPlus1 = [ ...STORE.getStoreData().userNavHistory, navRoute ]
+    STORE.setStore('userNavHistory', newArrayPlus1 )
 
   },
 
-  checkIfVerified: function(){
-    window.location.hash = "/authview"
-  }
+  // checkIfVerified: function(){
+  //   window.location.hash = "/authview"
+  // }
 
 }
 
