@@ -15,51 +15,51 @@ let Pin = React.createClass({
    }
 })
 
-export default class MapPage extends Component {
+let BubblePin = React.createClass({
+  componentWillMount: function(){
+    let rangeScope = 10 //  +/- 10  d
+    let randomRange = Math.random()*rangeScope*2 - rangeScope // random number btw -4 to 4
 
-  // var cityCircle = new google.maps.Circle({
-  //   strokeColor: '#FF0000',
-  //   strokeOpacity: 0.8,
-  //   strokeWeight: 2,
-  //   fillColor: '#FF0000',
-  //   fillOpacity: 0.35,
-  //   map: map,
-  //   center: {this.props.center},
-  //   radius: 500
-  // }),
+    this.setState({styleVals:{
+        height: '88px',
+        width: '88px',
+        borderRadius: '50%',
+        background: 'rgba(77, 175, 124, .3)',
+        border: 'rgba(77, 175, 124, 1.0) 2px solid',
+        transform: `translate(${ randomRange }%, ${ randomRange }%)`
+      }
+    })
+  },
+
+
+  render: function(){
+
+    return <div style={this.state.styleVals}></div>
+  }
+})
+
+export default class MapPage extends Component {
 
     constructor(props) {
         super(props);
         console.log('this props center', this.props.center)
     }
 
-    // let pinsJSX = this.props.pinsData.map(function(obj){
-    //      return < lat={obj.latitude} lng={obj.longitude}  />
-    // })
-
     render() {
 
        return (
 
          <GoogleMap
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}>
-
+          defaultCenter={ this.props.center   }
+          defaultZoom={this.props.zoom}
+          bootstrapURLKeys={{
+           key: 'AIzaSyBky8AUOXojnW9OVedsmtH2BQgavEkniZM',
+           language: 'en'
+         }}
+          >
+            <BubblePin lat={this.props.center.lat} lng={this.props.center.lng} />
          </GoogleMap>
        );
     }
 };
 module.exports = MapPage
-// const location ={
-//    lat: 32.784618,
-//    lng: -79.940918,
-//    zoom: 13
-// }
-// const marker = {
-//       marker: {
-//          lat: 32.784618,
-//          lng: -79.940918
-//       },
-//       return <Marker {...marker}/>
-// AIzaSyAGoG15YaqO4Hp9Si4jUP2u_61EHK-jw-4
-//    },

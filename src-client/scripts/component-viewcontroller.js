@@ -35,16 +35,21 @@ const AppViewController = React.createClass({
 
   render: function(){
     console.log(this.state)
+
       switch(this.props.routedFrom) {
         case "AuthView":
+          window.scrollTo(0, 0);
+
           return <AuthView/>
           break;
 
         case "MultiView":
-          return <MultiView catName={this.props.catName}/>
+          return <MultiView catName={this.props.catName} currentUser={this.state.currentUser}/>
           break;
 
         case "SingleView":
+          window.scrollTo(0, 0);
+
           return <SingleView itemId={this.props.itemId} singleItem={this.state.singleListing} />
           break;
 

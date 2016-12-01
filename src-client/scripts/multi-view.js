@@ -5,37 +5,11 @@ const {ItemsModel, ItemsModelCollection, CategoryCollection} = require("./models
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 
-// const Search = React.createClass({
-//     getInitialState: function() {
-//         return { showResults: false };
-//     },
-//     onClick: function() {
-//         this.setState({ showResults: true });
-//     },
-//     if ()
-//
-//     render: function() {
-//         return (
-//             <div>
-//                 <input type="submit" value="Search" onClick={this.onClick} />
-//                 { this.state.showResults ? <Results /> : null }
-//             </div>
-//         );
-//     }
-// });
-//
-// var Results = React.createClass({
-//     render: function() {
-//         return (
-//             <div id="results" className="search-results">
-//                 Some Results
-//             </div>
-//         );
-//     }
-
 const MultiView = React.createClass({
 
   componentWillMount: function(){
+    window.scrollTo(0, 0);
+
     // console.log('this props', this.props.catName)
     if(!this.props.catName) {
       ACTIONS.fetchItemsModelCollection()
@@ -66,9 +40,22 @@ const MultiView = React.createClass({
   },
 
   _routeToCategory: function(evt){
-    console.log("whatz up?", evt.target.dataset)
+    console.log("whatz up?", evt.currentTarget.dataset)
     // STORE._data.currentInventory.filter('collection')
-    ACTIONS.routeTo(`category/${evt.target.dataset.cathash}`)
+    ACTIONS.routeTo(`category/${evt.currentTarget.dataset.cathash}`)
+  },
+
+  _showLogoutJSX: function(usrMod){
+    if(typeof usrMod.id === 'undefined'){
+      return   <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in"><h4>Sign-in / Sign-up</h4></button></a>
+
+    } else {
+      return  [
+        <button type="button" className="btn btn-default btn-md sign-out" onClick={this._handleLogOut}><h4>Sign Out</h4></button>,
+        <a href="#profileview"><button type="button" className="btn btn-default btn-md add-item "><h4>Add Item</h4></button></a>
+      ]
+
+    }
   },
 
   _routeToItem: function(evt) {
@@ -112,15 +99,14 @@ const MultiView = React.createClass({
         )
     })
 
+    console.log('current user', this.props.currentUser.id)
 
     return (
       <div className="multi-container">
         <div className="garage-pic">
           <div className="sign-in-btn">
             <a href="#aboutus"><button type="button" className="btn btn-default btn-md about-us "><h4>About-Us</h4></button></a>
-            <a href="#authview"><button type="button" className="btn btn-default btn-md sign-in"><h4>Sign-in / Sign-up</h4></button></a>
-            <a href="#profileview"><button type="button" className="btn btn-default btn-md add-item "><h4>Add Item</h4></button></a>
-            <button type="button" className="btn btn-default btn-md sign-out" onClick={this._handleLogOut}><h4>Sign Out</h4></button>
+            {this._showLogoutJSX(this.props.currentUser)}
           </div>
           <div className="multi-header text-center">
             <h1>Presta Trading Post</h1>
@@ -153,5 +139,3 @@ const MultiView = React.createClass({
 })
 
 module.exports = MultiView
-//            <a href="#profileview"><button type="button" className="btn btn-default btn-md about-us "><h4>Add Item</h4></button></a>
-//            <h2>LOGO</h2>
