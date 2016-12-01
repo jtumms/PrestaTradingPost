@@ -89,7 +89,7 @@
     },
     {
          "itemName": "Milwaukee Circular Saw" ,
-         "itemDescription": "Sawsall available for rent",
+         "itemDescription": "Circular saw 18 volts available for rent",
          "category": "TOOLS",
          "estValue": 175.00,
          "askingPrice": 15.00,
@@ -145,7 +145,7 @@
         },
         {
                  "itemName": "K2 Snowboard for rent" ,
-                 "itemDescription": "Gear Puller tool available for that once ina lifetime project. Will barter or sell",
+                 "itemDescription": "Snowboard. weekend rentals. hit the sloaps for less",
                  "category": "TOOLS",
                  "estValue": 450.00,
                  "askingPrice": 25.00,
