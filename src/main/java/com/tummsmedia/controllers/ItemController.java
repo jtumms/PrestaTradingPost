@@ -67,10 +67,18 @@ public class ItemController {
     }
 
     public void loadItemData() throws IOException, PasswordStorage.CannotPerformOperationException {
-        String hashedPassword = PasswordStorage.createHash("testuser123");
-        UserDetail ud = new UserDetail("test","user","17A Princess Street", "", "Charleston", "SC", 29401);
-        User user = new User("testuser@gmail.com", hashedPassword, ud);
-        users.save(user);
+
+
+        String hashedPassword = PasswordStorage.createHash("presta123");
+        UserDetail ud1 = new UserDetail("Presta","User1","17A Princess Street", "", "Charleston", "SC", 29401);
+        User user1 = new User("prestauser1@gmail.com", hashedPassword, ud1);
+        UserDetail ud2 = new UserDetail("Presta","User2","3108 Moonlight Drive", "", "Charleston", "SC", 29414);
+        User user2 = new User("prestauser2@gmail.com", hashedPassword, ud2);
+        UserDetail ud3 = new UserDetail("Presta","User3","104 Carriage Lane", "", "Summerville", "SC", 29483);
+        User user3 = new User("prestauser3@gmail.com", hashedPassword, ud3);
+        users.save(user1);
+        users.save(user2);
+        users.save(user3);
         File f = new File("ptp_item_data_json");
         FileReader fr = new FileReader(f);
         int fileSize = (int) f.length();     //cast to int

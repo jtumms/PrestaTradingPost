@@ -9,7 +9,7 @@
      "condition": "GOOD",
      "images": [{"imageFileName": "123456789_12345_1234567.jpg"},
                 {"imageFileName": "123456789_54321_1234567.jpg"}],
-     "user": {"id": 1, "username":"testuser@gmail.com"}
+     "user": {"id": 1, "username": "prestauser1@gmail.com"}
   },
   {
        "itemName": "Bicycles for rent" ,
@@ -21,7 +21,7 @@
        "images": [{"imageFileName": "123456789_12345_7890.jpg"},
                    {"imageFileName": "123456789_54321_7890.jpg"},
                    {"imageFileName": "123456789_45678_7890.jpg"}],
-       "user": {"id": 1, "username":"testuser@gmail.com"}
+       "user": {"id": 2, "username": "prestauser2@gmail.com"}
     },
     {
          "itemName": "Bouncy House" ,
@@ -32,11 +32,11 @@
          "condition": "VERYGOOD",
          "images": [{"imageFileName": "3458_Bounce-House-2_789.jpg"},
                     {"imageFileName": "BounceHouseThree.jpg"}],
-         "user": {"id": 1, "username":"testuser@gmail.com"}
+         "user": {"id": 1, "username": "prestauser1@gmail.com"}
     },
     {
              "itemName": "PA System" ,
-             "itemDescription": "Pro PA with mixer and loudpspeakers availble for daily rental",
+             "itemDescription": "Pro PA with mixer and loudpspeakers available for daily rental",
              "category": "ELECTRONICS",
              "estValue": 1575.00,
              "askingPrice": 125.00,
@@ -44,27 +44,27 @@
              "images": [{"imageFileName": "PA-Speakers-System2.png"},
                         {"imageFileName": "PA_System1.jpg"},
                         {"imgageFileName": "pa3.jpg"}],
-             "user": {"id": 1, "username":"testuser@gmail.com"}
+             "user": {"id": 2, "username": "prestauser2@gmail.com"}
      },
     {
          "itemName": "Caterpillar Bobcat" ,
-         "itemDescription": "Bobcat with mulitple attachements available for rent",
+         "itemDescription": "Bobcat with mulitple attachments available for rent",
          "category": "TOOLS",
          "estValue": 15000.00,
          "askingPrice": 325.00,
          "condition": "VERYGOOD",
          "images": [{"imageFileName": "bobcat.jpg"}],
-         "user": {"id": 1, "username":"testuser@gmail.com"}
+         "user": {"id": 1, "username": "prestauser1@gmail.com"}
     },
     {
              "itemName": "Gear Puller" ,
-             "itemDescription": "Gear Puller tool available for that once ina lifetime project. Will barter or sell",
+             "itemDescription": "Gear Puller tool available for that once in a lifetime project. Will barter or sell",
              "category": "TOOLS",
              "estValue": 50.00,
              "askingPrice": 15.00,
              "condition": "VERYGOOD",
              "images": [{"imageFileName": "gear_puller.jpg"}],
-             "user": {"id": 1, "username":"testuser@gmail.com"}
+             "user": {"id": 2, "username": "prestauser2@gmail.com"}
     },
     {
              "itemName": "Surfboard" ,
@@ -73,30 +73,30 @@
              "estValue": 15000.00,
              "askingPrice": 325.00,
              "condition": "GOOD",
-             "images": [{"imageFileName": "bobcat.jpg"}],
-             "user": {"id": 1, "username":"testuser@gmail.com"}
+             "images": [{"imageFileName": "nsp-surfboard-8-foot-2-inch-funboard.jpg"}],
+             "user": {"id": 3, "username": "prestauser3@gmail.com"}
     },
     {
              "itemName": "Fender Guitar Amp for rent" ,
              "itemDescription": "Fender pro Reverb 1965 reissue",
-             "category": "ELECTRONICS",
+             "category": "GENERAL",
              "estValue": 2500.00,
              "askingPrice": 125.00,
              "condition": "EXCELLENT",
              "images": [{"imageFileName": "65DeluxeRFSRMC-xlarge.jpg"},
                         {"imageFileName": "FenderProReverbAmp.jpg"}],
-             "user": {"id": 1, "username":"testuser@gmail.com"}
+             "user": {"id": 2, "username": "prestauser2@gmail.com"}
     },
     {
          "itemName": "Milwaukee Circular Saw" ,
-         "itemDescription": "Sawsall available for rent ",
+         "itemDescription": "Sawsall available for rent",
          "category": "TOOLS",
          "estValue": 175.00,
          "askingPrice": 15.00,
          "condition": "GOOD",
-         "images": [{"imageFileName": "123456789_12345_1234567.jpg"},
-                    {"imageFileName": "123456789_54321_1234567.jpg"}],
-         "user": {"id": 1, "username":"testuser@gmail.com"}
+         "images": [{"imageFileName": "Milwaukee-M18-FUEL-Cordless-Circular-Saw-Kit.jpg"},
+                    {"imageFileName": "Milwaukee-M18-FUEL-Circular-Saw-2730-22.jpg"}],
+         "user": {"id": 3, "username": "prestauser3@gmail.com"}
       },
       {
            "itemName": "Bicycle Rental" ,
@@ -108,7 +108,7 @@
            "images": [{"imageFileName": "123456789_12345_7890.jpg"},
                        {"imageFileName": "123456789_54321_7890.jpg"},
                        {"imageFileName": "123456789_45678_7890.jpg"}],
-           "user": {"id": 1, "username":"testuser@gmail.com"}
+           "user": {"id": 2, "username": "prestauser2@gmail.com"}
         },
         {
              "itemName": "Bouncy Mansion Castle" ,
@@ -119,7 +119,7 @@
              "condition": "VERYGOOD",
              "images": [{"imageFileName": "3458_Bounce-House-2_789.jpg"},
                         {"imageFileName": "BounceHouseThree.jpg"}],
-             "user": {"id": 1, "username":"testuser@gmail.com"}
+             "user": {"id": 1, "username": "prestauser1@gmail.com"}
         },
         {
                  "itemName": "PA System 3" ,
@@ -131,37 +131,37 @@
                  "images": [{"imageFileName": "PA-Speakers-System2.png"},
                             {"imageFileName": "PA_System1.jpg"},
                             {"imgageFileName": "pa3.jpg"}],
-                 "user": {"id": 1, "username":"testuser@gmail.com"}
+                 "user": {"id": 2, "username": "prestauser2@gmail.com"}
          },
         {
              "itemName": "Caterpillar Backhoe" ,
-             "itemDescription": "Bobcat with mulitple attachements available for rent",
+             "itemDescription": "Small backhoe available for rent",
              "category": "TOOLS",
-             "estValue": 15000.00,
+             "estValue": 9500.00,
              "askingPrice": 325.00,
              "condition": "VERYGOOD",
-             "images": [{"imageFileName": "bobcat.jpg"}],
-             "user": {"id": 1, "username":"testuser@gmail.com"}
+             "images": [{"imageFileName": "backhoe.jpg"}],
+             "user": {"id": 3, "username": "prestauser3@gmail.com"}
         },
         {
-                 "itemName": "Gear Puller 2" ,
+                 "itemName": "K2 Snowboard for rent" ,
                  "itemDescription": "Gear Puller tool available for that once ina lifetime project. Will barter or sell",
                  "category": "TOOLS",
-                 "estValue": 50.00,
-                 "askingPrice": 15.00,
+                 "estValue": 450.00,
+                 "askingPrice": 25.00,
                  "condition": "VERYGOOD",
-                 "images": [{"imageFileName": "gear_puller.jpg"}],
-                 "user": {"id": 1, "username":"testuser@gmail.com"}
+                 "images": [{"imageFileName": "blue_fire_snowboard_by_angus147258.jpg"}],
+                 "user": {"id": 3, "username": "prestauser3@gmail.com"}
         },
         {
-                 "itemName": "Surfboards for Barter" ,
-                 "itemDescription": "6 foot surfboard for rent.",
+                 "itemName": "2 Surfboards for Barter" ,
+                 "itemDescription": "6 foot surfboard and longboard for rent.",
                  "category": "SPORTINGGOODS",
-                 "estValue": 15000.00,
-                 "askingPrice": 325.00,
+                 "estValue": 600.00,
+                 "askingPrice": 45.00,
                  "condition": "GOOD",
-                 "images": [{"imageFileName": "bobcat.jpg"}],
-                 "user": {"id": 1, "username":"testuser@gmail.com"}
+                 "images": [{"imageFileName": "Kookbox_Triple_Surfboard_08.jpg"}],
+                 "user": {"id": 2, "username": "prestauser2@gmail.com"}
         },
         {
                  "itemName": "Fender Bass Amp for rent" ,
@@ -172,18 +172,18 @@
                  "condition": "EXCELLENT",
                  "images": [{"imageFileName": "65DeluxeRFSRMC-xlarge.jpg"},
                             {"imageFileName": "FenderProReverbAmp.jpg"}],
-                 "user": {"id": 1, "username":"testuser@gmail.com"}
+                 "user": {"id": 3, "username": "prestauser3@gmail.com"}
         },
         {
-                 "itemName": "Milwaukee Circular Saw" ,
-                 "itemDescription": "Sawsall available for rent ",
+                 "itemName": "Hilti Gun for rent." ,
+                 "itemDescription": "Complete Hilti Gun set with charges available for rent",
                  "category": "TOOLS",
-                 "estValue": 175.00,
-                 "askingPrice": 15.00,
+                 "estValue": 375.00,
+                 "askingPrice": 35.00,
                  "condition": "GOOD",
-                 "images": [{"imageFileName": "123456789_12345_1234567.jpg"},
-                            {"imageFileName": "123456789_54321_1234567.jpg"}],
-                 "user": {"id": 1, "username":"testuser@gmail.com"}
+                 "images": [{"imageFileName": "hilti_gun.jpg"},
+                            {"imageFileName": "mWHveTTvDdVpTTJUVX2tmvw.jpg"}],
+                 "user": {"id": 2, "username": "prestauser2@gmail.com"}
               },
               {
                    "itemName": "Bicycle Rental" ,
@@ -195,18 +195,18 @@
                    "images": [{"imageFileName": "123456789_12345_7890.jpg"},
                                {"imageFileName": "123456789_54321_7890.jpg"},
                                {"imageFileName": "123456789_45678_7890.jpg"}],
-                   "user": {"id": 1, "username":"testuser@gmail.com"}
+                   "user": {"id": 1, "username": "prestauser1@gmail.com"}
                 },
                 {
-                     "itemName": "Bouncy Mansion Castle" ,
-                     "itemDescription": "Backyard Bounce House available for rent/borrow ",
+                     "itemName": "Party tent for rental" ,
+                     "itemDescription": "Great for backyard parties and events ",
                      "category": "OUTDOOR",
                      "estValue": 575.00,
                      "askingPrice": 75.00,
                      "condition": "VERYGOOD",
-                     "images": [{"imageFileName": "3458_Bounce-House-2_789.jpg"},
-                                {"imageFileName": "BounceHouseThree.jpg"}],
-                     "user": {"id": 1, "username":"testuser@gmail.com"}
+                     "images": [{"imageFileName": "party-tents-for-sale-12.jpg"},
+                                {"imageFileName": "tr-concord-tent-w558.jpg"}],
+                     "user": {"id": 1, "username": "prestauser1@gmail.com"}
                 },
                 {
                          "itemName": "PA System 3" ,
@@ -218,37 +218,37 @@
                          "images": [{"imageFileName": "PA-Speakers-System2.png"},
                                     {"imageFileName": "PA_System1.jpg"},
                                     {"imgageFileName": "pa3.jpg"}],
-                         "user": {"id": 1, "username":"testuser@gmail.com"}
+                         "user": {"id": 3, "username": "prestauser3@gmail.com"}
                  },
                 {
-                     "itemName": "Bobcat Deluxe" ,
-                     "itemDescription": "Bobcat with mulitple attachements available for rent",
+                     "itemName": "Stump Grinder" ,
+                     "itemDescription": "Stump Grinder - daily or weekend rental",
                      "category": "TOOLS",
-                     "estValue": 15000.00,
-                     "askingPrice": 325.00,
+                     "estValue": 5200.00,
+                     "askingPrice": 125.00,
                      "condition": "VERYGOOD",
-                     "images": [{"imageFileName": "bobcat.jpg"}],
-                     "user": {"id": 1, "username":"testuser@gmail.com"}
+                     "images": [{"imageFileName": "stumpgrinder.jpg"}],
+                     "user": {"id": 3, "username": "prestauser3@gmail.com"}
                 },
                 {
-                         "itemName": "Gear Puller 6" ,
-                         "itemDescription": "Gear Puller tool available for that once ina lifetime project. Will barter or sell",
-                         "category": "TOOLS",
-                         "estValue": 50.00,
-                         "askingPrice": 15.00,
-                         "condition": "VERYGOOD",
-                         "images": [{"imageFileName": "gear_puller.jpg"}],
-                         "user": {"id": 1, "username":"testuser@gmail.com"}
+                         "itemName": "Fishing Kayak" ,
+                         "itemDescription": "Pro fishing Kayak. Fully rigged with outriggers, pole holders, cooler. Weekly rentals available.",
+                         "category": "OUTDOOR",
+                         "estValue": 1250.00,
+                         "askingPrice": 150.00,
+                         "condition": "EXCELLENT",
+                         "images": [{"imageFileName": "kayak.jpg"}],
+                         "user": {"id": 3, "username": "prestauser3@gmail.com"}
                 },
                 {
-                         "itemName": "Surfboards for Barter" ,
-                         "itemDescription": "6 foot surfboard for rent.",
-                         "category": "SPORTINGGOODS",
-                         "estValue": 15000.00,
-                         "askingPrice": 325.00,
+                         "itemName": "Banquet Tables" ,
+                         "itemDescription": "15 banquet tables for rent. Security deposit required.",
+                         "category": "OUTDOOR",
+                         "estValue": 1000.00,
+                         "askingPrice": 125.00,
                          "condition": "GOOD",
-                         "images": [{"imageFileName": "bobcat.jpg"}],
-                         "user": {"id": 1, "username":"testuser@gmail.com"}
+                         "images": [{"imageFileName": "ottawa-banquet-dinning-tables-rentals-round.jpg"}],
+                         "user": {"id": 1, "username": "prestauser1@gmail.com"}
                 },
                 {
                          "itemName": "Fender Bass Amp for rent" ,
@@ -259,7 +259,7 @@
                          "condition": "EXCELLENT",
                          "images": [{"imageFileName": "65DeluxeRFSRMC-xlarge.jpg"},
                                     {"imageFileName": "FenderProReverbAmp.jpg"}],
-                         "user": {"id": 1, "username":"testuser@gmail.com"}
+                         "user": {"id": 2, "username": "prestauser2@gmail.com"}
                 }
   ]
 

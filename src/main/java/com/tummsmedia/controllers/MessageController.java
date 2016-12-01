@@ -110,8 +110,12 @@ public class MessageController {
             ItemController.getGeolocateMapDetail(address, rentedItem);
             double lat = rentedItem.getLatLng().get("latitude");
             double lng = rentedItem.getLatLng().get("longitude");
+            m.put("owner", rentedItem.getUser().getUsername());
             m.put("latitude", Double.toString(lat));
             m.put("longitude", Double.toString(lng));
+            m.put("address", address);
+            String gmapUrlByLatLng = String.format("https://www.google.com/maps/@%s,%s,16z", lat, lng);
+            m.put("mapUrl", gmapUrlByLatLng);
 
 
 
@@ -139,6 +143,17 @@ public class MessageController {
         form.field("from", "Mailgun Sandbox <postmaster@sandbox24e2ae74809546f08a2ce2168f7ba9e8.mailgun.org>");
         form.field("to", renter.getUsername());
         form.field("subject", subjectText);
+        ArrayList<String> photoNames = new ArrayList<>();
+        Set<Image> itemImageSet = rentedItem.getImages();
+        for (Image img: itemImageSet){
+            photoNames.add(itemImageSet.iterator().next().getImageFileName());
+        }
+        m.put("itemImage", photoNames.get(0));
+        m.put("itemName", rentedItem.getItemName());
+        m.put("itemDescription", rentedItem.getItemDescription());
+        File jpgFile = new File("public/images/" + photoNames.get(0));
+        form.bodyPart(new FileDataBodyPart("inline", jpgFile,
+                MediaType.APPLICATION_OCTET_STREAM_TYPE));
         StringWriter writer = new StringWriter();
         StringBuilder contentBuilder = new StringBuilder();
         try {
