@@ -1,13 +1,8 @@
 package com.tummsmedia.entities;
 
 
-import org.springframework.data.jpa.repository.query.StringQueryParameterBinder;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by john.tumminelli on 11/16/16.
@@ -54,7 +49,7 @@ public class Item {
 
     @ElementCollection
     @CollectionTable(name = "item_images", joinColumns = @JoinColumn(name = "itemId"))
-    private Set<Image> images = new HashSet<Image>();
+    private List<Image> images = new ArrayList<>();
 
     @ManyToOne
     User user;
@@ -66,7 +61,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(int itemId, String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, Set<Image> images, User user, HashMap<String, Double> latLng) {
+    public Item(int itemId, String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, List<Image> images, User user, HashMap<String, Double> latLng) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -79,7 +74,7 @@ public class Item {
         this.latLng = latLng;
     }
 
-    public Item(String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user, HashMap<String, Double> latLng) {
+    public Item(String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, List<Image> images, User user, HashMap<String, Double> latLng) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.category = category;
@@ -91,7 +86,7 @@ public class Item {
         this.latLng = latLng;
     }
 
-    public Item(String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, HashSet<Image> images, User user) {
+    public Item(String itemName, String itemDescription, Category category, long estValue, long askingPrice, Condition condition, List<Image> images, User user) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.category = category;
@@ -151,11 +146,11 @@ public class Item {
         this.condition = condition;
     }
 
-    public Set<Image> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(Set<Image> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 

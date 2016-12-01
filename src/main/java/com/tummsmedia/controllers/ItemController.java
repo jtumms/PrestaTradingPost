@@ -201,7 +201,7 @@ public class ItemController {
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-        HashSet<Image> tempSet = new HashSet<>();
+        List<Image> tempSet = new ArrayList<>();
         Image defImage = new Image("default_no_image.jpg");
         tempSet.add(defImage);
         item.setImages(tempSet);
@@ -234,7 +234,7 @@ public class ItemController {
         Image workingImage = new Image();
         workingImage.setImageFileName(imageFile.getName());
 
-        HashSet<Image> images = new HashSet<>();
+        List<Image> images = new ArrayList<>();
         images.add(workingImage);
         item.setImages(images);
         items.save(item);
