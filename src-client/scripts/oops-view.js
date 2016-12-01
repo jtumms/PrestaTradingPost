@@ -2,6 +2,7 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const MultiView = require('./multi-view.js')
 const AuthView = require("./auth-view.js")
+const {NavToHome} = require('./components-shared.js')
 
 
 const OopsView = React.createClass({
@@ -10,9 +11,7 @@ const OopsView = React.createClass({
 
     return (
       <div className="oops-container">
-        <div className="auth-home-icon-container">
-          <a href=" "><i className="fa fa-home fa-4x auth-home-icon" aria-hidden="true"></i></a>
-        </div>
+        <NavToHome/>
         <div className="oops-header">
           <h1>Presta Trading Post</h1>
         </div>

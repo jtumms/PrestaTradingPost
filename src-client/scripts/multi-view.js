@@ -78,7 +78,7 @@ const MultiView = React.createClass({
 
   render: function(){
     let self = this
-    console.log("what is going on?")
+    // console.log("what is going on?")
     // console.log(data)
     // console.log('why wont this log', STORE._data.currentInventory)
     var itemListings = STORE._data.currentInventory.map(function(data, i){
@@ -99,7 +99,7 @@ const MultiView = React.createClass({
         )
     })
 
-    console.log('current user', this.props.currentUser.id)
+    // console.log('current user', this.props.currentUser.id)
 
     return (
       <div className="multi-container">

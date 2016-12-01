@@ -1,13 +1,12 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const {NavToHome} = require('./components-shared.js')
 
 const AboutUsView = React.createClass({
   render: function(){
     return (
       <div className="about-us-page-container text-center">
-        <div className="about-home-icon-container">
-          <a href=" "><i className="fa fa-home fa-4x about-home-icon" aria-hidden="true"></i></a>
-        </div>
+        <NavToHome/>
         <div className="about-header text-center">
           <h1>Presta Trading Post</h1>
         </div>

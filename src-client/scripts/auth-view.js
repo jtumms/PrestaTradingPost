@@ -3,9 +3,11 @@ const React = require('react')
 const ACTIONS = require('./actions.js')
 const ProfileView = require("./profile-view.js")
 const STORE = require('./store.js')
+const {NavToHome} = require('./components-shared.js')
 // console.log('action??', ACTIONS);
 
 const AuthView = React.createClass({
+
   _handleNewUserAuth: function(evt){
     evt.preventDefault()
 
@@ -24,8 +26,6 @@ const AuthView = React.createClass({
     console.log('new user data', newUserData)
     ACTIONS.authenticateNewUser(newUserData)
   },
-
-
 
   _handleUserAuth: function(evt){
     evt.preventDefault()
@@ -46,9 +46,7 @@ const AuthView = React.createClass({
     return (
 
           <div className="auth-container">
-            <div className="auth-home-icon-container">
-              <a href=" "><i className="fa fa-home fa-4x auth-home-icon" aria-hidden="true"></i></a>
-            </div>
+            <NavToHome/>
             <div className="auth-header-container">
                 <h1 className="auth-header">Presta Trading Post</h1>
             </div>
@@ -73,16 +71,12 @@ const AuthView = React.createClass({
                 <form className="form-group auth-grid-container" onSubmit={this._handleNewUserAuth}>
                   <div className="form-field auth-user-container">
                       <h1 className="auth-sign-in">Sign-up</h1>
-
-
                       <h4 className="user-label auth-input-label"><label><u>Username</u></label></h4>
                       <input className="auth-inputs" type="text" name="username" placeholder="Enter Email"/>
                       <h4 className="user-label auth-input-label"><label><u>Name</u></label></h4>
                       <input className="auth-inputs" type="text" name="firstName" placeholder="Enter First Name"/>
                       <input className="auth-inputs" type="text" name="lastName" placeholder="Enter Last Name"/>
                       <h4 className="user-label auth-input-label"><label><u>Address</u></label></h4>
-
-
                       <input className="auth-inputs" type="text" name="street" placeholder="Enter Address"/>
                       <input className="auth-inputs" type="text" name="city" placeholder="Enter City"/>
                       <input className="auth-inputs" type="text" name="state" placeholder="Enter State"/>

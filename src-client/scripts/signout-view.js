@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom')
 const STORE = require('./store.js')
 const UserModel = require('./model-user.js')
 const ACTIONS = require('./actions.js')
+const {NavToHome} = require('./components-shared.js')
 
 // STORE.setStore('currentUser', {})
 const SignOutView = React.createClass({
@@ -12,6 +13,7 @@ const SignOutView = React.createClass({
     console.log('this', STORE._data)
     return(
       <div className="signout-container">
+        <NavToHome/>
         <div className="multi-header">
           <h1>Presta Trading Post</h1>
         </div>

@@ -13,7 +13,8 @@ const STORE = {
        categoryListing: [],
        currentUser: new UserModel(),
        singleListing: {},
-       confirmedListingRequest: {}
+       confirmedListingRequest: {},
+       userNavHistory: []
     },
 
    setStore: function(storeProp, payload){

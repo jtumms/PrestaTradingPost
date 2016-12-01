@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom')
 const Backbone = require('backbone')
 const SingleView = require('./single-view.js')
 const ACTIONS = require('./actions.js')
+const {NavToHome} = require('./components-shared.js')
 
 const ConfirmRentalView = React.createClass({
   componentWillUnmount: function(){
@@ -12,9 +13,7 @@ const ConfirmRentalView = React.createClass({
     console.log("what is this?????", this.props.confirmedItem.attributes.itemName)
     return (
       <div className="confirm-rental-container">
-          <div className="confirm-home-icon-container">
-            <a href=" "><i className="fa fa-home fa-4x confirm-home-icon" aria-hidden="true"></i></a>
-          </div>
+          <NavToHome/>
           <div className="confirm-header-container text-center">
              <h1 className="rental-header">Presta Trading Post</h1>
           </div>

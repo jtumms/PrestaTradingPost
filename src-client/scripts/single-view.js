@@ -7,6 +7,7 @@ const ConfirmRentalView = require ('./confirm-rental.js')
 const ACTIONS = require('./actions.js')
 const STORE = require('./store.js')
 import MapPage from './map-api.js'
+const {NavToHome} = require('./components-shared.js')
 
 
 const SingleView = React.createClass({
@@ -56,9 +57,7 @@ const SingleView = React.createClass({
     return(
 
       <div className="single-item-header text-center">
-          <div className="single-home-icon-container">
-            <a href=" "><i className="fa fa-home fa-4x single-home-icon" aria-hidden="true"></i></a>
-          </div>
+          <NavToHome/>
           <div className="single-header-container">
              <h1 className="single-header">Presta Trading Post</h1>
           </div>
