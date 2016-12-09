@@ -40,3 +40,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-mustache')
 
 }
+
+springBoot {
+	executable = true
+}
