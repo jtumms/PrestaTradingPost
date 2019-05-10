@@ -177,4 +177,5 @@ public class Item {
     public void setLatLng(HashMap<String, Double> latLng) {
         this.latLng = latLng;
     }
+
 }

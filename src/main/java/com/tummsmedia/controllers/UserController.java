@@ -1,9 +1,6 @@
 package com.tummsmedia.controllers;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tummsmedia.entities.Item;
 import com.tummsmedia.entities.User;
-import com.tummsmedia.entities.UserDetail;
 import com.tummsmedia.services.UserDetailRepo;
 import com.tummsmedia.services.UserRepo;
 import com.tummsmedia.utilities.PasswordStorage;
@@ -12,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -24,7 +19,6 @@ public class UserController {
 
     @Autowired
     UserRepo users;
-
     @Autowired
     UserDetailRepo userDetails;
 
